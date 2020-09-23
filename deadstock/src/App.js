@@ -1,18 +1,30 @@
 import React from 'react';
-import Main from "./components/Main";
-import Wrapper from "./components/Wrapper";
-import Header from "./components/Header";
-import logo from './logo.svg';
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
+import Browsing from "../src/pages/Browsing";
+import Login from "../src/pages/Login";
+import Messaging from "../src/pages/Messaging";
+import Profile from "../src/pages/Profile";
+import Selling from "../src/pages/Selling";
+import Signup from "../src/pages/SignUp";
 
 function App() {
   return (
-    <div className="App">
-      <Wrapper>
-        <Header />
-        <Main />
-      </Wrapper>
-    </div>
+
+    <Router>
+      <div>
+        <Nav />
+        <Switch>
+          <Route exact path={["/", "/Login"]} component = { Login } />
+          <Route exact path={"/Messaging"} component = { Messaging} />
+          <Route exact path={"/Selling"} component = {Selling} />
+          <Route exact path={"/Signup"} component = {Signup} />
+          <Route exact path={"/Profile"} component = {Profile} />
+          <Route exact path= {"/Browsing"} component = {Browsing} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 export default App;
