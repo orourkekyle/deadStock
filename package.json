@@ -1,0 +1,25 @@
+{
+  "name": "deadStock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orourkekyle/deadStock.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/orourkekyle/deadStock/issues"
+  },
+  "homepage": "https://github.com/orourkekyle/deadStock#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "mongoose": "^5.10.6",
+    "passport": "^0.4.1"
+  }
+}
