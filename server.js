@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const routes = require("./routes");
+const routes = require("./routes/routes");
 const passport = require("passport");
-const db = require("./models")
+// const db = require("./models/user");
 
 const app = express();
 
@@ -19,11 +19,11 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // We need to use sessions to keep track of our user's login status
-app.use(
-    session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
-  );
-  app.use(passport.initialize());
-  app.use(passport.session());
+// app.use(
+//     session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+//   );
+//   app.use(passport.initialize());
+//   app.use(passport.session());
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/deadstockDB");
