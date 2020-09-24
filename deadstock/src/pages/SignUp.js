@@ -6,9 +6,9 @@ function SignUp() {
 const [user, setUser] = useState([])
 const [formObject, setFormObject] = useState({})
 
-useEffect(() => {
-    loadItems()
-}, [])
+// useEffect(() => {
+//     loadItems()
+// }, [])
 
 
 function handleInputChange(event) {
@@ -16,17 +16,17 @@ function handleInputChange(event) {
     setFormObject({...formObject, [name]: value})
 };
 
-function handleFormSubmit(event) {
-    event.preventDefault();
-    if (formObject.username && formObject.password) {
-        API.Users({
-        name: formObject.username,
-        password: formObject.password,
-        })
-        .then(res => loadProfile())
-        .catch(err => console.log(err));
-    }
-}
+// function handleFormSubmit(event) {
+    // event.preventDefault();
+    // if (formObject.username && formObject.password) {
+    //     API.Users({
+    //     name: formObject.username,
+    //     password: formObject.password,
+    //     })
+    //     .then(res => loadProfile())
+    //     .catch(err => console.log(err));
+    // }
+// }
 
 
     return (

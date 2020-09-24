@@ -1,20 +1,21 @@
 // put together our login components (similar to signup)
-
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 
 function Logwin() {
 const [user, setUser] = useState([])
 const [formObject, setFormObject] = useState({})
 
-useEffect(() => {
-    loadItems()
-}, [])
+// useEffect(() => {
+//     loadItems()
+// }, [])
 
-function loadItems() {
-    API.getItems()
-    .then(res => 
-        setItems(res.data)).catch(err => console.log(err));
-};
+// function loadItems() {
+//     API.getItems()
+//     .then(res => 
+//         setItems(res.data)).catch(err => console.log(err));
+// };
 
 function handleInputChange(event) {
     const { name, value } = event.target;
@@ -32,8 +33,6 @@ function handleFormSubmit(event) {
         .catch(err => console.log(err));
     }
 }
-
-
     return (
         <div class="container">
             <div class="row">
@@ -49,10 +48,11 @@ function handleFormSubmit(event) {
                             <input type="password" class="form-control" id="password-input" placeholder="Password" onChange={handleInputChange}></input>
                         </div>
                         <button type="submit" class="btn btn-default" onClick={handleFormSubmit}>Login</button>
-
                     </form>
                     <br>
-                        <p>Or sign up <a href="/">here</a></p>
+                    <Link to={"/signup"}>
+                        <p> sign up </p>
+                    </Link>
                     </br>
                 </div>
             </div>
