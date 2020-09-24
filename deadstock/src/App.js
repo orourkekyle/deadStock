@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Browsing from "../src/pages/Browsing";
@@ -11,10 +10,8 @@ import Signup from "../src/pages/SignUp";
 
 function App() {
   return (
-
     <Router>
       <div>
-        <Nav />
         <Switch>
           <Route exact path={["/", "/Login"]} component = { Login } />
           <Route exact path={"/Messaging"} component = { Messaging} />
