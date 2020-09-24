@@ -1,9 +1,12 @@
 // put together our login components (similar to signup)
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+// import React, { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
+
+// let googleLoginPath = (process.env.NODE_ENV === "production") : "http://localhost:3001/google"
 
 
-function login() {
+function Login() {
 // const [user, setUser] = useState([])
 // const [formObject, setFormObject] = useState({})
 
@@ -34,21 +37,21 @@ function login() {
 //     }
 // }
     return (
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3">
+        <div className="container">
+            <div className="row">
+                <div className="col-md-6 col-md-offset-3">
                     <h2>Login</h2>
-                    <form class="login">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="email-input" placeholder="Email"></input>
+                    <form className="login">
+                        <div className="form-group">
+                            <label htmlFor="exampleInputEmail1">Email address</label>
+                            <input type="email" className="form-control" id="email-input" placeholder="Email"></input>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="password-input" placeholder="Password"></input>
+                        <div className="form-group">
+                            <label htmlFor="exampleInputPassword1">Password</label>
+                            <input type="password" className="form-control" id="password-input" placeholder="Password"></input>
                         </div>
-                        <button type="submit" class="btn btn-default">Login</button>
-                        <button class="google-btn" href="/google">Google+</button>
+                        <button type="submit" className="btn btn-default">Login</button>
+                        <a className="google-btn" href="/auth/google">Google+</a>
                     </form>
                 </div>
             </div>
@@ -56,4 +59,4 @@ function login() {
     )
 }
 
-export default login;
+export default Login;

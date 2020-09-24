@@ -15,7 +15,7 @@ app.use(cookieSession({
   keys: [keys.session.cookieKey]
 }))
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 app.use(reactRoutes);
-app.use(oauthRoutes);
+app.use("auth", oauthRoutes);
 
 // We need to use sessions to keep track of our user's login status
 app.use(passport.initialize());
