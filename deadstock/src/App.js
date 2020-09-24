@@ -11,10 +11,8 @@ import Nav from "./components/Navbar";
 
 function App() {
   return (
-
     <Router>
       <div>
-        <Nav />
         <Switch>
           <Route exact path={["/", "/Login"]} component = { Login } />
           <Route exact path={"/Messaging"} component = { Messaging} />
