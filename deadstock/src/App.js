@@ -8,13 +8,14 @@ import Profile from "../src/pages/Profile";
 // import Selling from "../src/pages/Selling";
 // import Signup from "../src/pages/SignUp";
 // import passportSetup from "../../config/passport"
+import proxy from './setupProxy';
 
 function App() {
   return (
     <Router>
       <div>
         <Switch>
-          <Route exact path={"/"} component = { Login } />
+          <Route proxy path={"/"} component = { Login } />
           <Route exact path={"/profile"} component = { Profile } />
         </Switch>
       </div>

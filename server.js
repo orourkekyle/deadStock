@@ -6,9 +6,12 @@ const passportSetup = require("./config/passport")
 const keys = require("./config/keys")
 const cookieSession = require("cookie-session")
 const passport = require("passport");
+const cors = require("cors");
 // const db = require("./models")
 
 const app = express();
+
+app.use(cors());
 
 app.use(cookieSession({
   maxAge: 24*60*60*1000,
@@ -31,6 +34,7 @@ app.use("auth", oauthRoutes);
 // We need to use sessions to keep track of our user's login status
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/deadstockDB", () => {

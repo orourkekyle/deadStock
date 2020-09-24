@@ -5,9 +5,9 @@ const passport = require("passport");
 // may not be accurate with REACT
 
 // auth login
-// router.get("/login", (req, res) => {
-//     res.render("login.ejs");
-// });
+router.get("/", (req, res) => {
+    res.render("login");
+});
 
 // auth logout
 router
