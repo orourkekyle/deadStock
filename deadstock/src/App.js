@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Browsing from "../src/pages/Browsing";
@@ -8,6 +7,7 @@ import Messaging from "../src/pages/Messaging";
 import Profile from "../src/pages/Profile";
 import Selling from "../src/pages/Selling";
 import Signup from "../src/pages/SignUp";
+import Nav from "./components/Navbar";
 
 function App() {
   return (
