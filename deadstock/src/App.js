@@ -8,6 +8,7 @@ import Profile from "../src/pages/Profile";
 import Selling from "../src/pages/Selling";
 import Signup from "../src/pages/SignUp";
 import Nav from "./components/Navbar";
+import {Button} from 'reactstrap';
 
 function App() {
   return (

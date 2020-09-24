@@ -4,7 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd deadstock && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd deadstock && npm install",
+    "build": "cd deadstock && npm run build",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -19,8 +26,18 @@
   "homepage": "https://github.com/orourkekyle/deadStock#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "bootstrap": "^4.5.2",
+    "concurrently": "^5.3.0",
+    "cookie-session": "^1.4.0",
     "express": "^4.17.1",
+    "if-env": "^1.0.4",
     "mongoose": "^5.10.6",
-    "passport": "^0.4.1"
+    "nodemon": "^2.0.4",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "reactstrap": "^8.6.0"
   }
 }

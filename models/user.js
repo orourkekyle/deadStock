@@ -22,7 +22,10 @@ const UserSchema = new Schema({
     }
 });
 
+
+
 const User = mongoose.model("User", UserSchema);
+
 User.prototype.validPassword = function(password) {
     console.log(password, this.password) // password probably regular pass and this.password is probably hashed
     return bcrypt.compareSync(password, this.password);
@@ -35,5 +38,6 @@ User.addHook("beforeCreate", user => {
       null
     );
   });
+
 
 export default User;

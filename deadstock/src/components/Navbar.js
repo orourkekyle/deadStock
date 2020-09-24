@@ -4,7 +4,7 @@ function Nav(){
     return (
         <nav>
             <h3>Logo</h3>
-            <ul>
+            <ul className="nav-links">
                 <li>Login</li>
                 <li>Profile</li>
                 <li>Homepage</li>
