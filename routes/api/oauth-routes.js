@@ -9,7 +9,7 @@ const passport = require("passport");
 console.log("this is oauth-routes");
 
 router
-.route("/*")
+.route("/auth/*")
 .get((req, res) => {
     console.log("this is req.url: ", req.url);
     console.log("hitting any route we send");
@@ -17,7 +17,7 @@ router
 
 // auth logout
 router
-.route("/logout")
+.route("/auth/logout")
 .get((req, res) => {
     // let redirectPath = (process.env.NODE_ENV === "production") ? 
     // handle with passport
@@ -26,9 +26,9 @@ router
 });
 
 // auth with google
-// this route matches: http://localhost:3000/auth/google
+// this route matches: http://localhost:3001/auth/google
 router
-.route('/google')
+.route('/auth/google')
 .get(passport.authenticate("google", {
     scope: ["profile"]
 }),(req, res) => {
@@ -37,7 +37,7 @@ router
 
 // cb route for google to redirect to
 router
-.route('/google/redirect')
+.route('/auth/google/redirect')
 .get(passport.authenticate("google"), (req, res) => {
     // let redirectPath + 
     res.redirect('/profile');
