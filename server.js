@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const reactRoutes = require("./routes/react-routes");
-const oauthRoutes = require("./routes/oauth-routes")
+const htmlRoutes = require("./routes/html-routes");
+const oauthRoutes = require("./routes/oauth-routes");
+const profileRoutes = require("./routes/profile-routes")
 const passportSetup = require("./config/passport")
 const keys = require("./config/keys")
 const cookieSession = require("cookie-session")
@@ -28,8 +29,9 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 // Add routes, both API and view
-app.use(reactRoutes);
-app.use("auth", oauthRoutes);
+app.use(htmlRoutes);
+app.use("/auth", oauthRoutes);
+app.use(profileRoutes);
 
 // We need to use sessions to keep track of our user's login status
 app.use(passport.initialize());
