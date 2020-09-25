@@ -1,14 +1,12 @@
+// put together profile components
+
 import React from "react";
 
-function Profile(){
 
+function Profile(){
     return (
         <div>
             <h3>Profile</h3>
-            <row>
-               
-               
-            </row>
         </div>
     )
 }

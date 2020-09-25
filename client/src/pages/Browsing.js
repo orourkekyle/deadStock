@@ -6,7 +6,7 @@ import YearAmountSelect from "../components/BrowsingComp/YearAmountSelect";
 import BrandSelect from "../components/BrowsingComp/BrandSelect";
 import GenderSelect from "../components/BrowsingComp/GenderSelect";
 import ShoeTable from "../components/BrowsingComp/ShoeTable";
-
+import Submit from "../components/BrowsingComp/SubmitButton/SubmitBtn"
 function Browsing() {
      return (
         <div>
@@ -21,7 +21,7 @@ function Browsing() {
                         <YearAmountSelect />
                         <BrandSelect />
                         <GenderSelect />
-
+                        <Submit />
                             {/* <!-- Here we have our final submit button --> */}
               <             button type="submit" className="btn btn-default" id="run-search">
                                 <i className="fa fa-search"></i> Search</button>

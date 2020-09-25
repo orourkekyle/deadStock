@@ -2,8 +2,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {Button} from "reactstrap";
+import React from "react";
+// import React, { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
 
-function login() {
+// let googleLoginPath = (process.env.NODE_ENV === "production") : "http://localhost:3001/google"
+
+
+function Login() {
 // const [user, setUser] = useState([])
 // const [formObject, setFormObject] = useState({})
 
@@ -47,8 +53,8 @@ function login() {
                             <label htmlFor="exampleInputPassword1">Password</label>
                             <input type="password" className="form-control" id="password-input" placeholder="Password"></input>
                         </div>
-                        <Button color="primary"type="submit" className="btn btn-default">Login</Button>
-                        <Button color="secondary" className="google-btn" href="/google">Google+</Button>
+                        <button type="submit" className="btn btn-default">Login</button>
+                        <a className="google-btn" href="auth/google">Google+</a>
                     </form>
                 </div>
             </div>
@@ -56,4 +62,4 @@ function login() {
     )
 }
 
-export default login;
+export default Login;

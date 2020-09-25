@@ -15,12 +15,8 @@ function App() {
     <Router>
       <div>
         <Switch>
-          <Route exact path={["/", "/Login"]} component = { Login } />
-          <Route exact path={"/Messaging"} component = { Messaging} />
-          <Route exact path={"/Selling"} component = {Selling} />
-          <Route exact path={"/Signup"} component = {Signup} />
-          <Route exact path={"/Profile"} component = {Profile} />
-          <Route exact path= {"/Browsing"} component = {Browsing} />
+          <Route exact path={"/"} component = { Login } />
+          <Route exact path={"/profile"} component = { Profile } />
         </Switch>
       </div>
     </Router>
