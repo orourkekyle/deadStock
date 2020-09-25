@@ -37,7 +37,10 @@ app.use(passport.session());
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/deadstockDB", () => {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/deadstockDB", {
+  useNewUrlParser: true,
+  useFindAndModify: false
+}, () => {
   console.log("CONNECTED TO MONGODB")
 });
 
