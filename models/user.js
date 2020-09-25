@@ -40,4 +40,4 @@ User.addHook("beforeCreate", user => {
   });
 
 
-export default User;
+module.exports = User;
