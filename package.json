@@ -7,10 +7,10 @@
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-    "client": "cd deadstock && npm run start",
+    "client": "cd client && npm run start",
     "seed": "node scripts/seedDB.js",
-    "install": "cd deadstock && npm install",
-    "build": "cd deadstock && npm run build",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
   "repository": {
@@ -28,6 +28,7 @@
     "bcrypt": "^5.0.0",
     "concurrently": "^5.3.0",
     "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
     "mongoose": "^5.10.6",
