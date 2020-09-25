@@ -13,6 +13,7 @@ router.get("/", (req, res) => {
 router
 .route("./logout")
 .get((req, res) => {
+    let redirectPath = (process.env.NODE_ENV === "production") ? 
     // handle with passport
     req.logout();
     res.redirect("/");
