@@ -6,9 +6,7 @@ router.use(function(req, res) {
     res.sendFile(path.join(__dirname, "../deadstock/build/index.html"));
   });
 
-// router.get("/login",(req, res) => {
-//     res.render("../deadstock")
-// })
+// maybe set up profile authCheck and .get("/profile")
 
 
 module.exports = router;

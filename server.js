@@ -1,14 +1,18 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const reactRoutes = require("./routes/react-routes");
-const oauthRoutes = require("./routes/oauth-routes")
+const htmlRoutes = require("./routes/html-routes");
+const oauthRoutes = require("./routes/oauth-routes");
+const profileRoutes = require("./routes/profile-routes")
 const passportSetup = require("./config/passport")
 const keys = require("./config/keys")
 const cookieSession = require("cookie-session")
 const passport = require("passport");
+const cors = require("cors");
 // const db = require("./models")
 
 const app = express();
+
+app.use(cors());
 
 app.use(cookieSession({
   maxAge: 24*60*60*1000,
@@ -25,15 +29,20 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 // Add routes, both API and view
-app.use(reactRoutes);
-app.use("auth", oauthRoutes);
+app.use(htmlRoutes);
+app.use("/auth", oauthRoutes);
+app.use(profileRoutes);
 
 // We need to use sessions to keep track of our user's login status
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/deadstockDB", () => {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/deadstockDB", {
+  useNewUrlParser: true,
+  useFindAndModify: false
+}, () => {
   console.log("CONNECTED TO MONGODB")
 });
 

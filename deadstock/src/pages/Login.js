@@ -51,7 +51,7 @@ function Login() {
                             <input type="password" className="form-control" id="password-input" placeholder="Password"></input>
                         </div>
                         <button type="submit" className="btn btn-default">Login</button>
-                        <a className="google-btn" href="/auth/google">Google+</a>
+                        <a className="google-btn" href="auth/google">Google+</a>
                     </form>
                 </div>
             </div>
