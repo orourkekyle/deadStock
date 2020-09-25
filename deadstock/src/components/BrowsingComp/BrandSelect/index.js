@@ -19,7 +19,7 @@ function BrandSelect(){
                     <option value="ADIDAS">Adidas</option>
                     <option value="ASIC">Asic</option>
                 </select>
-    </div>
+        </div>
 
     )
 }

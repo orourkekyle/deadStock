@@ -2,10 +2,10 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 // import browsing from "../components/browsing/browsing";
-import {YearAmountSelect} from "../components/BrowsingComp/YearAmountSelect";
-import {BrandSelect} from "../components/BrowsingComp/BrandSelect";
-import {GenderSelect} from "../components/BrowsingComp/GenderSelect";
-import {ShoeTable} from "../components/BrowsingComp/ShoeTable";
+import YearAmountSelect from "../components/BrowsingComp/YearAmountSelect";
+import BrandSelect from "../components/BrowsingComp/BrandSelect";
+import GenderSelect from "../components/BrowsingComp/GenderSelect";
+import ShoeTable from "../components/BrowsingComp/ShoeTable";
 
 function Browsing() {
      return (
@@ -23,7 +23,7 @@ function Browsing() {
                         <GenderSelect />
 
                             {/* <!-- Here we have our final submit button --> */}
-              <button type="submit" className="btn btn-default" id="run-search">
+              <             button type="submit" className="btn btn-default" id="run-search">
                                 <i className="fa fa-search"></i> Search</button>
                             <button className="btn btn-default" id="clear-all">
                                 <i className="fa fa-trash"></i> Clear Results</button>
