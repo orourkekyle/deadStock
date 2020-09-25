@@ -43,15 +43,15 @@ function Login() {
                     <h2>Login</h2>
                     <form className="login">
                         <div className="form-group">
-                            <label htmlFor="exampleInputEmail1">Email address</label>
-                            <input type="email" className="form-control" id="email-input" placeholder="Email"></input>
+                            <label htmlFor="exampleInputUsername1">Username</label>
+                            <input type="username" className="form-control" id="username-input" placeholder="Email"></input>
                         </div>
                         <div className="form-group">
                             <label htmlFor="exampleInputPassword1">Password</label>
                             <input type="password" className="form-control" id="password-input" placeholder="Password"></input>
                         </div>
                         <button type="submit" className="btn btn-default">Login</button>
-                        <a className="google-btn" href="auth/google">Google+</a>
+                        <a className="google-btn" href="http://localhost:3001/auth/google">Google+</a>
                     </form>
                 </div>
             </div>
