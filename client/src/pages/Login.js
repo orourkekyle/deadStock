@@ -1,41 +1,13 @@
 // put together our login components (similar to signup)
 import React from "react";
-// import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
-
-// let googleLoginPath = (process.env.NODE_ENV === "production") : "http://localhost:3001/google"
+import API from "../utils/API"
 
 
 function Login() {
-// const [user, setUser] = useState([])
-// const [formObject, setFormObject] = useState({})
 
-// useEffect(() => {
-//     loadItems()
-// }, [])
-
-// function loadItems() {
-//     API.getItems()
-//     .then(res => 
-//         setItems(res.data)).catch(err => console.log(err));
-// };
-
-// function handleInputChange(event) {
-//     const { name, value } = event.target;
-//     setFormObject({...formObject, [name]: value})
-// };
-
-// function handleFormSubmit(event) {
-//     event.preventDefault();
-//     if (formObject.username && formObject.password) {
-//         API.Users({
-//         name: formObject.username,
-//         password: formObject.password,
-//         })
-//         .then(res => loadProfile())
-//         .catch(err => console.log(err));
-//     }
-// }
+    function doGoogleAuth(){
+        API.getGoogleAuth();
+    }
     return (
         <div className="container">
             <div className="row">
@@ -51,7 +23,7 @@ function Login() {
                             <input type="password" className="form-control" id="password-input" placeholder="Password"></input>
                         </div>
                         <button type="submit" className="btn btn-default">Login</button>
-                        <a className="google-btn" href="http://localhost:3001/auth/google">Google+</a>
+                        <button className="google-btn" onClick={doGoogleAuth}>Google+</button>
                     </form>
                 </div>
             </div>
