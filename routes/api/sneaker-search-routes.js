@@ -6,4 +6,8 @@ router
   .route("/")
   .get(sneakerApiController.findAll);
 
+  // router.route('/:id')
+  // .get(sneakerApiController.findById)
+  // .put(sneakerApiController.update)
+  // .delete(sneakerApiController.remove);
 module.exports = router;

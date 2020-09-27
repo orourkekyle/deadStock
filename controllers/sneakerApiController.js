@@ -6,9 +6,7 @@ module.exports = {
         const {query: params } = req;
 
 
-        axios.get("https://api.thesneakerdatabase.com/v1/sneakers?limit=100", {
-            params
-        })
+        axios.get("https://api.thesneakerdatabase.com/v1/sneakers?limit=100")
         .then(results => 
             results.filter(
                 result => 
