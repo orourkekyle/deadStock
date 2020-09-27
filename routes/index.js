@@ -6,7 +6,7 @@ router.use(apiRoutes);
 
 
 router.use(function(req, res) {
-    res.sendFile(path.join(__dirname, "../deadstock/public/index.html"));
+    res.sendFile(path.join(__dirname, "../deadstock/build/index.html"));
   });
 
 // maybe set up profile authCheck and .get("/profile")

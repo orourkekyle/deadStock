@@ -8,6 +8,6 @@ export default {
     },
     // sneaker api get route
     getSneakers: function(q) {
-        return axios.get("/api/sneakers", { params: { name: q}});
+        return axios.get("/api/sneakers");
     }
 }
