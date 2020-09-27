@@ -1,12 +1,12 @@
 // put together our login components (similar to signup)
 import React from "react";
-import {getGoogleAuth} from "../utils/API"
+import API from "../utils/API"
 
 
 function Login() {
 
     function doGoogleAuth(){
-        getGoogleAuth();
+        API.getGoogleAuth();
     }
     return (
         <div className="container">
