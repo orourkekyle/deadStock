@@ -1,4 +1,16 @@
-// all our external api calls
+// all our external api calls GOing to be Controller..
+import axios from "axios";
+
+
+export const getGoogleAuth = () => {
+    return axios.get("/auth/google")
+    }
+
+export const saveItem = () => {
+    return 
+    }
+
+    // all our external api calls
 import axios from "axios";
 
 export const getUsers = () => {
@@ -22,10 +34,10 @@ export const removeItem = () => {
 };
 
 export const searchAPI = query => {
-    return axios.get('http://api', {
+    return axios.get(`https://cors-anywhere.herokuapp.com/https://api.thesneakerdatabase.com/v1/sneakers?limit=100`, {
         params: {
             query: query,
-            api_key: " "
+            
         }
     });
 };

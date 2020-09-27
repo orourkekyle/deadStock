@@ -46,7 +46,7 @@ class Browsing extends Component{
       
         // Main function to search for a movie
         mainSearch = () => {
-          searchTmdb(this.state.searchTerm)
+          searchItem(this.state.searchItem)
             .then(({ data: itemData }) => {
               console.log(itemData);
               this.setState({

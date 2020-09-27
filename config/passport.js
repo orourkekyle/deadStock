@@ -1,8 +1,8 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20");
 const keys = require("./keys");
-const GoogleUser = require("../models/google-user");
-const SignUpUser = require("../models/signup-user");
+const {GoogleUser} = require("../models");
+// const SignUpUser = require("../models/create-user");
 
 passport.serializeUser((user, done) => {
     done(null, user.id);
@@ -16,13 +16,13 @@ passport.deserializeUser((id, done) => {
 
 passport.use(new GoogleStrategy({
     // options for the google strat
-    callbackURL: "http://localhost:3000/auth/google/redirect",
+    callbackURL: "/auth/google/redirect",
     clientID: keys.google.clientID,
     clientSecret: keys.google.clientSecret
 }, (accessToken, refreshToken, profile, done) => {
     // passport cb function
     //first check if user already exists in our db
-    console.log("this is passport.use");
+    console.log("this is google profile: ", profile);
     GoogleUser.findOne({googleId: profile.id}).then((currentUser) => {
         if(currentUser){
             // already have the user
@@ -30,7 +30,7 @@ passport.use(new GoogleStrategy({
             done(null, currentUser);
         } else{
             //if not, create user in our db
-            new User({
+            new GoogleUser({
                 username: profile.displayName,
                 googleId: profile.id
             }).save().then((newUser) => {
@@ -41,11 +41,3 @@ passport.use(new GoogleStrategy({
     })
 })
 )
-
-// sign up user stuff
-passport.deserializeUser((id, done) => {
-    SignUpUser.findById(id).then((user) => {
-        done(null, user);
-    });
-});
-

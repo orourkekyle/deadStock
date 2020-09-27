@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
 
-const signUpUserSchema = new Schema({
+const createUserSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
@@ -21,14 +21,14 @@ const signUpUserSchema = new Schema({
     }
 });
 
-signUpUserSchema.addHook("beforeCreate", user => {
-    user.password = bcrypt.hashSync(
-        user.password,
-        bcrypt.genSaltSync(10),
-        null
-    );
-});
+// createUserSchema.addHook("beforeCreate", user => {
+//     user.password = bcrypt.hashSync(
+//         user.password,
+//         bcrypt.genSaltSync(10),
+//         null
+//     );
+// });
 
-const SignUpUser = mongoose.model("signupuser", signUpUserSchema);
+const CreateUser = mongoose.model("createuser", createUserSchema);
 
-module.exports = SignUpUser;
+module.exports = CreateUser;
