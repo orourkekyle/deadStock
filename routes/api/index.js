@@ -8,11 +8,11 @@ const sneakerSearchRoutes = require("./sneaker-search-routes");
 router.use(oauthRoutes);
 
 // sneaker search routes
-router.use(sneakerSearchRoutes);
+router.use("/sneakers", sneakerSearchRoutes);
 
 // for *, render html page
 router.use(function(req, res) {
-    res.sendFile(path.join(__dirname, "../../client/build/index.html"))
+    res.sendFile(path.join(__dirname, "../../client/public/index.html"))
 })
 
 module.exports = router;

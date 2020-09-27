@@ -20,7 +20,7 @@ class Browsing extends Component {
     getSneakers = () => {
         API.getSneakers(this.state.q)
             .then(res => {
-                console.log("res inside getSneakers call: ", res);
+                console.log("res inside getSneakers call: ", res.data);
                 return this.setState({
                     sneakers: res.data
                 })
