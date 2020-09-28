@@ -4,7 +4,7 @@ import axios from "axios";
 export default {
     // oauth routes
     getGoogleAuth: function() {
-        return axios.get("/oauth/google")
+        return axios.get("/api/oauth/google")
     },
     // will need redirect route
 
