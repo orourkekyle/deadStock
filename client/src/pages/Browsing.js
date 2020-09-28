@@ -47,7 +47,7 @@ class Browsing extends Component {
         render() {
             return (
                 <div>
-                    <input onChange={this.handleinputChange} placeholder="Search" /> 
+                    <input onChange={this.handleinputChange} placeholder="Search"  /> 
                     <button onClick={this.handleFormSubmit} type="submit">Submit</button>
                 </div>
             );

@@ -6,7 +6,9 @@ module.exports = {
         const {query: params } = req;
         console.log("Hit the Get in the Route api/sneakers:", req.body, req.params)
 
-        axios.get("https://api.thesneakerdatabase.com/v1/sneakers?limit=100")
+        axios.get("https://api.thesneakerdatabase.com/v1/sneakers?limit=100", {
+            params
+        })
         .then(results => {
             console.log("The results console log", results.data.results)
         
