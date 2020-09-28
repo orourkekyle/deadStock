@@ -13,7 +13,7 @@ module.exports = {
         console.log("Hit the findAll inside sneakerController", req.body, req.params);
 
         axios
-            .get("https://api.thesneakerdatabase.com/v1/sneakers?limit=100")
+            .get("https://api.thesneakerdatabase.com/v1/sneakers?limit=10")
             .then(results => {
                 console.log("this is results in axios get: ", results.data.results);
                 return results.data.results.filter(
@@ -29,7 +29,8 @@ module.exports = {
                 )
             })
             .then((result) => {
-                console.log("these are the results we want: ", result);
+                console.log("these are the results we want: ", result)
+                res.json(result);
             })
     }
 }

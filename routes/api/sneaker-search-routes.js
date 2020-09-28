@@ -5,8 +5,9 @@ console.log("this is sneaker-search routes");
 
 router
     .route("/")
-    .get(() => {
-        return sneakerApiController.findAll
-    });
+    .get(sneakerApiController.findall);
+    // .get(() => {
+    //     return sneakerApiController.findAll
+    // });
 
 module.exports = router;
