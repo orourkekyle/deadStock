@@ -30,7 +30,7 @@ class SignUp extends Component {
     }
 
     doGoogleAuth = event => {
-        event.preventDefault();
+        // event.preventDefault();
         API.getGoogleAuth();
     }
 

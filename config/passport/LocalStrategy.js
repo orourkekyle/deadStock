@@ -1,7 +1,7 @@
 // const passport = require("passport");
 // const LocalStrategy = require("passport-local");
-// const keys = require("./keys");
-// const {CreateUser} = require("../models");
+// const keys = require("../keys");
+// const { CreateUser } = require("../../models");
 
 // passport.serializeUser((createduser, done) => {
 //     done(null, createduser.id);
@@ -13,7 +13,7 @@
 //     })
 // })
 
-// passport.use(new LocalStrategy({
+// passport.use(new LocalStrategy(
 //     function(username, password, done) {
 //         console.log("hitting LocalStrategy");
 //         CreateUser.findOne({ username: username }).then((currentUser) => {
@@ -31,4 +31,4 @@
 //             }
 //         })
 //     }
-// }))
+// ))
