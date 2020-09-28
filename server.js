@@ -5,11 +5,14 @@ const routes = require("./routes");
 // const profileRoutes = require("./routes/profile-routes");
 // const createdUserRoutes = require("./routes/create-user-routes");
 const passportStrategies = require("./config/passport");
+// const GoogleStrategy = require("./config/passport/GoogleStrategy");
+// const LocalStrategy = require("./config/passport/LocalStrategy");
 const keys = require("./config/keys");
 const cookieSession = require("cookie-session");
 // const expressSession = require("express-session");
 const passport = require("passport");
 const cors = require("cors");
+const { GoogleUser } = require("./models");
 // const db = require("./models")
 
 const app = express();
@@ -36,6 +39,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // We need to use sessions to keep track of our user's login status
+// passport.use("strategies", passportStrategies);
+// passport.use("google", GoogleStrategy);
+// passport.use("local", LocalStrategy);
 app.use(passport.initialize());
 app.use(passport.session());
 
