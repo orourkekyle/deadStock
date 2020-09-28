@@ -23,26 +23,23 @@ app.use(cookieSession({
 
 const PORT = process.env.PORT || 3001;
 
-// Define middleware here
+// config body parsing for AJAX requests
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-// Add routes, both API and view
-app.use(routes);
-// app.use(htmlRoutes);
-// app.use("/auth", oauthRoutes);
-// app.use("/api", createUserRoutes);
-// app.use(profileRoutes);
 
 // We need to use sessions to keep track of our user's login status
 app.use(passport.initialize());
 app.use(passport.session());
 
+// use routes
+app.use(routes);
 
-// Connect to the Mongo DB
+
+// Connect to Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/deadstockDB", {
   useNewUrlParser: true,
   useFindAndModify: false

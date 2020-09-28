@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/orourkekyle/deadStock#readme",
   "dependencies": {
+    "axios": "^0.20.0",
     "bcrypt": "^5.0.0",
     "concurrently": "^5.3.0",
     "cookie-session": "^1.4.0",
@@ -34,6 +35,10 @@
     "mongoose": "^5.10.6",
     "nodemon": "^2.0.4",
     "passport": "^0.4.1",
-    "passport-google-oauth20": "^2.0.0"
+    "passport-google-oauth20": "^2.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "reactstrap": "^8.6.0"
   }
 }
