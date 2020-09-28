@@ -16,10 +16,10 @@ class Browsing extends Component {
         message: "Search for a Shoe!"
     };
 
-    handleinputChange = event => {
-        const { name, value } = event.target;
+    handleInputChange = event => {
+        // const { name, value } = event.target;
         this.setState({
-            [name]: value
+            q: event.target.value
         });
     };
 
@@ -42,16 +42,18 @@ class Browsing extends Component {
         handleFormSubmit = event => {
             event.preventDefault();
             this.getSneakers();
+            console.log(this.state)
+
         };
 
         render() {
             return (
                 <div>
-                    <input onChange={this.handleinputChange} placeholder="Search"  /> 
+                    <input onChange={this.handleInputChange} placeholder="Search"/> 
                     <button onClick={this.handleFormSubmit} type="submit">Submit</button>
                 </div>
             );
         }
 }
 
-export default Browsing;
+export default Browsing;    

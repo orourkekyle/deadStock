@@ -8,13 +8,13 @@ export default {
     },
 
     // sneaker api get route
-    getSneakers: function(q) {
-        return axios.get("/api/sneakers", { params: {q: "name:" + q} });
-    },
-        // return axios.get("/api/sneakers", { params: { q: "title:" + q}})
-            // .then((params) => {
-            //     console.log("Hitting frontend API get sneakers", params)
-            // })
+    getSneakers: function() {
+        return axios.get("/api/sneakers");
+        // return axios.get("/api/sneakers", { params: { q: "name:" + q}})
+        //     .then((params) => {
+        //         console.log("Hitting frontend API get sneakers", params)
+        //     })
     }
 
    
+}
