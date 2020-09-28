@@ -1,10 +1,13 @@
 const path = require("path");
 const router = require("express").Router();
-const oauthRoutes = require("../oauth-routes");
+const createUserRoutes = require("./create-user-routes");
 const sneakerSearchRoutes = require("./sneaker-search-routes");
 
 // sneaker search routes
 router.use("/sneakers", sneakerSearchRoutes);
+
+// local auth routes
+// router.use("/local", createUserRoutes);
 
 // for *, render html page
 router.use(function(req, res) {

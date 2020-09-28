@@ -2,10 +2,20 @@
 import axios from "axios";
 
 export default {
-    // oauth route
+    // oauth routes
     getGoogleAuth: function() {
         return axios.get("/oauth/google")
     },
+    // will need redirect route
+
+    //=========================
+
+    // local auth routes
+    getLocalAuth: function() {
+        return axios.get("/api/local/createuser")
+    },
+
+
     // sneaker api get route
     getSneakers: function(q) {
         return axios.get("/api/sneakers") // { params: {q: "name:" + q } }

@@ -2,10 +2,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const oauthRoutes = require("./routes/oauth-routes");
-const profileRoutes = require("./routes/profile-routes");
-const passportSetup = require("./config/passport")
-const keys = require("./config/keys")
-const cookieSession = require("cookie-session")
+// const profileRoutes = require("./routes/profile-routes");
+// const createdUserRoutes = require("./routes/create-user-routes");
+const googlePassport = require("./config/google-passport");
+const loaclPassport = require("./config/local-passport");
+const keys = require("./config/keys");
+const cookieSession = require("cookie-session");
+// const expressSession = require("express-session");
 const passport = require("passport");
 const cors = require("cors");
 // const db = require("./models")
@@ -14,10 +17,14 @@ const app = express();
 
 app.use(cors());
 
+// app.use(expressSession({
+//   secret: [keys.expresssession.expressSecret]
+// }));
+
 app.use(cookieSession({
   maxAge: 24*60*60*1000,
-  keys: [keys.session.cookieKey]
-}))
+  keys: [keys.cookiesession.cookieKey]
+}));
 
 const PORT = process.env.PORT || 3001;
 
@@ -37,6 +44,7 @@ app.use(passport.session());
 app.use(routes);
 app.use("/oauth", oauthRoutes);
 // app.use("/profile", profileRoutes);
+// app.use("/local", createdUserRoutes)
 
 
 // Connect to Mongo DB
