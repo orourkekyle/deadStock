@@ -18,3 +18,5 @@ router
 function(req, res) {
     res.redirect("/profile")
 })
+
+module.exports = router;
