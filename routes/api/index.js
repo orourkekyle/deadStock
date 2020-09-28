@@ -5,7 +5,7 @@ const sneakerSearchRoutes = require("./sneaker-search-routes");
 
 
 // oauth routes
-router.use(oauthRoutes);
+router.use("/oauth", oauthRoutes);
 
 // sneaker search routes
 router.use("/sneakers", sneakerSearchRoutes);
