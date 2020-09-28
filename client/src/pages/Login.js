@@ -9,9 +9,9 @@ class Login extends Component {
         API.getGoogleAuth();
     }
 
-    handleGoogleButton = () => {
-        this.doGoogleAuth();
-    }
+    // handleGoogleButton = () => {
+    //     this.doGoogleAuth();
+    // }
 
     render() {
         return (
@@ -29,7 +29,7 @@ class Login extends Component {
                                 <input type="password" className="form-control" id="password-input" placeholder="Password"></input>
                             </div>
                             <button type="submit" className="btn btn-default">Login</button>
-                            <button className="google-btn" onClick={this.handleGoogleButton}>Google+</button>
+                            <button className="google-btn" onClick={this.doGoogleAuth}>Google+</button>
                         </form>
                     </div>
                 </div>

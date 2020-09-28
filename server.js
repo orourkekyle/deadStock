@@ -1,10 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
-// const htmlRoutes = require("./routes/html-routes");
-// const oauthRoutes = require("./routes/oauth-routes");
-// const createUserRoutes = require("./routes/create-user-routes");
-// const profileRoutes = require("./routes/profile-routes")
 const routes = require("./routes");
+const oauthRoutes = require("./routes/oauth-routes");
+const profileRoutes = require("./routes/profile-routes");
 const passportSetup = require("./config/passport")
 const keys = require("./config/keys")
 const cookieSession = require("cookie-session")
@@ -37,6 +35,8 @@ app.use(passport.session());
 
 // use routes
 app.use(routes);
+app.use("/oauth", oauthRoutes);
+// app.use("/profile", profileRoutes);
 
 
 // Connect to Mongo DB
