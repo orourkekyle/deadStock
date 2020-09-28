@@ -10,11 +10,10 @@ export default {
     // sneaker api get route
     getSneakers: function() {
         return axios.get("/api/sneakers");
-        // return axios.get("/api/sneakers", { params: { q: "name:" + q}})
-        //     .then((params) => {
-        //         console.log("Hitting frontend API get sneakers", params)
-        //     })
+    //     return axios.get("/api/sneakers", { params: { state: "name:" }})
+    //         .then((params) => {
+    //             console.log("Hitting frontend API get sneakers", params)
+    //         })
+    // }
     }
-
-   
 }

@@ -41,7 +41,7 @@ class Browsing extends Component {
 
         handleFormSubmit = event => {
             event.preventDefault();
-            this.getSneakers();
+            this.getSneakers(this.state.q);
             console.log(this.state)
 
         };
