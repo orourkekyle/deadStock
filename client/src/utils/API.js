@@ -6,11 +6,12 @@ export default {
     getGoogleAuth: function() {
         return axios.get("/auth/google")
     },
-    // sneaker api get route
-    getSneakers: function(q) {
-        return axios.get("/api/sneakers") // { params: {q: "name:" + q } }
-        // .then(() => {
-        //     console.log("hitting getSneakers axios function in FE API")
-        // });
+    // sneaker route
+    getSneakers: function(shoeName) {
+        return axios.get("/api/sneakers", { params: { shoeName: "name=" + shoeName}});
+    },
+    // getUser api get route
+    getUser: function() {
+        return axios.get("/api/user")
     }
 }
