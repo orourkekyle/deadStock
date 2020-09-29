@@ -12,7 +12,7 @@ import API from "../utils/API";
 class Browsing extends Component {
     state = {
         sneakers: [],
-        q: "",
+        shoeName: "",
         message: "Search for a Shoe!"
     };
 
@@ -24,7 +24,7 @@ class Browsing extends Component {
     };
 
     getSneakers = () => {
-        API.getSneakers(this.state.q)
+        API.getSneakers(this.state.shoeName)
             .then(res => {
                 console.log('res inside getSneakers call: ', res);
                return this.setState({
@@ -49,7 +49,7 @@ class Browsing extends Component {
         render() {
             return (
                 <div>
-                    <input onChange={this.handleInputChange} placeholder="Search"/> 
+                    <input onChange={this.handleInputChange} name="shoeName" placeholder="Search"/> 
                     <button onClick={this.handleFormSubmit} type="submit">Submit</button>
                 </div>
             );
