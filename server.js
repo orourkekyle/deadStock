@@ -46,14 +46,9 @@ app.use(passport.session());
 // use routes
 app.use(routes);
 app.use("/oauth", oauthRoutes);
-<<<<<<< HEAD
-// app.use("/profile", profileRoutes);
 app.use("/local", createdUserRoutes);
-=======
-app.use("/local", createUserRoutes);
 
 
->>>>>>> 8cb2c03f768fb7837917e04c7ab0cf51218ad2a4
 
 
 // Connect to Mongo DB
