@@ -14,6 +14,13 @@ router
 // auth with local
 router
 .route("/createuser")
+.post(passport.authenticate("local", { failureRedirect: "/login" }),
+function(req, res) {
+    res.redirect("/profile")
+})
+
+router
+.route("/getuser")
 .get(passport.authenticate("local", { failureRedirect: "/login" }),
 function(req, res) {
     res.redirect("/profile")

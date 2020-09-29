@@ -6,16 +6,14 @@ module.exports = {
     findall: function(req, res) {
         const { query: params } = req;
 
-        const url = `https://api.thesneakerdatabase.com/v1/sneakers?limit=100&name=${params.q}`;
+        const url = `https://api.thesneakerdatabase.com/v1/sneakers?limit=100&name=${params.shoeName}`;
         console.log("params", params);
         console.log("URL", url);
 
         console.log("Hit the findAll inside sneakerController", req.body, req.params);
 
         axios
-            .get("https://api.thesneakerdatabase.com/v1/sneakers?limit=10", {
-                params
-            })
+            .get(`https://api.thesneakerdatabase.com/v1/sneakers?limit=100&${params.shoeName}`)
             .then(results => {
                 console.log("this is results in axios get: ", results.data.results);
                 return results.data.results.filter(

@@ -1,17 +1,17 @@
 const path = require("path");
 const router = require("express").Router();
-const createUserRoutes = require("./create-user-routes");
+// const createUserRoutes = require("./create-user-routes");
 const sneakerSearchRoutes = require("./sneaker-search-routes");
-const oauthRoutes = require("./oauth-routes");
+// const oauthRoutes = require("./oauth-routes");
 
 // sneaker search routes
 router.use("/sneakers", sneakerSearchRoutes);
 
-// google oauth routes
-router.use("/oauth", oauthRoutes)
+// // google oauth routes
+// router.use("/oauth", oauthRoutes)
 
-// local auth routes
-router.use("/local", createUserRoutes);
+// // local auth routes
+// router.use("/local", createUserRoutes);
 
 // for *, render html page
 router.use(function(req, res) {

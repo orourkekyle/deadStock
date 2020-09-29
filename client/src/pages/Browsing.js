@@ -6,7 +6,7 @@ import API from "../utils/API";
 class Browsing extends Component {
     state = {
         sneakers: [],
-        q: "",
+        shoeName: "",
         message: "Search For A Sneaker To Begin"
     };
 
@@ -18,7 +18,7 @@ class Browsing extends Component {
     };
 
     getSneakers = () => {
-        API.getSneakers(this.state.q)
+        API.getSneakers(this.state.shoeName)
             .then(res => {
                 console.log("res inside getSneakers call: ", res.data);
                 return this.setState({
@@ -47,7 +47,7 @@ class Browsing extends Component {
             // search form
             // place to hold results (i.e. a list or grid or both)
             <div>
-                <input onChange={this.handleInputChange} placeholder="Shoe Name" type="text"></input>
+                <input onChange={this.handleInputChange} name="shoeName" placeholder="Shoe Name" type="text"></input>
                 <button onClick={this.handleFormSubmit} type="submit">Search</button>
             </div>
         );

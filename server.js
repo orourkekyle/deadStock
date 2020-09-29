@@ -1,12 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-// const oauthRoutes = require("./routes/api/oauth-routes");
+const oauthRoutes = require("./routes/oauth-routes");
 // const profileRoutes = require("./routes/profile-routes");
-// const createdUserRoutes = require("./routes/create-user-routes");
+const createdUserRoutes = require("./routes/create-user-routes");
 const passportStrategies = require("./config/passport");
-// const GoogleStrategy = require("./config/passport/GoogleStrategy");
-// const LocalStrategy = require("./config/passport/LocalStrategy");
 const keys = require("./config/keys");
 const cookieSession = require("cookie-session");
 // const expressSession = require("express-session");
@@ -47,9 +45,9 @@ app.use(passport.session());
 
 // use routes
 app.use(routes);
-// app.use("/oauth", oauthRoutes);
+app.use("/oauth", oauthRoutes);
 // app.use("/profile", profileRoutes);
-// app.use("/local", createdUserRoutes)
+app.use("/local", createdUserRoutes);
 
 
 // Connect to Mongo DB
