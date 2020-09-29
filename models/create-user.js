@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
 
 const createUserSchema = new Schema({
@@ -18,6 +18,11 @@ const createUserSchema = new Schema({
         required: true,
         trim: true,
         required: [true, "must enter password."]
+    },
+    profilePic: {
+        type: String,
+        required: false,
+        trim: true
     }
 });
 
