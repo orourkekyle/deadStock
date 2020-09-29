@@ -17,7 +17,7 @@ class Browsing extends Component {
     };
 
     handleInputChange = event => {
-        // const { name, value } = event.target;
+       
         this.setState({
             q: event.target.value
         });
@@ -41,7 +41,7 @@ class Browsing extends Component {
 
         handleFormSubmit = event => {
             event.preventDefault();
-            this.getSneakers(this.state.q);
+            this.getSneakers();
             console.log(this.state)
 
         };

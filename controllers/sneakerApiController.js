@@ -4,11 +4,10 @@ const db = require('../models');
 module.exports = {
     findAll: function(req, res) {
         const {query: params } = req;
+        const url = "https://api.thesneakerdatabase.com/v1/sneakers?limit=100&"
         console.log("Hit the Get in the Route api/sneakers:", req.body, req.params)
-
-        axios.get("https://api.thesneakerdatabase.com/v1/sneakers?limit=100", {
-            params
-        })
+        console.log("the following are the params: ", params)
+        axios.get(`https://api.thesneakerdatabase.com/v1/sneakers?limit=100&${params.q}`)
         .then(results => {
             console.log("The results console log", results.data.results)
         
@@ -30,5 +29,6 @@ module.exports = {
                 console.log("these are the results we want:", result);
                 res.json(result)
             })
+            .catch (err => console.log(err))
     }
 }
