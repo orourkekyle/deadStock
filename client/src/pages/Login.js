@@ -5,11 +5,7 @@ import "./Login.css";
 import { Container, Row, Col } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 import { Link } from "react-router-dom";
-
-
-
 function Login() {
-
     function doGoogleAuth(){
         API.getGoogleAuth();
     }
@@ -52,28 +48,7 @@ function Login() {
                 </div>
                 </Col>
             </Row>
-        </Container>
-
-
-       
-          
-                // <div className="col-md-6 col-md-offset-3">
-                    
-                    // <form className="login">
-                    //     <div className="form-group">
-                    //         <label htmlFor="exampleInputUsername1">Username</label>
-                    //         <input type="username" className="form-control" id="username-input" placeholder="Email"></input>
-                    //     </div>
-                    //     <div className="form-group">
-                    //         <label htmlFor="exampleInputPassword1">Password</label>
-                    //         <input type="password" className="form-control" id="password-input" placeholder="Password"></input>
-                    //     </div>
-                    //     <button type="submit" className="btn btn-default">Login</button>
-                    //     <button className="google-btn" onClick={doGoogleAuth}>Google+</button>
-                    // </form>
-                
-        
+        </Container>        
     )
 }
-
 export default Login;

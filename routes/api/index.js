@@ -1,14 +1,9 @@
 const path = require("path");
 const router = require("express").Router();
-const oauthRoutes = require("./oauth-routes");
-// const sneakerSearchRoutes = require("./sneaker-search-routes");
+const sneakerApiRoutes = require("./sneaker-search-routes")
 
-
-// oauth routes
-router.use(oauthRoutes);
-
-// sneaker search routes
-// router.use("/sneakers", sneakerSearchRoutes);
+// sneaker routes
+router.use("/sneakers", sneakerApiRoutes)
 
 // for *, render html page
 router.use(function(req, res) {

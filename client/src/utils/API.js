@@ -2,16 +2,25 @@
 import axios from "axios";
 
 export default {
-    // oauth route
+    // oauth routes
     getGoogleAuth: function() {
-        return axios.get("/auth/google")
+        return axios.get("/oauth/google")
     },
-    // sneaker route
+    // will need redirect route
+
+    //=========================
+
+    // local auth routes
+    getLocalAuth: function() {
+        return axios.get("/local/createuser")
+    },
+
+
+    // sneaker api get route
     getSneakers: function(shoeName) {
-        return axios.get("/api/sneakers", { params: { shoeName: "name=" + shoeName}});
-    },
-    // getUser api get route
-    getUser: function() {
-        return axios.get("/api/user")
+        return axios.get("/api/sneakers", { params: {shoeName: "name=" + shoeName } }) // { params: {q: "name:" + q } }
+        // .then(() => {
+        //     console.log("hitting getSneakers axios function in FE API")
+        // });
     }
 }

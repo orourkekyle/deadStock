@@ -4,13 +4,13 @@ const keys = require("../keys");
 const {GoogleUser} = require("../../models");
 // const SignUpUser = require("../models/create-user");
 
-passport.serializeUser((user, done) => {
-    done(null, user.id);
+passport.serializeUser((googleuser, done) => {
+    done(null, googleuser.id);
 });
 
 passport.deserializeUser((id, done) => {
-    GoogleUser.findById(id).then((user) => {
-        done(null, user);
+    GoogleUser.findById(id).then((googleuser) => {
+        done(null, googleuser);
     });
 });
 
@@ -26,7 +26,7 @@ passport.use(new GoogleStrategy({
     GoogleUser.findOne({googleId: profile.id}).then((currentUser) => {
         if(currentUser){
             // already have the user
-            console.log("this is currentUser inside passport cb if check: ", currentUser);
+            console.log("this is currentUser inside GoogleStrat cb: ", currentUser);
             done(null, currentUser);
         } else{
             //if not, create user in our db
@@ -41,3 +41,4 @@ passport.use(new GoogleStrategy({
     })
 })
 )
+

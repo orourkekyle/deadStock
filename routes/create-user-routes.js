@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const passport = require("passport");
 
+console.log("this is create-user-routes");
+
 // logout 
 router
 .route("/logout")
@@ -8,15 +10,18 @@ router
     req.logout();
     res.redirect("/");
 });
+
 // auth with local
-router.route("/createuser")
-        .post(passport.authenticate("local", { failureRedirect: "/login" }),
+router
+.route("/createuser")
+.post(passport.authenticate("local", { failureRedirect: "/login" }),
 function(req, res) {
     res.redirect("/profile")
 })
 
-router.route("/getuser")
-        .get(passport.authenticate("local", { failureRedirect: "/login" }),
+router
+.route("/getuser")
+.get(passport.authenticate("local", { failureRedirect: "/login" }),
 function(req, res) {
     res.redirect("/profile")
 })
