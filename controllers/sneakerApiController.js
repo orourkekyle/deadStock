@@ -1,3 +1,4 @@
+
 const axios = require('axios');
 const db = require('../models');
 
@@ -62,5 +63,18 @@ module.exports = {
                 res.json(result)
             })
             .catch (err => console.log(err))
+
+            .then(apiSneakers => 
+                db.Wishlist.find().then(dbWishlist => apiSneakers.filter(apiSneakers => dbWishlist.every(dbWishlist =>
+                    dbWishlist.sneakerId.toString() !== apiSneakers.id)
+                    )
+                )
+            )
+            .then((result) => {
+                // console.log("result: ", result);
+                return res.json(result);
+            })
+            .catch(err => res.status(422).json(err));
+
     }
 }

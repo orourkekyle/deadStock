@@ -6,7 +6,7 @@ const passport = require("passport");
 //     res.redirect("login");
 // });
 
-console.log("this is oauth-routes");
+console.log("HIT: oauth-routes");
 
 // router
 // .route("*")

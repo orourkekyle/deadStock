@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const passport = require("passport");
 
-console.log("this is create-user-routes");
+console.log("HIT: create-user-routes");
 
 // logout 
 router

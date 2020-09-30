@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const sneakerApiController = require("../../controllers/sneakerApiController");
 
-console.log("this is sneaker-search routes");
+console.log("HIT: sneaker-search-routes");
 
 router
     .route("/")

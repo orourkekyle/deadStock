@@ -7,11 +7,10 @@ const createdUserRoutes = require("./routes/create-user-routes");
 const passportStrategies = require("./config/passport");
 const keys = require("./config/keys");
 const cookieSession = require("cookie-session");
-// const expressSession = require("express-session");
 const passport = require("passport");
 const cors = require("cors");
 const { GoogleUser } = require("./models");
-// const db = require("./models")
+
 
 const app = express();
 
