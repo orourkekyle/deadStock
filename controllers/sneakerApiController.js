@@ -1,21 +1,29 @@
 const axios = require("axios");
 // will need to create model for saving shoes into
-// const db = require("../models");
+const db = require("../models");
 
 module.exports = {
-    findall: function(req, res) {
+    findAll: function(req, res) {
         const { query: params } = req;
 
-        const url = `https://api.thesneakerdatabase.com/v1/sneakers?limit=100&name=${params.shoeName}`;
-        console.log("params", params);
-        console.log("URL", url);
+        const randomResponseUrl = `https://api.thesneakerdatabase.com/v1/sneakers?limit=100`;
+        const completeUrl = `https://api.thesneakerdatabase.com/v1/sneakers?limit=100${params.shoeName}`
+        // console.log("params", params);
+        // console.log("URL:", randomResponseUrl);
+        // var url = "";
 
-        console.log("Hit the findAll inside sneakerController", req.body, req.params);
+        // if (params.shoeName === "") {
+        //     url = randomResponseUrl;
+        // } else {
+        //     url = completeUrl;
+        // }
+
+        console.log(" --- HIT: sneakerApiController ----");
 
         axios
-            .get(`https://api.thesneakerdatabase.com/v1/sneakers?limit=100&${params.shoeName}`)
+            .get(randomResponseUrl)
             .then(results => {
-                console.log("this is results in axios get: ", results.data.results);
+                // console.log("this is results in axios get: ", results.data.results);
                 return results.data.results.filter(
                     result =>
                         result.id &&
@@ -28,9 +36,16 @@ module.exports = {
                         result.media.thumbUrl      
                 )
             })
+            .then(apiSneakers => 
+                db.Wishlist.find().then(dbWishlist => apiSneakers.filter(apiSneakers => dbWishlist.every(dbWishlist =>
+                    dbWishlist.sneakerId.toString() !== apiSneakers.id)
+                    )
+                )
+            )
             .then((result) => {
-                console.log("these are the results we want: ", result)
-                res.json(result);
+                // console.log("result: ", result);
+                return res.json(result);
             })
+            .catch(err => res.status(422).json(err));
     }
 }

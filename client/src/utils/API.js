@@ -8,7 +8,7 @@ export default {
     },
     // will need redirect route
 
-    //=========================
+
 
     // local auth routes
     getLocalAuth: function() {
@@ -16,11 +16,17 @@ export default {
     },
 
 
-    // sneaker api get route
+    // sneaker API routeS
     getSneakers: function(shoeName) {
-        return axios.get("/api/sneakers", { params: {shoeName: "name=" + shoeName } }) // { params: {q: "name:" + q } }
-        // .then(() => {
-        //     console.log("hitting getSneakers axios function in FE API")
-        // });
+        return axios.get("/api/sneakers", { params: {shoeName: "&name=" + shoeName } })
+    },
+
+    // wishlist routes
+    getSavedSneakers: function() {
+        return axios.get("/api/wishlist")
+    },
+    saveSneaker: function(sneakerData) {
+        console.log("sneakerData in API.js: ", sneakerData);
+        return axios.post("/api/wishlist", sneakerData);
     }
 }
