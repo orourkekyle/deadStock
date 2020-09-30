@@ -15,13 +15,28 @@ class Browsing extends Component {
     state = {
         sneakers: [],
         shoeName: "",
-        brand: "",
-        gender: "",
+        brand: "nike",
+        gender: "women",
         releaseYear: "",
         message: "Search For A Sneaker To Begin"
     };
 
+    // componentDidMount(){
+    //     const {sneakers, releaseYear} = this.state;
+    //     releaseYear = sneakers.map(p => p.releaseYear.substr(3));
+    //     this.setState({ releaseYear })
+    // }
 
+    sortAscending = () => {
+        const {releaseYear} = this.state;
+        releaseYear.sort((a,b) => a - b)
+        this.setState({ releaseYear })
+    }
+    sortDescending = () => {
+        const {releaseYear} = this.state;
+        releaseYear.sort((a, b) => a -b).reverse()
+        this.setState({ releaseYear})
+    }
     // register what gets put into input fields
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -141,8 +156,6 @@ class Browsing extends Component {
                 <div className="shoe-container">
 
                     <h1 style={{ margin: "left" }}>Search Results</h1>
-                    <button onClick={this.sortAscending}>sort Ascending</button>
-                    <button onClick={this.sortDescending}>sort Descending</button>
                     {this.state.sneakers.length ? (
                         <CardColumns size="sm-4">
                             {this.state.sneakers.map(sneaker => (
