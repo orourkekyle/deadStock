@@ -29,8 +29,8 @@ export default {
         console.log("sneakerData in API.js: ", sneakerData);
         return axios.post("/api/wishlist", sneakerData);
     },
-    deleteSneaker: function(sneakerId) {
-        return axios.delete("/api/wishlist/" + sneakerId);
+    deleteSneaker: function(id) {
+        return axios.delete("/api/wishlist/" + id);
     }
 
 }

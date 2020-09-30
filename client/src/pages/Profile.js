@@ -31,13 +31,13 @@ class Profile extends Component{
             );
     };
 
-    removeSneaker = sneakerId => {
-        API.deleteSneaker(sneakerId)
+    removeSneaker = id => {
+        API.deleteSneaker(id)
             .then(res => {
                 // returns html not json
                 console.log(" res.data - inside removeSneaker: ", res.data);
                 // returns proper id
-                console.log("sneakerId - inside removeSneaker: ", sneakerId);
+                console.log("id - inside removeSneaker: ", id);
                 return this.loadUserWishlist();
             })
             .catch(err => console.log(err));
@@ -62,7 +62,7 @@ class Profile extends Component{
                                     image={sneakers.image}
                                     Button={() => (
                                         <button
-                                            onClick={() => this.removeSneaker(sneakers.sneakerId)}
+                                            onClick={() => this.removeSneaker(sneakers._id)}
                                             id="delete-sneaker">Remove From Wishlist</button>
                                     )}
                                 />
