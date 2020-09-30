@@ -5,10 +5,12 @@ import "./Login.css";
 import { Container, Row, Col } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 import { Link } from "react-router-dom";
+
 function Login() {
     function doGoogleAuth(){
         API.getGoogleAuth();
     }
+
     return (
         <Container fluid >
             <Row fluid >
@@ -16,7 +18,7 @@ function Login() {
                 <h1 style={{
                     textAlign:"center",
                     paddingTop: "12%"
-                }}>Login</h1>
+                }}>DEADSTOCK</h1>
                 <form style={{ textAlign:"center"}}>
                     <Input  
                         style={{ textAlign:"left"}}
@@ -28,14 +30,12 @@ function Login() {
                         name="password"
                         placeholder="password"
                     />
-                </form>
-                <div style={{ display:"flex", paddingLeft: "42%" }}>
                     <FormBtn
-                        style={{ marginLeft: "center"}}
+                        style={{ marginLeft: "auto" }}
                     >
                         login
                     </FormBtn>
-                    <FormBtn 
+                    <FormBtn
                         onClick={doGoogleAuth}
                     >
                         Google
@@ -45,7 +45,7 @@ function Login() {
                         signup
                         </Link>
                     </FormBtn>
-                </div>
+                </form>
                 </Col>
             </Row>
         </Container>        
