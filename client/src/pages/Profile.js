@@ -11,9 +11,8 @@ class Profile extends Component{
         message: "Add Sneakers To Your Wishlist"
     };
 
-    componentDidMount(){
-        this.loadUserWishlist();
-        console.log("this.wishlist in componentDidMount: ", this.wishlist);
+    componentDidMount = () => {
+        return this.loadUserWishlist();
     };
 
     loadUserWishlist = () => {
@@ -21,12 +20,12 @@ class Profile extends Component{
             .then(res => {
                 console.log("res.data - inside profile: ", res.data);
                 return this.setState({
-                    wishlilst: res.data
+                    wishlist: res.data
                 });
             })
             .catch(() =>
                 this.setState({
-                    wishlist: [{}],
+                    wishlist: [],
                     message: "No Sneakers Found"
                 })
             );
@@ -34,7 +33,13 @@ class Profile extends Component{
 
     removeSneaker = sneakerId => {
         API.deleteSneaker(sneakerId)
-            .then(res => this.loadUserWishlist())
+            .then(res => {
+                // returns html not json
+                console.log(" res.data - inside removeSneaker: ", res.data);
+                // returns proper id
+                console.log("sneakerId - inside removeSneaker: ", sneakerId);
+                return this.loadUserWishlist();
+            })
             .catch(err => console.log(err));
     }
 

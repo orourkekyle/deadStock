@@ -2,8 +2,8 @@ const db = require("../models");
 
 module.exports = {
     findAll: function(req, res) {
-        console.log("req.data: ", req.data);
-        db.Wishlist.find(req.data)
+        console.log("req.query: ", req.query);
+        db.Wishlist.find(req.query)
             .then(dbWishlist => {
                 console.log("dbWishlist - inside wishlistController findAll: ", dbWishlist);
                 return res.json(dbWishlist)
@@ -22,11 +22,21 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     },
 
+    findById: function(req, res) {
+        db.Wishlist
+            .findById(req.params.sneakerId)
+            .then(dbWishlist => res.json(dbWishlist))
+            .catch(err => res.status(422).json(err))
+    },
+
     remove: function(req, res) {
         db.Wishlist
             .findById({sneakerId: req.params.sneakerId})
             .then(dbWishlist => dbWishlist.remove())
-            .then(dbWishlist => res.json(dbWishlist))
+            .then(dbWishlist => {
+                console.log("dbWishlist after remove - inside wishlistController: ", dbWishlist);
+                return res.json(dbWishlist);
+            })
             .catch(err => res.status(422).json(err));
     },
 };
