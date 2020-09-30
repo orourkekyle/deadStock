@@ -1,7 +1,7 @@
 // put together profile components
 import React from "react";
 import { Col, Container, Row } from "../components/Grid";
-import API from "../utils/API";
+// import API from "../utils/API";
 
 function Profile(){
 
