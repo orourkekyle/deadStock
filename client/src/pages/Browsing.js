@@ -21,6 +21,15 @@ class Browsing extends Component {
         message: "Search For A Sneaker To Begin"
     };
 
+    clickHandler = order => {
+        switch(order) {
+            case 'asc': return this.setState({data: this.state.data.sort((a, b) => a-b)})
+        
+             case 'desc': return this.setState({data: this.state.data.sort((a, b) => b - a) })
+        }
+    };
+
+
     // componentDidMount(){
     //     const {sneakers, releaseYear} = this.state;
     //     releaseYear = sneakers.map(p => p.releaseYear.substr(3));
@@ -31,12 +40,16 @@ class Browsing extends Component {
         const {releaseYear} = this.state;
         releaseYear.sort((a,b) => a - b)
         this.setState({ releaseYear })
-    }
+    };
+
     sortDescending = () => {
         const {releaseYear} = this.state;
         releaseYear.sort((a, b) => a -b).reverse()
         this.setState({ releaseYear})
-    }
+    };
+
+
+
     // register what gets put into input fields
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -154,7 +167,7 @@ class Browsing extends Component {
 
 
                 <div className="shoe-container">
-
+                <button onClick={this.clickHandler}>sort</button>
                     <h1 style={{ margin: "left" }}>Search Results</h1>
                     {this.state.sneakers.length ? (
                         <CardColumns size="sm-4">
