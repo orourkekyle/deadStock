@@ -1,5 +1,9 @@
 const router = require('express').Router();
 
+
+console.log("HIT: profile-routes");
+
+
 const authCheck = (req, res, next) => {
     if(!req.user){
         // if user is NOT logged in
