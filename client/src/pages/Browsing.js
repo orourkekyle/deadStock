@@ -10,7 +10,6 @@ import Shoe from "../components/Shoe";
 import CardColumns from "react-bootstrap/CardColumns";
 import Card from "react-bootstrap/Card";
 
-
 class Browsing extends Component {
     // start state
     state = {
@@ -22,25 +21,7 @@ class Browsing extends Component {
         message: "Search For A Sneaker To Begin"
     };
 
-    componentDidMount(){
-        let {sneakers, releaseYear} = this.state;
-
-        releaseYear = sneakers.map(ry=> ry.releaseYear.substr(3));
-        this.setState({releaseYear})
-    }
-
-    sortAscending = () => {
-        const {releaseYear} = this.state;
-        releaseYear.sort((a, b) => a - b)
-        this.setState({releaseYear})
-    }
-    
-    sortDescending = () => {
-        const {releaseYear} = this.state;
-        releaseYear.sort((a, b) => a - b).reverse()
-        this.setState({releaseYear})
-    }
-
+   
     // register what gets put into input fields
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -90,7 +71,7 @@ class Browsing extends Component {
     }
 
     render() {
-        const {releaseYear} = this.state;
+       
         return (
             // what we need:
             // container for full page
@@ -111,11 +92,22 @@ class Browsing extends Component {
                                     name="shoeName"
                                     placeholder="Shoe name"
                                 />
-                                <Input
-                                    onChange={this.handleInputChange}
-                                    name="brand"
-                                    placeholder="Brand"
-                                />
+                                <select id="brand" className="custom-select" aria-labelledby="dropdownMenuButton"  onChange={this.handleInputChange}>
+                                    <option value="nike">Nike</option>
+                                    <option value="puma">Puma</option>
+                                    <option value="vans">Vans</option>
+                                    <option value="converse">Converse</option>
+                                    <option value="jordan">Jordan</option>
+                                    <option value="new balance">New Balance</option>
+                                    <option value="reebok">Rebook</option>
+                                    <option value="saucony">Saucony</option>
+                                    <option value="under armor">Under Armor</option>
+                                    <option value="yeezy's">Yeezy's</option>
+                                    <option value="adiddas">Adidas</option>
+                                    <option value="ASIC">ASIC</option>
+                                </select>
+                                
+                                
                                 <Input
                                     onChange={this.handleInputChange}
                                     name="gender"
@@ -123,7 +115,7 @@ class Browsing extends Component {
                                 />
                                 <Input
                                     onChange={this.handleInputChange}
-                                    name="year"
+                                    name="releaseYear"
                                     placeholder="Release Year"
                                 />
                                 <div style={{}}>
