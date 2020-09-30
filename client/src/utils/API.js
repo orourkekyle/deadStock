@@ -30,7 +30,7 @@ export default {
         return axios.post("/api/wishlist", sneakerData);
     },
     deleteSneaker: function(sneakerId) {
-        return axios.delete("/api/wishlist" + sneakerId);
+        return axios.delete("/api/wishlist/" + sneakerId);
     }
 
 }
