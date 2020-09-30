@@ -1,41 +1,44 @@
-const axios = require("axios");
-// will need to create model for saving shoes into
-const db = require("../models");
-
+const axios = require('axios');
+const db = require('../models');
 module.exports = {
     findAll: function(req, res) {
-        const { query: params } = req;
 
-        const randomResponseUrl = `https://api.thesneakerdatabase.com/v1/sneakers?limit=100`;
-        const completeUrl = `https://api.thesneakerdatabase.com/v1/sneakers?limit=100${params.shoeName}`
-        // console.log("params", params);
-        // console.log("URL:", randomResponseUrl);
-        // var url = "";
+        console.log("HIT: sneakerApiController")
 
-        // if (params.shoeName === "") {
-        //     url = randomResponseUrl;
-        // } else {
-        //     url = completeUrl;
-        // }
-
-        console.log(" --- HIT: sneakerApiController ----");
-
-        axios
-            .get(randomResponseUrl)
-            .then(results => {
-                // console.log("this is results in axios get: ", results.data.results);
-                return results.data.results.filter(
-                    result =>
-                        result.id &&
-                        result.brand &&
-                        result.colorway &&
-                        result.gender &&
-                        result.retailPrice &&
-                        result.shoe &&
-                        result.year &&
-                        result.media.thumbUrl      
-                )
+        const { query } = req;
+        console.log('INCOMING REQ.QUERY ---> ', query)
+        const reqShoeName = query.shoeName? `&name=${query.shoeName}` : '';
+        const reqBrand = query.brand? `&brand=${query.brand}` : '';
+        const reqGender = query.gender? `&gender=${query.gender}` : '';
+        const reqReleaseYear = query.releaseYear? `&releaseYear=${query.releaseYear}` : '';
+        
+        const annoyingPlaceholderUrl = "https://stockx-assets.imgix.net/media/New-Product-Placeholder-Default.jpg?fit=fill&bg=FFFFFF&w=140&h=100&auto=format,compress&trim=color&q=90&dpr=2&updated_at=0";
+        
+        const completeUrl = `https://api.thesneakerdatabase.com/v1/sneakers?limit=100${reqShoeName}${reqBrand}${reqGender}${reqReleaseYear}`;
+        
+        axios.get(completeUrl)
+        .then(results => {
+            console.log("The results console log", results.data.results)
+        
+         return   results.data.results.filter(
+                result => 
+                    result.id &&
+                    result.brand &&
+                    result.colorway &&
+                    result.gender &&
+                    result.shoe &&
+                    result.year &&
+                    result.brand &&
+                    result.retailPrice &&
+                    result.releaseDate &&
+                    result.media.thumbUrl 
+            )
             })
+        .then((result) => {
+                console.log("these are the results we want:", result);
+                res.json(result)
+            })
+            .catch (err => console.log(err))
             .then(apiSneakers => 
                 db.Wishlist.find().then(dbWishlist => apiSneakers.filter(apiSneakers => dbWishlist.every(dbWishlist =>
                     dbWishlist.sneakerId.toString() !== apiSneakers.id)

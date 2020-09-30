@@ -8,4 +8,8 @@ router
 .get(wishlistController.findAll)
 .post(wishlistController.create)
 
+router
+.route("/:id")
+.delete(wishlistController.remove);
+
 module.exports = router;
