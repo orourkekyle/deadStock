@@ -30,9 +30,9 @@ module.exports = {
     },
 
     remove: function(req, res) {
-        console.log("req.params.sneakerId - inside wishlistController remove: ", req.params.id);
+        console.log("req.params - inside wishlistController remove: ", req.params);
         db.Wishlist
-            .findById({sneakerId: req.params.id})
+            .findById({_id: req.params.id})
             .then(dbWishlist => dbWishlist.remove())
             .then(dbWishlist => res.json(dbWishlist))
             .catch(err => res.status(422).json(err));
