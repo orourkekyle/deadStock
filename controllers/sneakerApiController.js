@@ -2,12 +2,44 @@ const axios = require('axios');
 const db = require('../models');
 
 module.exports = {
+    // createUrl: function(req, res) {
+    //     const {query: params } = req;
+    //     const randomResponseUrl = "https://api.thesneakerdatabase.com/v1/sneakers?limit=100";
+    //     const namedResponseUrl = `https://api.thesneakerdatabase.com/v1/sneakers?limit=100${params.shoeName}${params.brand}${params.gender}${params.releaseYear}`;
+
+    //     console.log("Hit the Get in the Route api/sneakers:", req.body, req.params);
+    //     console.log("the following are the params: ", params);
+        
+    //     // Create if statement that switches URL based on if single param is blank. If blank ommit the param from search url.
+    //     // currently if any are blank will use no params at all.
+    //     if (params.shoeName  === "" || params.brand  === "" || params.gender  === "" || params.releaseYear === "") { 
+    //         let url = randomResponseUrl;
+        
+    //         return url;
+    //     } else {
+    //         let url = namedResponseUrl;
+    //         return url;
+    //     }
+    // },
+
+
     findAll: function(req, res) {
-        const {query: params } = req;
-        const url = "https://api.thesneakerdatabase.com/v1/sneakers?limit=100&"
-        console.log("Hit the Get in the Route api/sneakers:", req.body, req.params)
-        console.log("the following are the params: ", params)
-        axios.get(`https://api.thesneakerdatabase.com/v1/sneakers?limit=100&${params.q}`)
+        const {query } = req;
+        console.log('INCOMING REQ.QUERY ---> ', query)
+
+        const reqShoeName = query.shoeName? `&name=${query.shoeName}` : ''
+        const reqBrand = query.brand? `&brand=${query.brand}` : ''
+        const reqGender = query.gender? `&gender=${query.gender}` : ''
+        const reqReleaseYear = query.releaseYear? `&releaseYear=${query.releaseYear}` : ''
+        
+        
+        
+        const completeUrl = `https://api.thesneakerdatabase.com/v1/sneakers?limit=100${reqShoeName}${reqBrand}${reqGender}${reqReleaseYear}`;
+
+        //console.log("Hit the Get in the Route api/sneakers:", req.body, req.params);
+        //console.log("the following are the params: ", params);
+
+        axios.get(completeUrl)
         .then(results => {
             console.log("The results console log", results.data.results)
         

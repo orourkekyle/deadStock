@@ -1,57 +1,62 @@
-// put together our login components (similar to signup)
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-
-function SignUp() {
-// const [user, setUser] = useState([])
-// const [formObject, setFormObject] = useState({})
-
-// useEffect(() => {
-//     loadItems()
-// }, [])
+// put together our SignUp components (similar to signup)
+import React, { Component } from "react";
+import API from "../utils/API";
 
 
-// function handleInputChange(event) {
-//     const { name, value } = event.target;
-//     setFormObject({...formObject, [name]: value})
-// };
+class SignUp extends Component {
+    state = {
+        username: "",
+        password: "",
+        message: "Create a Username and Password"
+    };
 
-// function handleFormSubmit(event) {
-    // event.preventDefault();
-    // if (formObject.username && formObject.password) {
-    //     API.Users({
-    //     name: formObject.username,
-    //     password: formObject.password,
-    //     })
-    //     .then(res => loadProfile())
-    //     .catch(err => console.log(err));
-    // }
-// }
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
 
+    makeUser = () => {
+        API.getLocalAuth(this.state)
+            .then(res => {
+                console.log("res inside makeUser: ", res);
+                console.log("this.state: ", this.state.value);
+            });
+    };
 
-    return (
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <h2>Login</h2>
-                    <form class="login">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="email-input" placeholder="Email"></input>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="password-input" placeholder="Password"></input>
-                        </div>
-                        <button type="submit" class="btn btn-default">Sign Up</button>
-                    </form>
-                    <br>
-                        <p>Or Login<a href="/">Here</a></p>
-                    </br>
+    handleFormSubmit = () => {
+        this.makeUser();
+    }
+
+    doGoogleAuth = event => {
+        // event.preventDefault();
+        API.getGoogleAuth();
+    }
+
+    render() {
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-6 col-md-offset-3">
+                        <h2>Sign Up</h2>
+                        <form className="sign-up">
+                            <div className="form-group">
+                                <label htmlFor="exampleInputUsername1">Username</label>
+                                <input onChange={this.handleInputChange} type="username" className="form-control" id="username-input" placeholder="Username"></input>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="exampleInputPassword1">Password</label>
+                                <input onChange={this.handleInputChange} type="password" className="form-control" id="password-input" placeholder="Password"></input>
+                            </div>
+                            <button onClick={this.handleFormSubmit} type="submit" className="btn btn-default">Sign Up</button>
+                            <button className="google-btn" onClick={this.doGoogleAuth}>Google+</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default SignUp;

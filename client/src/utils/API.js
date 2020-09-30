@@ -8,8 +8,8 @@ export default {
     },
 
     // sneaker api get route
-    getSneakers: function(q) {
-        return axios.get("/api/sneakers", { params: { q: "name=" + q}});
+    getSneakers: function(shoeName, brand, gender, releaseYear) {
+        return axios.get("/api/sneakers", { params: {shoeName, brand, gender, releaseYear}});
     //     return axios.get("/api/sneakers", { params: { state: "name:" }})
     //         .then((params) => {
     //             console.log("Hitting frontend API get sneakers", params)

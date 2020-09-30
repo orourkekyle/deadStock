@@ -1,14 +1,13 @@
 const path = require("path");
-const router = require('express').Router();
-const oAuth = require('../api/oauth-routes');
-const sneakerSearch = require('../api/sneaker-search-routes');
+const router = require("express").Router();
+const sneakerApiRoutes = require("./sneaker-search-routes")
 
-router.use('/sneakers', sneakerSearch);
+// sneaker routes
+router.use("/sneakers", sneakerApiRoutes)
 
-router.use('/google', oAuth);
-
+// for *, render html page
 router.use(function(req, res) {
-    res.sendFile(path.join(__dirname, "../../client/public/index.html"));
-});
+    res.sendFile(path.join(__dirname, "../../client/public/index.html"))
+})
 
 module.exports = router;

@@ -1,29 +1,34 @@
 const express = require("express");
 const mongoose = require("mongoose");
-// const htmlRoutes = require("./routes/html-routes");
-// const oauthRoutes = require("./routes/oauth-routes");
-// const createUserRoutes = require("./routes/create-user-routes");
-// const profileRoutes = require("./routes/profile-routes")
 const routes = require("./routes");
-//const passportSetup = require("./config/passport")
-//const keys = require("./config/passport")
-const cookieSession = require("cookie-session")
+const oauthRoutes = require("./routes/oauth-routes");
+// const profileRoutes = require("./routes/profile-routes");
+const createdUserRoutes = require("./routes/create-user-routes");
+const passportStrategies = require("./config/passport");
+const keys = require("./config/keys");
+const cookieSession = require("cookie-session");
+// const expressSession = require("express-session");
 const passport = require("passport");
 const cors = require("cors");
+const { GoogleUser } = require("./models");
 // const db = require("./models")
 
 const app = express();
 
 app.use(cors());
 
-// app.use(cookieSession({
-//   maxAge: 24*60*60*1000,
-//   keys: [keys.session.cookieKey]
-// }))
+// app.use(expressSession({
+//   secret: [keys.expresssession.expressSecret]
+// }));
+
+app.use(cookieSession({
+  maxAge: 24*60*60*1000,
+  keys: [keys.cookiesession.cookieKey]
+}));
 
 const PORT = process.env.PORT || 3001;
 
-// Define middleware here
+// config body parsing for AJAX requests
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
@@ -31,15 +36,22 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-
 // We need to use sessions to keep track of our user's login status
+// passport.use("strategies", passportStrategies);
+// passport.use("google", GoogleStrategy);
+// passport.use("local", LocalStrategy);
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Add routes, both API and view
+// use routes
 app.use(routes);
+app.use("/oauth", oauthRoutes);
+app.use("/local", createdUserRoutes);
 
-// Connect to the Mongo DB
+
+
+
+// Connect to Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/deadstockDB", {
   useNewUrlParser: true,
   useFindAndModify: false

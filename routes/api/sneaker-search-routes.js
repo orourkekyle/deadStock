@@ -1,13 +1,10 @@
 const router = require("express").Router();
-const sneakerApiController = require("../../controllers/sneakerApiController.js");
+const sneakerApiController = require("../../controllers/sneakerApiController");
 
-// Matches with "/api/google"
+console.log("this is sneaker-search routes");
+
 router
-  .route("/")
-  .get(sneakerApiController.findAll);
+    .route("/")
+    .get(sneakerApiController.findAll);
 
-  // router.route('/:id')
-  // .get(sneakerApiController.findById)
-  // .put(sneakerApiController.update)
-  // .delete(sneakerApiController.remove);
 module.exports = router;
