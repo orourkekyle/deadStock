@@ -16,6 +16,9 @@ class Browsing extends Component {
     state = {
         sneakers: [],
         shoeName: "",
+        brand: "",
+        gender: "",
+        releaseYear: "",
         message: "Search For A Sneaker To Begin"
     };
 
@@ -29,7 +32,7 @@ class Browsing extends Component {
     
     // get sneakers from external api based on search
     getSneakers = () => {
-        API.getSneakers(this.state.shoeName)
+        API.getSneakers(this.state.shoeName, this.state.brand, this.state.gender, this.state.releaseYear)
             .then(res => {
                 console.log("res.data inside getSneakers call: ", res.data);
                 return this.setState({
@@ -75,6 +78,7 @@ class Browsing extends Component {
             // jumbotron (or something similar) to hold search form
             // search form
             // place to hold results (i.e. a list or grid or both)
+
             <div>
 
                 <Container>
@@ -107,6 +111,7 @@ class Browsing extends Component {
                                         onClick={this.handleFormSubmit}
                                     >
                                         Search
+
                                 </FormBtn>
                                 </div>
                             </form>

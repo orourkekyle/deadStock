@@ -2,10 +2,21 @@
 import axios from "axios";
 
 export default {
-    // oauth routes
+    // Oauth route
     getGoogleAuth: function() {
-        return axios.get("/oauth/google")
+        return axios.get("/auth/google")
     },
+
+
+    // sneaker api get route
+    getSneakers: function(shoeName, brand, gender, releaseYear) {
+        return axios.get("/api/sneakers", { params: {shoeName, brand, gender, releaseYear}});
+    //     return axios.get("/api/sneakers", { params: { state: "name:" }})
+    //         .then((params) => {
+    //             console.log("Hitting frontend API get sneakers", params)
+    //         })
+    // }
+
     // will need redirect route
 
 
@@ -28,5 +39,6 @@ export default {
     saveSneaker: function(sneakerData) {
         console.log("sneakerData in API.js: ", sneakerData);
         return axios.post("/api/wishlist", sneakerData);
+
     }
 }

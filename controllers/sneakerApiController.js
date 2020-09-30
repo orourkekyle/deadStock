@@ -1,41 +1,69 @@
-const axios = require("axios");
-// will need to create model for saving shoes into
-const db = require("../models");
+
+const axios = require('axios');
+const db = require('../models');
 
 module.exports = {
+    // createUrl: function(req, res) {
+    //     const {query: params } = req;
+    //     const randomResponseUrl = "https://api.thesneakerdatabase.com/v1/sneakers?limit=100";
+    //     const namedResponseUrl = `https://api.thesneakerdatabase.com/v1/sneakers?limit=100${params.shoeName}${params.brand}${params.gender}${params.releaseYear}`;
+
+    //     console.log("Hit the Get in the Route api/sneakers:", req.body, req.params);
+    //     console.log("the following are the params: ", params);
+        
+    //     // Create if statement that switches URL based on if single param is blank. If blank ommit the param from search url.
+    //     // currently if any are blank will use no params at all.
+    //     if (params.shoeName  === "" || params.brand  === "" || params.gender  === "" || params.releaseYear === "") { 
+    //         let url = randomResponseUrl;
+        
+    //         return url;
+    //     } else {
+    //         let url = namedResponseUrl;
+    //         return url;
+    //     }
+    // },
+
+
     findAll: function(req, res) {
-        const { query: params } = req;
+        const {query } = req;
+        console.log('INCOMING REQ.QUERY ---> ', query)
 
-        const randomResponseUrl = `https://api.thesneakerdatabase.com/v1/sneakers?limit=100`;
-        const completeUrl = `https://api.thesneakerdatabase.com/v1/sneakers?limit=100${params.shoeName}`
-        // console.log("params", params);
-        // console.log("URL:", randomResponseUrl);
-        // var url = "";
+        const reqShoeName = query.shoeName? `&name=${query.shoeName}` : ''
+        const reqBrand = query.brand? `&brand=${query.brand}` : ''
+        const reqGender = query.gender? `&gender=${query.gender}` : ''
+        const reqReleaseYear = query.releaseYear? `&releaseYear=${query.releaseYear}` : ''
+        
+        
+        
+        const completeUrl = `https://api.thesneakerdatabase.com/v1/sneakers?limit=100${reqShoeName}${reqBrand}${reqGender}${reqReleaseYear}`;
 
-        // if (params.shoeName === "") {
-        //     url = randomResponseUrl;
-        // } else {
-        //     url = completeUrl;
-        // }
+        //console.log("Hit the Get in the Route api/sneakers:", req.body, req.params);
+        //console.log("the following are the params: ", params);
 
-        console.log(" --- HIT: sneakerApiController ----");
-
-        axios
-            .get(randomResponseUrl)
-            .then(results => {
-                // console.log("this is results in axios get: ", results.data.results);
-                return results.data.results.filter(
-                    result =>
-                        result.id &&
-                        result.brand &&
-                        result.colorway &&
-                        result.gender &&
-                        result.retailPrice &&
-                        result.shoe &&
-                        result.year &&
-                        result.media.thumbUrl      
-                )
+        axios.get(completeUrl)
+        .then(results => {
+            console.log("The results console log", results.data.results)
+        
+         return   results.data.results.filter(
+                result => 
+                    result.id &&
+                    result.brand &&
+                    result.colorway &&
+                    result.gender &&
+                    result.shoe &&
+                    result.year &&
+                    result.brand &&
+                    result.retailPrice &&
+                    result.releaseDate &&
+                    result.media.thumbUrl 
+            )
             })
+        .then((result) => {
+                console.log("these are the results we want:", result);
+                res.json(result)
+            })
+            .catch (err => console.log(err))
+
             .then(apiSneakers => 
                 db.Wishlist.find().then(dbWishlist => apiSneakers.filter(apiSneakers => dbWishlist.every(dbWishlist =>
                     dbWishlist.sneakerId.toString() !== apiSneakers.id)
@@ -47,5 +75,6 @@ module.exports = {
                 return res.json(result);
             })
             .catch(err => res.status(422).json(err));
+
     }
 }
