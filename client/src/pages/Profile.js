@@ -1,19 +1,19 @@
 // put together profile components
 import React, { Component } from "react";
-import { Container, Row } from "../components/Grid";
+import { Container } from "../components/Grid";
 import API from "../utils/API";
 import CardColumns from "react-bootstrap/CardColumns";
 import Shoe from "../components/Shoe";
 
 class Profile extends Component{
     state = {
-        wishlist: [{}],
+        wishlist: [],
         message: "Add Sneakers To Your Wishlist"
     };
 
-    componentDidMount = () => {
-        return this.loadUserWishlist();
-        // console.log("this.wishlist in componentDidMount: ", this.wishlist);
+    componentDidMount(){
+        this.loadUserWishlist();
+        console.log("this.wishlist in componentDidMount: ", this.wishlist);
     };
 
     loadUserWishlist = () => {
