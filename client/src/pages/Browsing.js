@@ -5,6 +5,10 @@ import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 import { List } from "../components/List";
 import Shoe from "../components/Shoe";
+// import { Demo } from "../components/Nav";
+import { Nav } from 'rsuite';
+import CardColumns from "react-bootstrap/CardColumns";
+import Card from "react-bootstrap/Card";
 
 
 class Browsing extends Component {
@@ -33,11 +37,11 @@ class Browsing extends Component {
                 })
             })
             .catch(() =>
-            this.setState({
-                sneakers: [],
-                message: "No Sneakers Found, Try a Different Query"
-            })
-        );
+                this.setState({
+                    sneakers: [],
+                    message: "No Sneakers Found, Try a Different Query"
+                })
+            );
     };
 
     // register search functionality
@@ -71,50 +75,60 @@ class Browsing extends Component {
             // jumbotron (or something similar) to hold search form
             // search form
             // place to hold results (i.e. a list or grid or both)
-            <Container>
-                {/* <Nav /> */}
-                <Row>
-                    <Col size="md-8">
-                        <form style={{ justifyContent: "center", textAlign: "center"}}>
-                            <Input
-                                onChange={this.handleInputChange}
-                                name="shoeName"
-                                placeholder="Shoe name"    
-                            />
-                            <Input
-                                onChange={this.handleInputChange}
-                                name="brand"
-                                placeholder="Brand"    
-                            />
-                            <Input
-                                onChange={this.handleInputChange}
-                                name="gender"
-                                placeholder="Gender"    
-                            />
-                            <Input
-                                onChange={this.handleInputChange}
-                                name="year"
-                                placeholder="Release Year"    
-                            />
-                            <div style={{ paddingLeft: "38%" }}>
-                                <FormBtn
-                                    onClick={this.handleSearch}
-                                >
-                                    Search
+            <div>
+
+                <Container>
+                    <Nav />
+                    <Row>
+                        <Col size="md-8">
+                            <form style={{ justifyContent: "center", textAlign: "center" }}>
+                                <Input
+                                    onChange={this.handleInputChange}
+                                    name="shoeName"
+                                    placeholder="Shoe name"
+                                />
+                                <Input
+                                    onChange={this.handleInputChange}
+                                    name="brand"
+                                    placeholder="Brand"
+                                />
+                                <Input
+                                    onChange={this.handleInputChange}
+                                    name="gender"
+                                    placeholder="Gender"
+                                />
+                                <Input
+                                    onChange={this.handleInputChange}
+                                    name="year"
+                                    placeholder="Release Year"
+                                />
+                                <div style={{}}>
+                                    <FormBtn
+                                        onClick={this.handleFormSubmit}
+                                    >
+                                        Search
                                 </FormBtn>
-                            </div>
-                        </form>
-                    </Col>
-                    <Col size="md-8">
-                     <h1 style={{ paddingLeft: "0" }}>Search Results</h1>
-                     {this.state.sneakers.length ? (
-                        <List>
-                            {this.state.sneakers.map( sneaker => (
-                                <Shoe 
+                                </div>
+                            </form>
+                        </Col>
+                    </Row>
+
+                </Container>
+
+
+                <div className="shoe-container">
+
+                    <h1 style={{ margin: "left" }}>Search Results</h1>
+                    {this.state.sneakers.length ? (
+                        <CardColumns size="sm-4">
+                            {this.state.sneakers.map(sneaker => (
+                                <Shoe
                                     key={sneaker.id}
                                     shoe={sneaker.shoe}
                                     colorway={sneaker.colorway}
                                     brand={sneaker.brand}
+                                    colorway={sneaker.colorway}
+                                    price={sneaker.retailPrice}
                                     gender={sneaker.gender}
                                     year={sneaker.year}
                                     image={sneaker.media.thumbUrl}
@@ -125,13 +139,15 @@ class Browsing extends Component {
                                     )}
                                 />
                             ))}
-                        </List>
-                        ) : (
+                        </CardColumns>
+                    ) : (
                             <h2 className="text-center">Search shoes for results</h2>
-                        )} 
-                    </Col>
-                </Row>
-            </Container>
+                        )}
+                    {/* </Col> */}
+
+                    {/* </Row> */}
+                </div>
+            </div>
         );
     }
 }
