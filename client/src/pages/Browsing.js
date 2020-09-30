@@ -21,7 +21,7 @@ class Browsing extends Component {
         message: "Search For A Sneaker To Begin"
     };
 
-   
+
     // register what gets put into input fields
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -29,7 +29,7 @@ class Browsing extends Component {
             [name]: value
         });
     };
-    
+
     // get sneakers from external api based on search
     getSneakers = () => {
         API.getSneakers(this.state.shoeName, this.state.brand, this.state.gender, this.state.releaseYear)
@@ -71,7 +71,7 @@ class Browsing extends Component {
     }
 
     render() {
-       
+
         return (
             // what we need:
             // container for full page
@@ -92,8 +92,8 @@ class Browsing extends Component {
                                     name="shoeName"
                                     placeholder="Shoe name"
                                 />
-                                <select id="brand" className="custom-select" aria-labelledby="dropdownMenuButton"  onChange={this.handleInputChange}>
-                                    <option value="nike">Nike</option>
+                                <select name="brand" className="custom-select" aria-labelledby="dropdownMenuButton" onChange={this.handleInputChange}>
+                                    <option defaultValue="nike">Nike</option>
                                     <option value="puma">Puma</option>
                                     <option value="vans">Vans</option>
                                     <option value="converse">Converse</option>
@@ -106,13 +106,18 @@ class Browsing extends Component {
                                     <option value="adiddas">Adidas</option>
                                     <option value="ASIC">ASIC</option>
                                 </select>
-                                
-                                
-                                <Input
-                                    onChange={this.handleInputChange}
-                                    name="gender"
-                                    placeholder="Gender"
-                                />
+
+
+                                <select name="gender" className="custom-select" aria-labelledby="dropdownMenuButton" onChange={this.handleInputChange}>
+                                    <option defaultValue="women">Women</option>
+                                    <option value="unisex">Unisex</option>
+                                    <option value="toddler">Toddler</option>
+                                    <option value="preschool">Preschool</option>
+                                    <option value="men">Men</option>
+                                    <option value="infant">Infant</option>
+                                    <option value="child">Child</option>
+
+                                </select>
                                 <Input
                                     onChange={this.handleInputChange}
                                     name="releaseYear"
@@ -133,7 +138,7 @@ class Browsing extends Component {
                 </Container>
 
 
-                <div className="shoe-container">    
+                <div className="shoe-container">
 
                     <h1 style={{ margin: "left" }}>Search Results</h1>
                     <button onClick={this.sortAscending}>sort Ascending</button>
