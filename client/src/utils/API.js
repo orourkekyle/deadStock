@@ -11,12 +11,7 @@ export default {
     // sneaker api get route
     getSneakers: function(shoeName, brand, gender, releaseYear) {
         return axios.get("/api/sneakers", { params: {shoeName, brand, gender, releaseYear}});
-    //     return axios.get("/api/sneakers", { params: { state: "name:" }})
-    //         .then((params) => {
-    //             console.log("Hitting frontend API get sneakers", params)
-    //         })
-    // }
-
+    },
     // will need redirect route
 
 
@@ -28,9 +23,9 @@ export default {
 
 
     // sneaker API routeS
-    getSneakers: function(shoeName) {
-        return axios.get("/api/sneakers", { params: {shoeName: "&name=" + shoeName } })
-    },
+    // getSneakers: function(shoeName) {
+    //     return axios.get("/api/sneakers", { params: {shoeName: "&name=" + shoeName } })
+    // },
 
     // wishlist routes
     getSavedSneakers: function() {

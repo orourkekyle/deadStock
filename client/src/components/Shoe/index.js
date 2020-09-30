@@ -1,6 +1,6 @@
 import React from "react";
-import { ListItem } from "../List";
-import { Row, Col } from "../Grid";
+// import { ListItem } from "../List";
+// import { Row, Col } from "../Grid";
 import Card from "react-bootstrap/Card";
 
 function Shoe({ shoe, brand, gender, year, image, colorway, price }) {
