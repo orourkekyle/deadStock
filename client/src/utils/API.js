@@ -9,8 +9,8 @@ export default {
 
 
     // sneaker api get route
-    getSneakers: function(shoeName, brand, gender, releaseYear) {
-        return axios.get("/api/sneakers", { params: {shoeName, brand, gender, releaseYear}});
+    getSneakers: function(shoeName, brand, gender, releaseYear, colorway) {
+        return axios.get("/api/sneakers", { params: {shoeName, brand, gender, releaseYear, colorway}});
     },
     // will need redirect route
 

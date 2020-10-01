@@ -5,35 +5,40 @@ import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 import { List } from "../components/List";
 import Shoe from "../components/Shoe";
-// import { Demo } from "../components/Nav";
-// import { Nav } from 'rsuite';
 import CardColumns from "react-bootstrap/CardColumns";
 import Card from "react-bootstrap/Card";
-
+import SelectGender from "../components/SelectGender";
+import SelectBrand from "../components/SelectBrand";
 class Browsing extends Component {
     // start state
     state = {
         sneakers: [],
         shoeName: "",
-        brand: "nike",
-        gender: "women",
+        brand: "",
+        gender: "",
         releaseYear: "",
+        colorway: "",
         message: "Search For A Sneaker To Begin",
         order: 'asc'
+
     };
 
+
+
+
     // function on button click to sort. Will have to change so that it takes this.state (i think?) and sort based of selected value of menu
-    clickHandler = () => {
-        
-        switch(this.state.order) {
-            case 'asc':  
-              this.setState({data: this.state.sneakers.sort((a, b) => a.retailPrice - b.retailPrice), order: 'desc'});
-              break;
-            case 'desc': 
-              this.setState({data: this.state.sneakers.sort((a, b) => b.retailPrice - a.retailPrice), order: 'asc' });
-              break;
+    sortHandler = (handleInputChange) => {
+     
+        switch (this.state.order) {
+            case 'asc':
+                this.setState({ data: this.state.sneakers.sort((a, b) => a.retailPrice - b.retailPrice), order: 'desc' });
+                break;
+            case 'desc':
+                this.setState({ data: this.state.sneakers.sort((a, b) => b.retailPrice - a.retailPrice), order: 'asc' });
+                break;
         }
-    };
+    }
+
 
 
 
@@ -47,7 +52,7 @@ class Browsing extends Component {
 
     // get sneakers from external api based on search
     getSneakers = () => {
-        API.getSneakers(this.state.shoeName, this.state.brand, this.state.gender, this.state.releaseYear)
+        API.getSneakers(this.state.shoeName, this.state.brand, this.state.gender, this.state.releaseYear, this.state.colorway)
             .then(res => {
                 console.log("res.data inside getSneakers call: ", res.data);
                 return this.setState({
@@ -96,7 +101,7 @@ class Browsing extends Component {
             // place to hold results (i.e. a list or grid or both)
 
             <div>
-                
+
 
                 <Container>
                     {/* <Nav /> */}
@@ -108,36 +113,27 @@ class Browsing extends Component {
                                     name="shoeName"
                                     placeholder="Shoe name"
                                 />
-                                <select name="brand" className="custom-select" aria-labelledby="dropdownMenuButton" onChange={this.handleInputChange}>
-                                    <option defaultValue="nike">Nike</option>
-                                    <option value="puma">Puma</option>
-                                    <option value="vans">Vans</option>
-                                    <option value="converse">Converse</option>
-                                    <option value="jordan">Jordan</option>
-                                    <option value="new balance">New Balance</option>
-                                    <option value="reebok">Rebook</option>
-                                    <option value="saucony">Saucony</option>
-                                    <option value="under armor">Under Armor</option>
-                                    <option value="yeezy's">Yeezy's</option>
-                                    <option value="adiddas">Adidas</option>
-                                    <option value="ASIC">ASIC</option>
-                                </select>
 
+                                <SelectBrand
+                                    onChange={this.handleInputChange}
+                                    name="brand"
+                                />
 
-                                <select name="gender" className="custom-select" aria-labelledby="dropdownMenuButton" onChange={this.handleInputChange}>
-                                    <option defaultValue="women">Women</option>
-                                    <option value="unisex">Unisex</option>
-                                    <option value="toddler">Toddler</option>
-                                    <option value="preschool">Preschool</option>
-                                    <option value="men">Men</option>
-                                    <option value="infant">Infant</option>
-                                    <option value="child">Child</option>
+                                <SelectGender
+                                    onChange={this.handleInputChange}
+                                    name="gender"
 
-                                </select>
+                                />
+
                                 <Input
                                     onChange={this.handleInputChange}
                                     name="releaseYear"
                                     placeholder="Release Year"
+                                />
+                                <Input
+                                    onChange={this.handleInputChange}
+                                    name="colorway"
+                                    placeholder="colorway"
                                 />
                                 <div style={{}}>
                                     <FormBtn
@@ -152,22 +148,20 @@ class Browsing extends Component {
                     </Row>
 
                 </Container>
-            
+
 
 
                 <div className="shoe-container">
                     {/* create select menu to select sort types add button on click takes the selected sort type and then applies it */}
                     {/* need to create component for dropdown menu */}
-                <select name="gender" className="custom-select" aria-labelledby="dropdownMenuButton" onChange={this.handleInputChange}>
-                                    <option defaultValue="retailPrice">Retail Price</option>
-                                    <option value="gender">Gender</option>
-                                    <option value="brand">Brand</option>
-                                    <option value="releaseYear">Preschool</option>
-                                    <option value="men">Men</option>
-                                    <option value="infant">Infant</option>
-                                    <option value="child">Child</option>
-                </select>
-                <button onClick={this.clickHandler}>sort</button>
+                    <select name="gender" className="custom-select" aria-labelledby="dropdownMenuButton" onChange={this.sortHandler}>
+                        <option defaultValue="retailPrice">Retail Price</option>
+                        <option value="gender">Gender</option>
+                        <option value="colorway">Color</option>
+                        <option value="releaseYear">Release Year</option>
+
+                    </select>
+                    <button onClick={this.sortHandler}>sort</button>
                     <h1 style={{ margin: "left" }}>Search Results</h1>
                     {this.state.sneakers.length ? (
                         <CardColumns size="sm-4">
