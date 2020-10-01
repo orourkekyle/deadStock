@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Collapse,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
@@ -15,13 +13,13 @@ import {
 } from 'reactstrap';
 
 const Navy = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => setIsOpen(!isOpen);
+  // const toggle = () => setIsOpen(!isOpen);
 
   return (
     <div>
-      <ybar color="light" light expand="md">
+      <Navbar color="light" light expand="md">
         <NavbarBrand href="/">Navigation</NavbarBrand>
 
           <Nav className="mr-auto" navbar>
@@ -57,7 +55,7 @@ const Navy = (props) => {
           </Nav>
           <NavbarText>Simple Text</NavbarText>
 
-      </ybar>
+      </Navbar>
     </div>
   );
 }

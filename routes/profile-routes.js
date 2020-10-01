@@ -7,7 +7,7 @@ console.log("HIT: profile-routes");
 const authCheck = (req, res, next) => {
     if(!req.user){
         // if user is NOT logged in
-        res.redirect("/auth/login");
+        res.redirect("/oauth/login");
     }else {
         // if user IS logged in
         next();

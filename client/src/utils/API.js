@@ -4,9 +4,11 @@ import axios from "axios";
 export default {
     // oauth route
     getGoogleAuth: function() {
-        return axios.get("/auth/google")
+        return axios.get("/oauth/google")
     },
-    
+    // googleRedirect: function() {
+    //     return axios.get("/auth/google/redirect")
+    // },
 
     // local auth routes
     getLocalAuth: function() {
@@ -14,11 +16,6 @@ export default {
     },
 
     // sneaker api get route
-    getSneakers: function(shoeName, brand, gender, releaseYear) {
-        return axios.get("/api/sneakers", { params: {shoeName, brand, gender, releaseYear}});
-    },
-
-    // sneaker API routes
     getSneakers: function(shoeName, brand, gender, releaseYear) {
         return axios.get("/api/sneakers", { params: {shoeName, brand, gender, releaseYear}});
     },
