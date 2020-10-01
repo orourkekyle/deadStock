@@ -14,17 +14,16 @@ import {
   NavbarText
 } from 'reactstrap';
 
-const Nav = (props) => {
+const Navy = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
+      <ybar color="light" light expand="md">
+        <NavbarBrand href="/">Navigation</NavbarBrand>
+
           <Nav className="mr-auto" navbar>
             <NavItem>
               <NavLink href="/login">Login</NavLink>
@@ -57,10 +56,10 @@ const Nav = (props) => {
             </UncontrolledDropdown>
           </Nav>
           <NavbarText>Simple Text</NavbarText>
-        </Collapse>
-      </Navbar>
+
+      </ybar>
     </div>
   );
 }
 
-export default Nav;
+export default Navy;
