@@ -1,13 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-// const oauthRoutes = require("./routes/oauth-routes");
-// const profileRoutes = require("./routes/profile-routes");
-// const createdUserRoutes = require("./routes/create-user-routes");
-// const passportStrategies = require("./config/passport");
-// const keys = require("./config/keys");
-// const cookieSession = require("cookie-session");
-// const passport = require("passport");
+const oauthRoutes = require("./routes/oauth-routes");
+const profileRoutes = require("./routes/profile-routes");
+const createdUserRoutes = require("./routes/create-user-routes");
+const passportStrategies = require("./config/passport");
+const keys = require("./config/keys");
+const cookieSession = require("cookie-session");
+const passport = require("passport");
 const cors = require("cors");
 
 
@@ -15,14 +15,10 @@ const app = express();
 
 app.use(cors());
 
-// app.use(expressSession({
-//   secret: [keys.expresssession.expressSecret]
-// }));
-
-// app.use(cookieSession({
-//   maxAge: 24*60*60*1000,
-//   keys: [keys.cookiesession.cookieKey]
-// }));
+app.use(cookieSession({
+  maxAge: 24*60*60*1000,
+  keys: [keys.cookiesession.cookieKey]
+}));
 
 const PORT = process.env.PORT || 3001;
 
@@ -44,8 +40,9 @@ if (process.env.NODE_ENV === "production") {
 
 // use routes
 app.use(routes);
-// app.use("/oauth", oauthRoutes);
-// app.use("/local", createdUserRoutes);
+app.use("/oauth", oauthRoutes);
+app.use("/local", createdUserRoutes);
+app.use("/profile", profileRoutes);
 
 
 // Connect to Mongo DB
