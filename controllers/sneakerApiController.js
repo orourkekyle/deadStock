@@ -74,7 +74,9 @@ module.exports = {
                 // console.log("result: ", result);
                 return res.json(result);
             })
-            .catch(err => res.status(422).json(err));
-
-    }
+            .catch(err => {
+                console.log("hitting the catch err res status 422 ---->", res)
+                 res.status(422).json(err)
+    })
+ }
 }

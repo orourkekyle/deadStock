@@ -9,7 +9,7 @@ function Shoe({ shoe, brand, gender, year, image, colorway, price }) {
         {/* <Row className="fluid"> */ }
         {/* // <Col size="sm-5"> */}
         <Card className="border border-danger">
-            <Card.Body>
+            <Card.Body className="text-dark">
                 <Card.Title>{shoe}</Card.Title>
                 <Card.Text>Brand: {brand}</Card.Text>
                 <Card.Text>Gender: {gender} Year: {year}</Card.Text>

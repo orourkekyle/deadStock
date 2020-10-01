@@ -18,34 +18,21 @@ class Browsing extends Component {
         brand: "nike",
         gender: "women",
         releaseYear: "",
-        message: "Search For A Sneaker To Begin"
+        message: "Search For A Sneaker To Begin",
+        order: 'asc'
     };
 
-    clickHandler = order => {
-        switch(order) {
-            case 'asc': return this.setState({data: this.state.data.sort((a, b) => a-b)})
+    // function on button click to sort. Will have to change so that it takes this.state (i think?) and sort based of selected value of menu
+    clickHandler = () => {
         
-             case 'desc': return this.setState({data: this.state.data.sort((a, b) => b - a) })
+        switch(this.state.order) {
+            case 'asc':  
+              this.setState({data: this.state.sneakers.sort((a, b) => a.retailPrice - b.retailPrice), order: 'desc'});
+              break;
+            case 'desc': 
+              this.setState({data: this.state.sneakers.sort((a, b) => b.retailPrice - a.retailPrice), order: 'asc' });
+              break;
         }
-    };
-
-
-    // componentDidMount(){
-    //     const {sneakers, releaseYear} = this.state;
-    //     releaseYear = sneakers.map(p => p.releaseYear.substr(3));
-    //     this.setState({ releaseYear })
-    // }
-
-    sortAscending = () => {
-        const {releaseYear} = this.state;
-        releaseYear.sort((a,b) => a - b)
-        this.setState({ releaseYear })
-    };
-
-    sortDescending = () => {
-        const {releaseYear} = this.state;
-        releaseYear.sort((a, b) => a -b).reverse()
-        this.setState({ releaseYear})
     };
 
 
@@ -109,6 +96,7 @@ class Browsing extends Component {
             // place to hold results (i.e. a list or grid or both)
 
             <div>
+                
 
                 <Container>
                     {/* <Nav /> */}
@@ -164,9 +152,21 @@ class Browsing extends Component {
                     </Row>
 
                 </Container>
+            
 
 
                 <div className="shoe-container">
+                    {/* create select menu to select sort types add button on click takes the selected sort type and then applies it */}
+                    {/* need to create component for dropdown menu */}
+                <select name="gender" className="custom-select" aria-labelledby="dropdownMenuButton" onChange={this.handleInputChange}>
+                                    <option defaultValue="retailPrice">Retail Price</option>
+                                    <option value="gender">Gender</option>
+                                    <option value="brand">Brand</option>
+                                    <option value="releaseYear">Preschool</option>
+                                    <option value="men">Men</option>
+                                    <option value="infant">Infant</option>
+                                    <option value="child">Child</option>
+                </select>
                 <button onClick={this.clickHandler}>sort</button>
                     <h1 style={{ margin: "left" }}>Search Results</h1>
                     {this.state.sneakers.length ? (
