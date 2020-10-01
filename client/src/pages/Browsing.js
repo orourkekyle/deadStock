@@ -27,9 +27,9 @@ class Browsing extends Component {
 
     // you want order, variables, and attribute you want to sort by.
     // function on button click to sort. Will have to change so that it takes this.state (i think?) and sort based of selected value of menu
-   
-   
-    
+
+
+
     sortPriceDesc = () => {
         switch (this.state.order) {
             case 'asc':
@@ -43,7 +43,7 @@ class Browsing extends Component {
             case 'desc':
                 this.setState({ sneakers: this.state.sneakers.sort((a, b) => b.retailPrice - a.retailPrice), order: 'asc' });
                 break;
-        }  
+        }
     }
 
     sortYearAsc = () => {
@@ -56,7 +56,7 @@ class Browsing extends Component {
     sortYearDsc = () => {
         switch (this.state.order) {
             case 'asc':
-                this.setState({ sneakers: this.state.sneakers.sort((a, b) => b.year -a.year), order: 'desc'});
+                this.setState({ sneakers: this.state.sneakers.sort((a, b) => b.year - a.year), order: 'desc' });
         }
     }
 
@@ -117,81 +117,67 @@ class Browsing extends Component {
             // nav bar to navigate to diff pages
             // jumbotron (or something similar) to hold search form
             // search form
-            // place to hold results (i.e. a list or grid or both)
-
-            <div>
+            // place to hold results (i.e. a list or grid or both
 
 
-                <Container>
-                    {/* <Nav /> */}
+            <Container>
+                {/* <Nav /> */}
+                <Row>
+                    <Col className="shoe-container" size="md-12 sm-12">
+                        <form>
+                            <Input
+                                onChange={this.handleInputChange}
+                                name="shoeName"
+                                placeholder="Shoe name"
+                            />
+
+                            <Input
+                                onChange={this.handleInputChange}
+                                name="colorway"
+                                placeholder="colorway"
+                            />
+                            <Input
+                                onChange={this.handleInputChange}
+                                name="releaseYear"
+                                placeholder="Release Year"
+                            />
+
+                            <SelectBrand
+                                placeholder="brand"
+                                onChange={this.handleInputChange}
+                                name="brand"
+                            />
+
+                            <SelectGender
+                                placeholder="gender"
+                                onChange={this.handleInputChange}
+                                name="gender"
+
+                            />
+
+                            <div style={{}}>
+                                <FormBtn onClick={this.handleSearch}> Search </FormBtn>
+                            </div>
+                        </form>
+                    </Col>
+                </Row>
+
+                {/* create select menu to select sort types add button on click takes the selected sort type and then applies it */}
+                {/* need to create component for dropdown menu */}
+
+                {/* keep button functions within page but move buttons to components so that we can style it */}
+                <button onClick={this.sortYearAsc}>Sort  Oldest to Newest</button>
+                <button onClick={this.sortYearDsc}>Sort Newest to Oldest</button>
+                <button onClick={this.sortPriceAsc}>Sort Price low to high</button>
+                <button onClick={this.sortPriceDesc}>Sort High to Low</button>
+
+                <h1>Search Results</h1>
+                {this.state.sneakers.length ? (
                     <Row>
-                        <Col size="md-12">
-                            <form style={{ justifyContent: "center", textAlign: "center" }}>
-                                <Input
-                                    onChange={this.handleInputChange}
-                                    name="shoeName"
-                                    placeholder="Shoe name"
-                                />
-
-                                 <Input
-                                    onChange={this.handleInputChange}
-                                    name="colorway"
-                                    placeholder="colorway"
-                                />
-                                   <Input
-                                    onChange={this.handleInputChange}
-                                    name="releaseYear"
-                                    placeholder="Release Year"
-                                />
-
-                                <SelectBrand
-                                    placeholder="brand"
-                                    onChange={this.handleInputChange}
-                                    name="brand"
-                                />
-
-                                <SelectGender
-                                    placeholder="gender"
-                                    onChange={this.handleInputChange}
-                                    name="gender"
-
-                                />  
-                               
-                                <div style={{}}>
-                                    <FormBtn
-                                        onClick={this.handleSearch}
-                                    >
-                                        Search
-
-                                </FormBtn>
-                                </div>
-                            </form>
-                        </Col>
-                    </Row>
-
-                </Container>
-
-
-                
-
-
-                <Container style={{justifyContent: 'center', textAlign: 'center'}}>
-                   
-                    {/* create select menu to select sort types add button on click takes the selected sort type and then applies it */}
-                    {/* need to create component for dropdown menu */}
-                   
-                   {/* keep button functions within page but move buttons to components so that we can style it */}
-                    <button onClick={this.sortYearAsc}>Sort  Oldest to Newest</button>
-                    <button onClick={this.sortYearDsc}>Sort Newest to Oldest</button>
-                    <button onClick={this.sortPriceAsc}>Sort Price low to high</button>
-                    <button onClick={this.sortPriceDesc}>Sort High to Low</button>
-
-                    <h1>Search Results</h1>
-                    {this.state.sneakers.length ? (
-                     <Row>
-                        <CardDeck >
+                        <Col size="md-12 sm-12">
+                        <CardDeck style={{display: 'flex'}}>
                             {this.state.sneakers.map(sneaker => (
-                                <Shoe
+                                <Shoe 
                                     key={sneaker.id}
                                     shoe={sneaker.shoe}
                                     colorway={sneaker.colorway}
@@ -209,13 +195,14 @@ class Browsing extends Component {
                                 />
                             ))}
                         </CardDeck>
+                        </Col>
                     </Row>
-                    ) : (
-                            <h2 className="text-center">Search shoes for results</h2>
-                        )}
-                    
-                </Container>
-            </div>
+
+                ) : (
+                        <h2 className="text-center">Search shoes for results</h2>
+                    )}
+            </Container>
+
         );
     }
 }

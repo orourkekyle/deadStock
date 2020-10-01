@@ -1,7 +1,7 @@
-div {
-
+Card {
     height: auto;
-    max-height: 250px;
     width: auto;
-    max-width: 250px;
+    max-width: 350;
+    max-height: 350;
+
 }
