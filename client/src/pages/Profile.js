@@ -1,34 +1,80 @@
 // put together profile components
-import React from "react";
-import { Col, Container, Row } from "../components/Grid";
-// import API from "../utils/API";
+import React, { Component } from "react";
+import { Container } from "../components/Grid";
+import API from "../utils/API";
+import CardColumns from "react-bootstrap/CardColumns";
+import Shoe from "../components/Shoe";
 
-function Profile(){
+class Profile extends Component{
+    state = {
+        wishlist: [],
+        message: "Add Sneakers To Your Wishlist"
+    };
 
-    // const create = function(req, res) {
-    //     db.CreateUser
-    //         .create(req.body)
-    //         .then(dbModel => res.json(dbModel))
-    //         .catch(err => res.status(422).json(err));
-    // }
+    componentDidMount = () => {
+        return this.loadUserWishlist();
+    };
 
-    // const findById = function(req, res) {
-    //     db.CreateUser  
-    //         .findById(req.params.id)
-    //         .then(dbModel => res.json(dbModel))
-    //         .catch(err => res.status(422).json(err))
-    // }
+    loadUserWishlist = () => {
+        API.getWishlist()
+            .then(res => {
+                console.log("res.data - inside profile: ", res.data);
+                return this.setState({
+                    wishlist: res.data
+                });
+            })
+            .catch(() =>
+                this.setState({
+                    wishlist: [],
+                    message: "No Sneakers Found"
+                })
+            );
+    };
+
+    removeSneaker = id => {
+        API.deleteSneaker(id)
+            .then(res => {
+                // returns html not json
+                console.log(" res.data - inside removeSneaker: ", res.data);
+                // returns proper id
+                console.log("id - inside removeSneaker: ", id);
+                return this.loadUserWishlist();
+            })
+            .catch(err => console.log(err));
+    }
 
 
-    return (
-        <Container>
-            <Row>
-                <Col size="md-8">
-
-                </Col>
-            </Row>
-        </Container>
-    )
+    render() {
+        return (
+            <Container>
+                {/* <Row> */}
+                    {this.state.wishlist.length ? (
+                        <CardColumns size="md-8">
+                            {this.state.wishlist.map(sneakers => (
+                                <Shoe 
+                                    key={sneakers.sneakerId}
+                                    shoe={sneakers.shoeName}
+                                    colorway={sneakers.colorway}
+                                    brand={sneakers.brand}
+                                    price={sneakers.retailPrice}
+                                    gender={sneakers.gender}
+                                    year={sneakers.year}
+                                    image={sneakers.image}
+                                    Button={() => (
+                                        <button
+                                            onClick={() => this.removeSneaker(sneakers._id)}
+                                            id="delete-sneaker">Remove From Wishlist</button>
+                                    )}
+                                />
+                            ))}
+                        </CardColumns>
+                    ) : (
+                        <h1>You Don't Have Any Sneakers In Your Wishlist</h1>
+                    )}
+                {/* </Row> */}
+            </Container>
+        )
+    }
 }
 
 

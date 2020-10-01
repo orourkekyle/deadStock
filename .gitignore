@@ -2,6 +2,7 @@ node_modules
 .env
 ds_store
 keys.js
+.vscode
 
 # Logs
 logs

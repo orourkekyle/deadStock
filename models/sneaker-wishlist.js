@@ -18,7 +18,7 @@ const wishlistSchema = new Schema({
         type: String,
         required: true
     },
-    reatailPrice: {
+    retailPrice: {
         type: Number,
         required: true
     },
