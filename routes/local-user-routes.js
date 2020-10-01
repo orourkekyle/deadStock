@@ -18,6 +18,9 @@ router
 function(req, res) {
     res.redirect("/profile")
 })
+// router
+// .route("/createuser")
+// .post(passport.authenticate("local", { successRedirect: "/profile", failureRedirect: "/signup" }))
 
 router
 .route("/getuser")

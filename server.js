@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const oauthRoutes = require("./routes/oauth-routes");
 const profileRoutes = require("./routes/profile-routes");
-const createdUserRoutes = require("./routes/create-user-routes");
+const localRoutes = require("./routes/local-user-routes");
 const keys = require("./config/keys");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
@@ -41,10 +41,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // use routes
-app.use(routes);
 app.use("/oauth", oauthRoutes);
-app.use("/local", createdUserRoutes);
+app.use("/local", localRoutes);
 app.use("/profile", profileRoutes);
+app.use(routes);
 
 
 // Connect to Mongo DB

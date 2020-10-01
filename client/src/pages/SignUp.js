@@ -19,9 +19,12 @@ class SignUp extends Component {
     };
 
     makeUser = () => {
+        console.log("username: ", this.state.username);
+        console.log("password: ", this.state.password);
         API.createLocalUser(this.state.username, this.state.password)
             .then(res => {
                 console.log("res: ", res);
+                // const { name, value } = event.target
                 // return this.setState({
                 //     [name]: value
                 // })
@@ -29,7 +32,7 @@ class SignUp extends Component {
     };
 
     handleFormSubmit = event => {
-        // event.preventDefault();
+        event.preventDefault();
         this.makeUser();
     }
 

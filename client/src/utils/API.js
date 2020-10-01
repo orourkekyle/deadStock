@@ -12,7 +12,7 @@ export default {
 
     // local auth routes
     createLocalUser: function(username, password) {
-        return axios.post("/local/createuser")
+        return axios.post("/local/createuser", { username, password })
     },
     getLocalUser: function() {
         return axios.get("/local/getuser")
