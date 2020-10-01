@@ -11,8 +11,11 @@ export default {
     // },
 
     // local auth routes
-    getLocalAuth: function() {
-        return axios.get("/local/createuser")
+    createLocalUser: function(username, password) {
+        return axios.post("/local/createuser")
+    },
+    getLocalUser: function() {
+        return axios.get("/local/getuser")
     },
 
     // sneaker api get route
