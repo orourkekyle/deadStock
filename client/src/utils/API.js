@@ -6,9 +6,13 @@ export default {
     getGoogleAuth: function() {
         return axios.get("/oauth/google")
     },
-    // googleRedirect: function() {
-    //     return axios.get("/auth/google/redirect")
-    // },
+
+
+
+    // sneaker api get route
+    getSneakers: function(shoeName, brand, gender, releaseYear, colorway) {
+        return axios.get("/api/sneakers", { params: {shoeName, brand, gender, releaseYear, colorway}});
+    
 
     // local auth routes
     getLocalAuth: function() {

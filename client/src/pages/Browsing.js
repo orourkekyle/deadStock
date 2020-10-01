@@ -5,11 +5,11 @@ import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 // import { List } from "../components/List";
 import Shoe from "../components/Shoe";
-// import { Demo } from "../components/Nav";
-// import { Nav } from 'rsuite';
 import CardColumns from "react-bootstrap/CardColumns";
-// import Card from "react-bootstrap/Card";
 
+import Card from "react-bootstrap/Card";
+import SelectGender from "../components/SelectGender";
+import SelectBrand from "../components/SelectBrand";
 
 class Browsing extends Component {
     // start state
@@ -19,8 +19,51 @@ class Browsing extends Component {
         brand: "",
         gender: "",
         releaseYear: "",
-        message: "Search For A Sneaker To Begin"
+        colorway: "",
+        message: "Search For A Sneaker To Begin",
+        order: 'asc'
+
     };
+
+
+
+    // you want order, variables, and attribute you want to sort by.
+    // function on button click to sort. Will have to change so that it takes this.state (i think?) and sort based of selected value of menu
+   
+    
+    sortPriceDesc = () => {
+        switch (this.state.order) {
+            case 'asc':
+                this.setState({ sneakers: this.state.sneakers.sort((a, b) => a.retailPrice - b.retailPrice), order: 'desc' });
+                break;
+        }
+    }
+
+    sortPriceAsc = () => {
+        switch (this.state.order) {
+            case 'desc':
+                this.setState({ sneakers: this.state.sneakers.sort((a, b) => b.retailPrice - a.retailPrice), order: 'asc' });
+                break;
+        }  
+    }
+
+    sortYearAsc = () => {
+        switch (this.state.order) {
+            case 'desc':
+                this.setState({ sneakers: this.state.sneakers.sort((a, b) => a.year - b.year), order: 'asc' });
+        }
+    }
+
+    sortYearDsc = () => {
+        switch (this.state.order) {
+            case 'asc':
+                this.setState({ sneakers: this.state.sneakers.sort((a, b) => b.year -a.year), order: 'desc'});
+        }
+    }
+
+    
+
+
 
     // register what gets put into input fields
     handleInputChange = event => {
@@ -32,7 +75,7 @@ class Browsing extends Component {
 
     // get sneakers from external api based on search
     getSneakers = () => {
-        API.getSneakers(this.state.shoeName, this.state.brand, this.state.gender, this.state.releaseYear)
+        API.getSneakers(this.state.shoeName, this.state.brand, this.state.gender, this.state.releaseYear, this.state.colorway)
             .then(res => {
                 console.log("res.data inside getSneakers call: ", res.data);
                 return this.setState({
@@ -71,6 +114,7 @@ class Browsing extends Component {
     }
 
     render() {
+
         return (
             // what we need:
             // container for full page
@@ -80,6 +124,7 @@ class Browsing extends Component {
             // place to hold results (i.e. a list or grid or both)
 
             <div>
+
 
                 <Container>
                     {/* <Nav /> */}
@@ -91,20 +136,27 @@ class Browsing extends Component {
                                     name="shoeName"
                                     placeholder="Shoe name"
                                 />
-                                <Input
+
+                                <SelectBrand
                                     onChange={this.handleInputChange}
                                     name="brand"
-                                    placeholder="Brand"
                                 />
-                                <Input
+
+                                <SelectGender
                                     onChange={this.handleInputChange}
                                     name="gender"
-                                    placeholder="Gender"
+
+                                />
+
+                                <Input
+                                    onChange={this.handleInputChange}
+                                    name="releaseYear"
+                                    placeholder="Release Year"
                                 />
                                 <Input
                                     onChange={this.handleInputChange}
-                                    name="year"
-                                    placeholder="Release Year"
+                                    name="colorway"
+                                    placeholder="colorway"
                                 />
                                 <div style={{}}>
                                     <FormBtn
@@ -121,8 +173,16 @@ class Browsing extends Component {
                 </Container>
 
 
+
                 <div className="shoe-container">
                     {/* <Row> */}
+
+                
+                    <button onClick={this.sortYearAsc}>Sort  Oldest to Newest</button>
+                    <button onClick={this.sortYearDsc}>Sort Newest to Oldest</button>
+                    <button onClick={this.sortPriceAsc}>Sort Price low to high</button>
+                    <button onClick={this.sortPriceDesc}>Sort High to Low</button>
+
                         <h1 style={{ margin: "left" }}>Search Results</h1>
                         {this.state.sneakers.length ? (
                             <CardColumns size="sm-4">
@@ -147,6 +207,7 @@ class Browsing extends Component {
                         ) : (
                                 <h2 className="text-center">Search shoes for results</h2>
                             )}
+
                     {/* </Row> */}
                 </div>
             </div>

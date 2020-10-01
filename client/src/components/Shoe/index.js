@@ -6,6 +6,7 @@ import Card from "react-bootstrap/Card";
 function Shoe({ shoe, brand, gender, year, image, colorway, price,  Button}) {
     return (
         <React.Fragment>
+
             <Card className="border border-danger">
                 <Card.Body>
                     <Card.Title>{shoe}</Card.Title>
@@ -19,6 +20,7 @@ function Shoe({ shoe, brand, gender, year, image, colorway, price,  Button}) {
             </Card>
         </React.Fragment>
     )
+
 }
 
 export default Shoe;
