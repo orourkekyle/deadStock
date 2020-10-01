@@ -3,7 +3,9 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+
     /* object-fit: cover; */
+
 }
 
 .container {

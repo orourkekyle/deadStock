@@ -6,7 +6,7 @@ import { Input, FormBtn } from "../components/Form";
 // import { List } from "../components/List";
 import Shoe from "../components/Shoe";
 // import { Demo } from "../components/Nav";
-import { Nav } from 'rsuite';
+// import { Nav } from 'rsuite';
 import CardColumns from "react-bootstrap/CardColumns";
 // import Card from "react-bootstrap/Card";
 
@@ -78,10 +78,11 @@ class Browsing extends Component {
             // jumbotron (or something similar) to hold search form
             // search form
             // place to hold results (i.e. a list or grid or both)
+
             <div>
 
                 <Container>
-                    <Nav />
+                    {/* <Nav /> */}
                     <Row>
                         <Col size="md-8">
                             <form style={{ justifyContent: "center", textAlign: "center" }}>
@@ -110,6 +111,7 @@ class Browsing extends Component {
                                         onClick={this.handleSearch}
                                     >
                                         Search
+
                                 </FormBtn>
                                 </div>
                             </form>

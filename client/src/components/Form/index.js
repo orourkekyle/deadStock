@@ -4,7 +4,7 @@ import './style.css';
 export function Input(props) {
     return (
         <div className="form-group">
-            <textarea className="form-control" {...props} />
+            <input className="form-control" {...props} />
         </div>
     );
 }
