@@ -1,15 +1,17 @@
 // put together our login components (similar to signup)
 import React from "react";
-import API from "../utils/API";
+// import API from "../utils/API";
 import "./Login.css";
 import { Container, Row, Col } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 import { Link } from "react-router-dom";
 
 function Login() {
-    function doGoogleAuth(){
-        API.getGoogleAuth();
-    }
+    // function doGoogleAuth(){
+    //     API.getGoogleAuth();
+    // }
+
+    let loginPath = "http://localhost:3001/oauth/google";
 
     return (
         <Container fluid >
@@ -35,11 +37,16 @@ function Login() {
                     >
                         login
                     </FormBtn>
-                    <FormBtn
+                    <a className="nav-link" as='a' href={loginPath}>
+                        <button type="button" className="btn btn-gplus btn-danger">
+                            <i className="fab fa-google-plus-g pr-1">Google</i>
+                        </button>
+                    </a>
+                    {/* <FormBtn
                         onClick={doGoogleAuth}
                     >
                         Google
-                    </FormBtn>
+                    </FormBtn> */}
                     <FormBtn>
                         <Link to={"/signup"}>
                         signup

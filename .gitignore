@@ -2,6 +2,7 @@ node_modules
 .env
 ds_store
 keys.js
+.vscode
 
 # Logs
 logs
@@ -40,6 +41,7 @@ bower_components
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
+build
 
 # Dependency directories
 node_modules/

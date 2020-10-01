@@ -2,23 +2,18 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const oauthRoutes = require("./routes/oauth-routes");
-// const profileRoutes = require("./routes/profile-routes");
+const profileRoutes = require("./routes/profile-routes");
 const createdUserRoutes = require("./routes/create-user-routes");
 const passportStrategies = require("./config/passport");
 const keys = require("./config/keys");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const cors = require("cors");
-const { GoogleUser } = require("./models");
 
 
 const app = express();
 
 app.use(cors());
-
-// app.use(expressSession({
-//   secret: [keys.expresssession.expressSecret]
-// }));
 
 app.use(cookieSession({
   maxAge: 24*60*60*1000,
@@ -33,21 +28,21 @@ app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-}
+};
+
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "client/build", "index.html"));
+// });
 
 // We need to use sessions to keep track of our user's login status
-// passport.use("strategies", passportStrategies);
-// passport.use("google", GoogleStrategy);
-// passport.use("local", LocalStrategy);
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // use routes
 app.use(routes);
 app.use("/oauth", oauthRoutes);
 app.use("/local", createdUserRoutes);
-
-
+app.use("/profile", profileRoutes);
 
 
 // Connect to Mongo DB

@@ -39,8 +39,9 @@ router
 router
 .route('/google/redirect')
 .get(passport.authenticate("google"), (req, res) => {
-    // let redirectPath + 
-    res.redirect('/profile');
+ let redirectPath = "http://localhost:3000"
+ redirectPath = `${redirectPath}/profile`;
+ res.redirect(redirectPath)
 })
 
 module.exports = router;

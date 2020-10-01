@@ -1,61 +1,63 @@
 import React from 'react';
-import { Col, Row } from "../Grid";
-import './style.css';
-// import { render } from 'react-dom';
-import { Nav } from 'rsuite';
+import {
+  Navbar,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  NavbarText
+} from 'reactstrap';
 
-// const styles = { width: 100, position: 'relative', zIndex: '2' };
+const Navy = (props) => {
+  // const [isOpen, setIsOpen] = useState(false);
 
-const CustomNav = ({ active, onSelect, ...props }) => {
+  // const toggle = () => setIsOpen(!isOpen);
+
   return (
-    <Nav {...props} vertical activeKey={active} onSelect={onSelect} style={{position: 'relative', zIndex: '2', width: 100}}>
-      <Nav.Item eventKey="home">
-        Home
-      </Nav.Item>
-      <Nav.Item eventKey="news">News</Nav.Item>
-      <Nav.Item eventKey="solutions">Solutions</Nav.Item>
-      <Nav.Item eventKey="products">Products</Nav.Item>
-      <Nav.Item eventKey="about">About</Nav.Item>
-    </Nav>
+    <div>
+      <Navbar color="light" light expand="md">
+        <NavbarBrand href="/">Navigation</NavbarBrand>
+
+          <Nav className="mr-auto" navbar>
+            <NavItem>
+              <NavLink href="/login">Login</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/signup">Sign Up</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/browsing">Browse Sneakers</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/profile">Profile</NavLink>
+            </NavItem>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Options
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem>
+                  Option 1
+                </DropdownItem>
+                <DropdownItem>
+                  Option 2
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>
+                  Reset
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+          </Nav>
+          <NavbarText>Simple Text</NavbarText>
+
+      </Navbar>
+    </div>
   );
-};
-
-class Demo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      active: 'home'
-    };
-    this.handleSelect = this.handleSelect.bind(this);
-  }
-  handleSelect(activeKey) {
-    this.setState({ active: activeKey });
-  }
-  render() {
-    const { active } = this.state;
-    return (
-      <Row>
-        <Col md={4}>
-          <CustomNav active={active} onSelect={this.handleSelect} />
-        </Col>
-
-        <Col md={6}>
-          <CustomNav appearance="tabs" active={active} onSelect={this.handleSelect} />
-        </Col>
-        <Col md={4}>
-          <CustomNav appearance="tabs" reversed active={active} onSelect={this.handleSelect} />
-        </Col>
-        <Col md={6}>
-          <CustomNav appearance="subtle" active={active} onSelect={this.handleSelect} />
-        </Col>
-        <Col md={4}>
-          <CustomNav appearance="subtle" reversed active={active} onSelect={this.handleSelect} />
-        </Col>
-      </Row>
-    );
-  }
 }
 
-// ReactDOM.render(<Demo />);
-
-export default Demo;
+export default Navy;

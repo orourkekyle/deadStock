@@ -3,12 +3,14 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
-import { List } from "../components/List";
+// import { List } from "../components/List";
 import Shoe from "../components/Shoe";
 import CardColumns from "react-bootstrap/CardColumns";
+
 import Card from "react-bootstrap/Card";
 import SelectGender from "../components/SelectGender";
 import SelectBrand from "../components/SelectBrand";
+
 class Browsing extends Component {
     // start state
     state = {
@@ -96,7 +98,7 @@ class Browsing extends Component {
 
     //  register save functionality
     handleSneakerSave = id => {
-        const sneaker = this.state.sneakers.find(sneaker => sneaker.id);
+        const sneaker = this.state.sneakers.find(sneaker => sneaker.id === id);
 
         API.saveSneaker({
             sneakerId: sneaker.id,
@@ -107,7 +109,7 @@ class Browsing extends Component {
             retailPrice: sneaker.retailPrice,
             year: sneaker.year,
             image: sneaker.media.thumbUrl
-        }).then(() => this.getSneakers());
+        }).then(() => console.log("Saved Shoe to Wishlist!"));
 
     }
 
@@ -173,39 +175,38 @@ class Browsing extends Component {
 
 
                 <div className="shoe-container">
-                    {/* create select menu to select sort types add button on click takes the selected sort type and then applies it */}
-                    {/* need to create component for dropdown menu */}
-                   
+                    {/* <Row> */}
+
+                
                     <button onClick={this.sortYearAsc}>Sort  Oldest to Newest</button>
                     <button onClick={this.sortYearDsc}>Sort Newest to Oldest</button>
                     <button onClick={this.sortPriceAsc}>Sort Price low to high</button>
                     <button onClick={this.sortPriceDesc}>Sort High to Low</button>
-                    <h1 style={{ margin: "left" }}>Search Results</h1>
-                    {this.state.sneakers.length ? (
-                        <CardColumns size="sm-4">
-                            {this.state.sneakers.map(sneaker => (
-                                <Shoe
-                                    key={sneaker.id}
-                                    shoe={sneaker.shoe}
-                                    colorway={sneaker.colorway}
-                                    brand={sneaker.brand}
-                                    colorway={sneaker.colorway}
-                                    price={sneaker.retailPrice}
-                                    gender={sneaker.gender}
-                                    year={sneaker.year}
-                                    image={sneaker.media.thumbUrl}
-                                    Button={() => (
-                                        <button
-                                            onClick={() => this.handleSneakerSave(sneaker.id)}
-                                            id="save-btn" >Save</button>
-                                    )}
-                                />
-                            ))}
-                        </CardColumns>
-                    ) : (
-                            <h2 className="text-center">Search shoes for results</h2>
-                        )}
-                    {/* </Col> */}
+
+                        <h1 style={{ margin: "left" }}>Search Results</h1>
+                        {this.state.sneakers.length ? (
+                            <CardColumns size="sm-4">
+                                {this.state.sneakers.map(sneaker => (
+                                    <Shoe
+                                        key={sneaker.id}
+                                        shoe={sneaker.shoe}
+                                        colorway={sneaker.colorway}
+                                        brand={sneaker.brand}
+                                        price={sneaker.retailPrice}
+                                        gender={sneaker.gender}
+                                        year={sneaker.year}
+                                        image={sneaker.media.thumbUrl}
+                                        Button={() => (
+                                            <button
+                                                onClick={() => this.handleSneakerSave(sneaker.id)}
+                                                id="save-btn" >Save</button>
+                                        )}
+                                    />
+                                ))}
+                            </CardColumns>
+                        ) : (
+                                <h2 className="text-center">Search shoes for results</h2>
+                            )}
 
                     {/* </Row> */}
                 </div>
