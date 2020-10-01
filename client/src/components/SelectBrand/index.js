@@ -4,7 +4,7 @@ import React from "react";
 export default function SelectBrand(props) {
     return (
         <select name="brand" className="custom-select" aria-labelledby="dropdownMenuButton" {...props}>
-            <option defaultValue=""></option>
+            <option placeholder="Search by Brand"defaultValue="">Search by Brand</option>
             <option value="nike">Nike</option>
             <option value="puma">Puma</option>
             <option value="vans">Vans</option>

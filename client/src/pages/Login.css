@@ -1,6 +1,6 @@
 body {
     background-image: url(../images/IMG_4107.JPG);
-    /* background-size: cover; */
+    background-size: cover;
     background-attachment: fixed;
     background-position: center;
 }
