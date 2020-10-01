@@ -25,20 +25,41 @@ class Browsing extends Component {
 
 
 
-
+    // you want order, variables, and attribute you want to sort by.
     // function on button click to sort. Will have to change so that it takes this.state (i think?) and sort based of selected value of menu
-    sortHandler = (handleInputChange) => {
-     
+   
+    
+    sortPriceDesc = () => {
         switch (this.state.order) {
             case 'asc':
-                this.setState({ data: this.state.sneakers.sort((a, b) => a.retailPrice - b.retailPrice), order: 'desc' });
-                break;
-            case 'desc':
-                this.setState({ data: this.state.sneakers.sort((a, b) => b.retailPrice - a.retailPrice), order: 'asc' });
+                this.setState({ sneakers: this.state.sneakers.sort((a, b) => a.retailPrice - b.retailPrice), order: 'desc' });
                 break;
         }
     }
 
+    sortPriceAsc = () => {
+        switch (this.state.order) {
+            case 'desc':
+                this.setState({ sneakers: this.state.sneakers.sort((a, b) => b.retailPrice - a.retailPrice), order: 'asc' });
+                break;
+        }  
+    }
+
+    sortYearAsc = () => {
+        switch (this.state.order) {
+            case 'desc':
+                this.setState({ sneakers: this.state.sneakers.sort((a, b) => a.year - b.year), order: 'asc' });
+        }
+    }
+
+    sortYearDsc = () => {
+        switch (this.state.order) {
+            case 'asc':
+                this.setState({ sneakers: this.state.sneakers.sort((a, b) => b.year -a.year), order: 'desc'});
+        }
+    }
+
+    
 
 
 
@@ -154,14 +175,11 @@ class Browsing extends Component {
                 <div className="shoe-container">
                     {/* create select menu to select sort types add button on click takes the selected sort type and then applies it */}
                     {/* need to create component for dropdown menu */}
-                    <select name="gender" className="custom-select" aria-labelledby="dropdownMenuButton" onChange={this.sortHandler}>
-                        <option defaultValue="retailPrice">Retail Price</option>
-                        <option value="gender">Gender</option>
-                        <option value="colorway">Color</option>
-                        <option value="releaseYear">Release Year</option>
-
-                    </select>
-                    <button onClick={this.sortHandler}>sort</button>
+                   
+                    <button onClick={this.sortYearAsc}>Sort  Oldest to Newest</button>
+                    <button onClick={this.sortYearDsc}>Sort Newest to Oldest</button>
+                    <button onClick={this.sortPriceAsc}>Sort Price low to high</button>
+                    <button onClick={this.sortPriceDesc}>Sort High to Low</button>
                     <h1 style={{ margin: "left" }}>Search Results</h1>
                     {this.state.sneakers.length ? (
                         <CardColumns size="sm-4">
