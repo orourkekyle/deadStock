@@ -119,12 +119,13 @@ class Browsing extends Component {
             // search form
             // place to hold results (i.e. a list or grid or both
 
-
+            
             <Container>
                 {/* <Nav /> */}
-                <Row>
-                    <Col className="shoe-container" size="md-12 sm-12">
-                        <form>
+              <Row>
+                    <Col className="shoe-container" size="md-6 col-md-offset-3">
+                        
+                        <form >
                             <Input
                                 onChange={this.handleInputChange}
                                 name="shoeName"
@@ -159,8 +160,9 @@ class Browsing extends Component {
                                 <FormBtn onClick={this.handleSearch}> Search </FormBtn>
                             </div>
                         </form>
+                       
                     </Col>
-                </Row>
+                    </Row>
 
                 {/* create select menu to select sort types add button on click takes the selected sort type and then applies it */}
                 {/* need to create component for dropdown menu */}
@@ -174,8 +176,8 @@ class Browsing extends Component {
                 <h1>Search Results</h1>
                 {this.state.sneakers.length ? (
                     <Row>
-                        <Col size="md-12 sm-12">
-                        <CardDeck style={{display: 'flex'}}>
+                        <Col size="md-12 sm-12" style={{display: 'flex'}}>
+                        <CardDeck >
                             {this.state.sneakers.map(sneaker => (
                                 <Shoe 
                                     key={sneaker.id}

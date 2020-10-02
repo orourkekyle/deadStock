@@ -1,7 +1,16 @@
-Card {
-    height: auto;
-    width: auto;
-    max-width: 350;
-    max-height: 350;
+.border {
+    border-width: 5px;
+    border-style: groove;
+    border-color: green;
+
+}
+
+.card-text {
+    color: black;
+}
+
+.shoe-container {
+
+    justify-content: center;
 
 }
