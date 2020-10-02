@@ -1,23 +1,23 @@
 import React from "react";
 // import { ListItem } from "../List";
 // import { Row, Col } from "../Grid";
-import Card from "react-bootstrap/Card";
+import{Card, CardImg, CardText, CardBody, CardTitle, Button, CardBlock}from "reactstrap";
 import "../Shoe/style.css";
 
 function Shoe({ shoe, brand, gender, year, image, colorway, price,  Button}) {
     return (
         <div>
         {/* <React.Fragment> */}
-            <Card>
-                <Card.Body  style={{height: '30rem', width: '14rem'}}>
-                    <Card.Title>{shoe}</Card.Title>
-                    <Card.Img  src={image}  alt="shoe" />
-                    <Card.Text className="card-text" style={{textColor: 'black'}}>Brand: {brand}</Card.Text>    
-                    <Card.Text className="card-text">Gender: {gender} Year: {year}</Card.Text>
-                    <Card.Text className="card-text">Colorway: {colorway}</Card.Text>
-                    <Card.Text className="card-text">${price}</Card.Text>
+            <Card md={{size: 6, offset: 3}} >
+                <CardBody  style={{height: '30rem', width: '15rem'}}>
+                    <CardTitle>{shoe}</CardTitle>
+                    <CardImg  top width="100%" src={image}  alt="shoe" />
+                    <CardText className="card-text" style={{textColor: 'black'}}>Brand: {brand}</CardText>    
+                    <CardText className="card-text">Gender: {gender} Year: {year}</CardText>
+                    <CardText className="card-text">Colorway: {colorway}</CardText>
+                    <CardText className="card-text">${price}</CardText>
                     <Button style={{fixed: 'bottom'}} />
-                </Card.Body>
+                </CardBody>
             </Card>
         {/* </React.Fragment> */}
         </div>

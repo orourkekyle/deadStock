@@ -8,6 +8,7 @@ import Browsing from './pages/Browsing';
 import SignUp from "../src/pages/SignUp";
 // import passportSetup from "../../config/passport"
 import Navy from "./components/Nav";
+import { Button, Col, Row, Container } from 'reactstrap';
 
 function App() {
   return (

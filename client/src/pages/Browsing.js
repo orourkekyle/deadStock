@@ -1,7 +1,7 @@
 // set up browsing (through external api's) components
 import React, { Component } from "react";
 import API from "../utils/API";
-import { Row, Col, Container } from "react-bootstrap";
+import { FormGroup, Row, Col, Container } from "reactstrap";
 import { Input, FormBtn } from "../components/Form";
 import { List } from "../components/List";
 import Shoe from "../components/Shoe";
@@ -9,6 +9,7 @@ import CardDeck from "react-bootstrap/CardDeck";
 import Card from "react-bootstrap/Card";
 import SelectGender from "../components/SelectGender";
 import SelectBrand from "../components/SelectBrand";
+import "./Browsing.css";
 
 class Browsing extends Component {
     // start state
@@ -121,11 +122,17 @@ class Browsing extends Component {
             // place to hold results (i.e. a list or grid or both
 
             
-        <Container>
+        <Container className="main-container">
                 {/* <Nav /> */}
-              <Row>
-                    <Col className="shoe-container">
-                        <form>
+              <Row justifyContent='center' flex>
+                    <Col md={{size: 12}}>
+                        <FormGroup style={
+                            {
+                                flex: 1, 
+                                flexDirection: 'row',
+                                justifyContent: 'center'
+                            }
+                        } className="shoe-form">
                             <Input
                                 onChange={this.handleInputChange}
                                 name="shoeName"
@@ -155,17 +162,15 @@ class Browsing extends Component {
                                 name="gender"
 
                             />
-
                             <div>
                                 <FormBtn onClick={this.handleSearch}> Search </FormBtn>
                             </div>
-                        </form>
+                        </FormGroup>
                     </Col>
                 </Row>
                
                 {/* create select menu to select sort types add button on click takes the selected sort type and then applies it */}
                 {/* need to create component for dropdown menu */}
-
                 {/* keep button functions within page but move buttons to components so that we can style it */}
                
                 <button onClick={this.sortYearAsc}>Sort  Oldest to Newest</button>
@@ -174,11 +179,11 @@ class Browsing extends Component {
                 <button onClick={this.sortPriceDesc}>Sort High to Low</button>
 
                 <h1>Search Results</h1>
-                <Row>
+                <Row fluid>
                 {this.state.sneakers.length ? (
                    
-                        <Col size="auto">
-                        <CardDeck fluid>
+                        <Col>
+                        <CardDeck>
                             {this.state.sneakers.map(sneaker => (
                                 <Shoe 
                                     key={sneaker.id}
@@ -205,7 +210,7 @@ class Browsing extends Component {
                         <h2 className="text-center">Search shoes for results</h2>
                     )}
                     </Row>
-                    </Container>
+            </Container>
         );
         
     }
