@@ -32,7 +32,7 @@ class SignUp extends Component {
     };
 
     handleFormSubmit = event => {
-        // event.preventDefault();
+        event.preventDefault();
         this.makeUser();
     }
 

@@ -9,32 +9,29 @@ class Profile extends Component{
     state = {
         wishlist: [],
         currentUser: [],
+        totalprice: [],
         message: "Add Sneakers To Your Wishlist"
     };
 
+    // loads wishlisht on page load
     componentDidMount = () => {
         // this.getCurrentUser();
-        this.loadUserWishlist();
+        return this.loadUserWishlist();
     };
 
-    // getCurrentUser = () => {
-    //     API.getCurrentLocalUser()
-    //         .then(res => {
-    //             console.log("res.data - inside getCurrentUser: ", res.data);
-    //             this.setState({
-    //                 currentUser: res.data
-    //             });
-    //         });
-    // };
-
+    // gets the user wishlist by their googleId
     loadUserWishlist = () => {
         API.getWishlist()
             .then(res => {
                 console.log("res.data - inside loadUserWishlist: ", res.data);
+                console.log("map data sneakerPrice arr - inside loadUserWishlist: ", res.data.map(sneakers => sneakers.retailPrice));
+                 let priceArr = res.data.sneakers.map(sneakers => sneakers.retailPrice);
                 return this.setState({
-                    wishlist: res.data
+                    wishlist: res.data.sneakers,
+                    totalprice: priceArr
                 });
             })
+            .then(() => console.log("state of total price after setState: ", this.state.totalprice))
             .catch(() =>
                 this.setState({
                     wishlist: [],
@@ -43,6 +40,7 @@ class Profile extends Component{
             );
     };
 
+    // deletes sneaker from collection with googleId matching current user as well as sneaker
     removeSneaker = id => {
         API.deleteSneaker(id)
             .then(res => {
@@ -59,6 +57,14 @@ class Profile extends Component{
     render() {
         return (
             <Container>
+                {this.state.totalprice.length ? (
+                    <div>
+                        <h5>Total Wishlist Amount:</h5>
+                        <p>{this.state.totalprice.reduce((result, number) => result+number)}</p>
+                    </div>
+                ) : (
+                    <div></div>
+                )}
                 {/* <Row> */}
                     {this.state.wishlist.length ? (
                         <CardColumns size="md-8">

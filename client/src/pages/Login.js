@@ -6,9 +6,6 @@ import { Container, Row, Col } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 
 class Login extends Component {
-    // doGoogleAuth = () => {
-    //     API.getGoogleAuth();
-    // }
 
     loginPath = "http://localhost:3001/oauth/google";
 

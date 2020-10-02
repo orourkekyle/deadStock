@@ -19,14 +19,14 @@ passport.use(new LocalStrategy(
         LocalUser.findOne({ username: username }).then((currentUser) => {
             if(currentUser){
                 console.log("this is currentUser in LocalStrat cb: ", currentUser);
-                done(null, currentUser);
+                return done(null, currentUser);
             } else {
                 new LocalUser({
                     username: username,
                     password: password
                 }).save().then((newLocalUser) => {
                     console.log("this is newLocalUser: ", newLocalUser);
-                    done(null, newLocalUser);
+                    return done(null, newLocalUser);
                 })
             }
         })

@@ -36,7 +36,6 @@ const wishlistSchema = new Schema({
         unique: true
     }
 });
-// going to need to connect users by ID
 
 const Wishlist = mongoose.model("Wishlist", wishlistSchema);
 

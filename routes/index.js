@@ -5,11 +5,9 @@ const apiRoutes = require('./api');
 // external api routes
 router.use("/api", apiRoutes);
 
-// router.use(function(req, res) {
-//     res.sendFile(path.join(__dirname, "../client/public/index.html"));
-//   });
-
-// maybe set up profile authCheck and .get("/profile")
-
+// default route
+router.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/public/index.html"));
+  });
 
 module.exports = router;
