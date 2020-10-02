@@ -4,14 +4,13 @@ import React, { Component } from "react";
 import "./Login.css";
 import { Container, Row, Col } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
-import { Link } from "react-router-dom";
 
 class Login extends Component {
     // doGoogleAuth = () => {
     //     API.getGoogleAuth();
     // }
 
-     loginPath = "http://localhost:3001/oauth/google";
+    loginPath = "http://localhost:3001/oauth/google";
 
     render() {
         return (
@@ -37,22 +36,12 @@ class Login extends Component {
                                 style={{ marginLeft: "auto" }}
                             >
                                 Login
-                    </FormBtn>
+                            </FormBtn>
                             <a className="nav-link" as='a' href={this.loginPath}>
                                 <button type="button" className="btn btn-gplus btn-danger">
                                     <i className="fab fa-google-plus-g pr-1">Google</i>
                                 </button>
                             </a>
-                            {/* <FormBtn
-                        onClick={doGoogleAuth}
-                    >
-                        Google
-                    </FormBtn> */}
-                            <FormBtn>
-                                <Link to={"/signup"}>
-                                    Sign Up
-                        </Link>
-                            </FormBtn>
                         </form>
                     </Col>
                 </Row>

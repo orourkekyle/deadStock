@@ -15,7 +15,7 @@ passport.deserializeUser((id, done) => {
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
-        console.log("hitting LocalStrategy");
+        console.log("HIT: LocalStrategy");
         LocalUser.findOne({ username: username }).then((currentUser) => {
             if(currentUser){
                 console.log("this is currentUser in LocalStrat cb: ", currentUser);
@@ -24,9 +24,9 @@ passport.use(new LocalStrategy(
                 new LocalUser({
                     username: username,
                     password: password
-                }).save().then((newLocaldUser) => {
-                    console.log("this is newLocalUser: ", newLocaldUser);
-                    done(null, newLocaldUser);
+                }).save().then((newLocalUser) => {
+                    console.log("this is newLocalUser: ", newLocalUser);
+                    done(null, newLocalUser);
                 })
             }
         })

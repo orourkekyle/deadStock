@@ -14,10 +14,12 @@ router
 // auth with local
 router
 .route("/createuser")
-.post(passport.authenticate("local", { failureRedirect: "/signup" }),
-function(req, res) {
-    res.redirect("/profile")
-})
+.post(passport.authenticate("local", { successRedirect: "/profile", failureRedirect: "/signup" }),
+// function(req, res) {
+//     console.log("before res.redirect('/profile') inside local-user-routes");
+//     res.redirect("/profile");
+// }
+)
 // router
 // .route("/createuser")
 // .post(passport.authenticate("local", { successRedirect: "/profile", failureRedirect: "/signup" }))

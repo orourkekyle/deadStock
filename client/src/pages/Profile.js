@@ -8,17 +8,29 @@ import Shoe from "../components/Shoe";
 class Profile extends Component{
     state = {
         wishlist: [],
+        currentUser: [],
         message: "Add Sneakers To Your Wishlist"
     };
 
     componentDidMount = () => {
-        return this.loadUserWishlist();
+        // this.getCurrentUser();
+        this.loadUserWishlist();
     };
+
+    // getCurrentUser = () => {
+    //     API.getCurrentLocalUser()
+    //         .then(res => {
+    //             console.log("res.data - inside getCurrentUser: ", res.data);
+    //             this.setState({
+    //                 currentUser: res.data
+    //             });
+    //         });
+    // };
 
     loadUserWishlist = () => {
         API.getWishlist()
             .then(res => {
-                console.log("res.data - inside profile: ", res.data);
+                console.log("res.data - inside loadUserWishlist: ", res.data);
                 return this.setState({
                     wishlist: res.data
                 });

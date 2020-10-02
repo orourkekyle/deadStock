@@ -10,33 +10,31 @@ const passport = require("passport");
 const cors = require("cors");
 const { GoogleStrategy, LocalStrategy } = require("./config/passport");
 
-
+// store express in app
 const app = express();
 
+// use cors for browser security
 app.use(cors());
 
+// use cookie session and encrypt
 app.use(cookieSession({
   maxAge: 24*60*60*1000,
   keys: [keys.cookiesession.cookieKey]
 }));
 
+// define port
 const PORT = process.env.PORT || 3001;
 
 // config body parsing for AJAX requests
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 };
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "client/build", "index.html"));
-// });
-
 // We need to use sessions to keep track of our user's login status
-// passport.use("google", GoogleStrategy);
-// passport.use("local", LocalStrategy);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -45,7 +43,6 @@ app.use("/oauth", oauthRoutes);
 app.use("/local", localRoutes);
 app.use("/profile", profileRoutes);
 app.use(routes);
-
 
 // Connect to Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/deadstockDB", {
