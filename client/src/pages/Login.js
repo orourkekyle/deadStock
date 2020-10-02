@@ -2,7 +2,7 @@
 import React, {Component} from "react";
 // import API from "../utils/API";
 import "./Login.css";
-import { Container, Row, Col } from "../components/Grid";
+import { Container, Row, Col } from "react-bootstrap";
 import { Input, FormBtn } from "../components/Form";
 import { Link } from "react-router-dom";
 

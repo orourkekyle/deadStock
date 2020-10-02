@@ -1,7 +1,7 @@
 // set up browsing (through external api's) components
 import React, { Component } from "react";
 import API from "../utils/API";
-import { Col, Row, Container } from "../components/Grid";
+import { Row, Col, Container } from "react-bootstrap";
 import { Input, FormBtn } from "../components/Form";
 import { List } from "../components/List";
 import Shoe from "../components/Shoe";
@@ -9,6 +9,7 @@ import CardDeck from "react-bootstrap/CardDeck";
 import Card from "react-bootstrap/Card";
 import SelectGender from "../components/SelectGender";
 import SelectBrand from "../components/SelectBrand";
+
 class Browsing extends Component {
     // start state
     state = {
@@ -120,12 +121,11 @@ class Browsing extends Component {
             // place to hold results (i.e. a list or grid or both
 
             
-            <Container>
+        <Container>
                 {/* <Nav /> */}
               <Row>
-                    <Col className="shoe-container" size="md-6 col-md-offset-3">
-                        
-                        <form >
+                    <Col className="shoe-container">
+                        <form>
                             <Input
                                 onChange={this.handleInputChange}
                                 name="shoeName"
@@ -156,28 +156,29 @@ class Browsing extends Component {
 
                             />
 
-                            <div style={{}}>
+                            <div>
                                 <FormBtn onClick={this.handleSearch}> Search </FormBtn>
                             </div>
                         </form>
-                       
                     </Col>
-                    </Row>
-
+                </Row>
+               
                 {/* create select menu to select sort types add button on click takes the selected sort type and then applies it */}
                 {/* need to create component for dropdown menu */}
 
                 {/* keep button functions within page but move buttons to components so that we can style it */}
+               
                 <button onClick={this.sortYearAsc}>Sort  Oldest to Newest</button>
                 <button onClick={this.sortYearDsc}>Sort Newest to Oldest</button>
                 <button onClick={this.sortPriceAsc}>Sort Price low to high</button>
                 <button onClick={this.sortPriceDesc}>Sort High to Low</button>
 
                 <h1>Search Results</h1>
+                <Row>
                 {this.state.sneakers.length ? (
-                    <Row>
-                        <Col size="md-12 sm-12" style={{display: 'flex'}}>
-                        <CardDeck >
+                   
+                        <Col size="auto">
+                        <CardDeck fluid>
                             {this.state.sneakers.map(sneaker => (
                                 <Shoe 
                                     key={sneaker.id}
@@ -198,14 +199,15 @@ class Browsing extends Component {
                             ))}
                         </CardDeck>
                         </Col>
-                    </Row>
+                
 
                 ) : (
                         <h2 className="text-center">Search shoes for results</h2>
                     )}
-            </Container>
-
+                    </Row>
+                    </Container>
         );
+        
     }
 }
 
