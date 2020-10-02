@@ -8,8 +8,8 @@ function Shoe({ shoe, brand, gender, year, image, colorway, price,  Button}) {
     return (
         <div>
         {/* <React.Fragment> */}
-            <Card md={{size: 6, offset: 3}} >
-                <CardBody  style={{height: '30rem', width: '15rem'}}>
+            <Card>
+                <CardBody style={{height: '30rem', width: '14rem'}}>
                     <CardTitle>{shoe}</CardTitle>
                     <CardImg  top width="100%" src={image}  alt="shoe" />
                     <CardText className="card-text" style={{textColor: 'black'}}>Brand: {brand}</CardText>    

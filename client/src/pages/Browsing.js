@@ -5,7 +5,7 @@ import { FormGroup, Row, Col, Container } from "reactstrap";
 import { Input, FormBtn } from "../components/Form";
 import { List } from "../components/List";
 import Shoe from "../components/Shoe";
-import CardDeck from "react-bootstrap/CardDeck";
+import { CardDeck } from "reactstrap";
 import Card from "react-bootstrap/Card";
 import SelectGender from "../components/SelectGender";
 import SelectBrand from "../components/SelectBrand";
@@ -122,23 +122,17 @@ class Browsing extends Component {
             // place to hold results (i.e. a list or grid or both
 
             
-        <Container className="main-container">
+        <Container  className="main-container">
                 {/* <Nav /> */}
-              <Row justifyContent='center' flex>
-                    <Col md={{size: 12}}>
-                        <FormGroup style={
-                            {
-                                flex: 1, 
-                                flexDirection: 'row',
-                                justifyContent: 'center'
-                            }
-                        } className="shoe-form">
+              <Row>
+                    <Col sm='12' md='8' lg='6'>
+                        <FormGroup className="shoe-form">
+
                             <Input
                                 onChange={this.handleInputChange}
                                 name="shoeName"
                                 placeholder="Shoe name"
                             />
-
                             <Input
                                 onChange={this.handleInputChange}
                                 name="colorway"
@@ -160,11 +154,12 @@ class Browsing extends Component {
                                 placeholder="gender"
                                 onChange={this.handleInputChange}
                                 name="gender"
-
                             />
+
                             <div>
                                 <FormBtn onClick={this.handleSearch}> Search </FormBtn>
                             </div>
+
                         </FormGroup>
                     </Col>
                 </Row>
@@ -179,11 +174,11 @@ class Browsing extends Component {
                 <button onClick={this.sortPriceDesc}>Sort High to Low</button>
 
                 <h1>Search Results</h1>
-                <Row fluid>
+                <Row>
                 {this.state.sneakers.length ? (
                    
-                        <Col>
-                        <CardDeck>
+                        <Col sm='12' md='12' lg='12'>
+                        <CardDeck >
                             {this.state.sneakers.map(sneaker => (
                                 <Shoe 
                                     key={sneaker.id}
