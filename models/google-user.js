@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { schema } = require("./local-user");
 const Schema = mongoose.Schema;
 
 const googleUserSchema = new Schema({
