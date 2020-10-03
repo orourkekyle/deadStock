@@ -9,7 +9,7 @@ function Shoe({ shoe, brand, gender, year, image, colorway, price,  Button}) {
         <div className="text-center mx-auto" style={{paddingBottom: '10px', paddingLeft: '5px', paddingRight: '5px'}}>
         {/* <React.Fragment> */}
             <Card className="mx-auto">
-                <CardBody  style={{borderColor: 'green', borderStyle: 'groove', borderWidth: '4px', paddingBlock: '20px', height: '32rem', width: '14rem'}}>
+                <CardBody  style={{borderColor: 'green', borderStyle: 'ridge', borderWidth: '4px', paddingBlock: '20px', height: '32rem', width: '14rem'}}>
                     <CardTitle style={{fontFamily: "Courier New", fontWeight: "light", fontStyle: 'oblique' }}>{shoe}</CardTitle>
                     <CardImg src={image}  alt="shoe" />
                     <CardText className="card-text" style={{fontFamily: "Helvetica"}}>Brand: {brand}</CardText>    

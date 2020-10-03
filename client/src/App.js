@@ -10,6 +10,7 @@ import SignUp from "../src/pages/SignUp";
 import Navy from "./components/Nav";
 import { Button, Col, Row, Container } from 'reactstrap';
 
+
 function App() {
   return (
     <Router>
