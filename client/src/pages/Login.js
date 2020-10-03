@@ -1,22 +1,15 @@
 // put together our login components (similar to signup)
-import React, {Component} from "react";
-// // import API from "../utils/API";
+import React, { Component } from "react";
 import "./Login.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { Input, FormBtn } from "../components/Form";
-
-import { Link } from "react-router-dom";
 import  BackgroundVideo from "../components/BackgroundVideo/index";
 
 
 class Login extends Component {
-    // function doGoogleAuth(){
-    //     API.getGoogleAuth();
-    // }
-    
-    
-   
-//   loginPath = () => "http://localhost:3001/oauth/google"
+
+    loginPath = "http://localhost:3001/oauth/google";
+
 
     render() {
     return (
@@ -44,21 +37,15 @@ class Login extends Component {
                     <FormBtn>
                         login
                     </FormBtn>
-
-                    <a className="nav-link" as='a' href="http://localhost:3001/oauth/google">
-                        <button type="button" className="btn btn-gplus btn-danger">
-                            <i className="fab fa-google-plus-g pr-1">Google</i>
-                        </button>
-                    </a>
-                    {/* <FormBtn
-                        onClick={doGoogleAuth}
-                    >
-                        Google
-
-                    </FormBtn> */}
-                    <a className="google-nav nav-link" as="a" href={loginPath}>
-                        <GoogleButton className="google-btn"/>
-                    </a>
+                            <a className="nav-link" as='a' href={this.loginPath}>
+                                <FormBtn type="button" className="btn btn-danger" >
+                                    {/* <img src={googlePlusimg} alt="google" style={{height: "54px", width: "88px", borderRadius: "6px"}} /> */}
+                                    <strong>Google+</strong>
+                                    {/* <span>
+                                        <img src={googleimg} alt="shoe" style={{ width: "30px", float: "right", display: "block", margin: "1px"}} />
+                                    </span> */}
+                                </FormBtn>
+                            </a>
                 </form>
                 </Col>
             </Row>

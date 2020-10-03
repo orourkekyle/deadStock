@@ -11,7 +11,8 @@ const googleUserSchema = new Schema({
     },
     googleId: {
         type: String
-    }
+    },
+    wishlist: []
 });
 
 const GoogleUser = mongoose.model("googleuser", googleUserSchema);

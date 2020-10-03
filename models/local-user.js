@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 // const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
 
-const createUserSchema = new Schema({
+const LocalUserSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
@@ -26,7 +26,7 @@ const createUserSchema = new Schema({
     }
 });
 
-// createUserSchema.addHook("beforeCreate", user => {
+// LocalUserSchema.addHook("beforeLocal", user => {
 //     user.password = bcrypt.hashSync(
 //         user.password,
 //         bcrypt.genSaltSync(10),
@@ -34,6 +34,6 @@ const createUserSchema = new Schema({
 //     );
 // });
 
-const CreateUser = mongoose.model("createuser", createUserSchema);
+const LocalUser = mongoose.model("localuser", LocalUserSchema);
 
-module.exports = CreateUser;
+module.exports = LocalUser;

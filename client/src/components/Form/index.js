@@ -12,8 +12,7 @@ export function Input(props) {
 
 export function FormBtn(props) {
     return (
-
-        <button {...props} className="btn btn-dark">
+        <button {...props} style={{  margin: 10 }}>
             {props.children}
         </button>
     )

@@ -1,6 +1,7 @@
 // put together our SignUp components (similar to signup)
 import React, { Component } from "react";
 import API from "../utils/API";
+import { Input } from "../components/Form";
 
 
 class SignUp extends Component {
@@ -18,14 +19,20 @@ class SignUp extends Component {
     };
 
     makeUser = () => {
-        API.getLocalAuth(this.state)
+        // console.log("username: ", this.state.username);
+        // console.log("password: ", this.state.password);
+        API.createLocalUser(this.state.username, this.state.password)
             .then(res => {
-                console.log("res inside makeUser: ", res);
-                console.log("this.state: ", this.state.value);
+                console.log("res: ", res);
+                // const { name, value } = event.target
+                // return this.setState({
+                //     [name]: value
+                // })
             });
     };
 
-    handleFormSubmit = () => {
+    handleFormSubmit = event => {
+        event.preventDefault();
         this.makeUser();
     }
 
@@ -44,13 +51,13 @@ class SignUp extends Component {
                         <form className="sign-up">
                             <div className="form-group">
                                 <label htmlFor="exampleInputUsername1">Username</label>
-                                <input onChange={this.handleInputChange} type="username" className="form-control" id="username-input" placeholder="Username"></input>
+                                <Input onChange={this.handleInputChange} name="username" className="form-control" id="username-input" placeholder="Username" />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exampleInputPassword1">Password</label>
-                                <input onChange={this.handleInputChange} type="password" className="form-control" id="password-input" placeholder="Password"></input>
+                                <Input onChange={this.handleInputChange} type="password" name="password" className="form-control" id="password-input" placeholder="Password" />
                             </div>
-                            <button onClick={this.handleFormSubmit} type="submit" className="btn btn-default">Sign Up</button>
+                            <button onClick={this.handleFormSubmit} className="signup-btn">Sign Up</button>
                             <button className="google-btn" onClick={this.doGoogleAuth}>Google+</button>
                         </form>
                     </div>

@@ -8,19 +8,29 @@ import Shoe from "../components/Shoe";
 class Profile extends Component{
     state = {
         wishlist: [],
+        currentUser: [],
+        totalprice: [],
         message: "Add Sneakers To Your Wishlist"
     };
 
+    // loads wishlisht on page load
     componentDidMount = () => {
+        // this.getCurrentUser();
         return this.loadUserWishlist();
     };
 
+    // gets the user wishlist by their googleId
     loadUserWishlist = () => {
         API.getWishlist()
             .then(res => {
-                console.log("res.data - inside profile: ", res.data);
+                console.log("res.data[0].wishlist[0] - inside loadUserWishlist: ", res.data[0].wishlist[0]);
+                console.log("res.data[0].username - inside loadUserWishlist: ", res.data[0].username);
+                console.log("map data sneakerPrice arr - inside loadUserWishlist: ", res.data[0].wishlist.map(wishlistObj => wishlistObj.retailPrice));
+                let priceArr = res.data[0].wishlist.map(wishlistObj => wishlistObj.retailPrice);
                 return this.setState({
-                    wishlist: res.data
+                    wishlist: res.data[0].wishlist,
+                    currentUser: res.data[0].username,
+                    totalprice: priceArr
                 });
             })
             .catch(() =>
@@ -31,6 +41,7 @@ class Profile extends Component{
             );
     };
 
+    // deletes sneaker from collection with googleId matching current user as well as sneaker
     removeSneaker = id => {
         API.deleteSneaker(id)
             .then(res => {
@@ -47,6 +58,14 @@ class Profile extends Component{
     render() {
         return (
             <Container>
+                {this.state.totalprice.length ? (
+                    <div>
+                        <h5>Total Wishlist Amount:</h5>
+                        <p style={{color: 'green'}}>${this.state.totalprice.reduce((result, number) => result+number)}</p>
+                    </div>
+                ) : (
+                    <div></div>
+                )}
                 {/* <Row> */}
                     {this.state.wishlist.length ? (
                         <CardColumns size="md-8">
@@ -62,7 +81,7 @@ class Profile extends Component{
                                     image={sneakers.image}
                                     Button={() => (
                                         <button
-                                            onClick={() => this.removeSneaker(sneakers._id)}
+                                            onClick={() => this.removeSneaker(sneakers.sneakerId)}
                                             id="delete-sneaker">Remove From Wishlist</button>
                                     )}
                                 />
