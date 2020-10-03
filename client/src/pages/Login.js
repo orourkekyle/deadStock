@@ -35,8 +35,9 @@ function Login() {
                     {/* <FormBtn type="button" className="btn btn-gplus btn-danger">
                         <i className="fab fa-google-plus-g pr-1">Google</i>
                     </FormBtn> */}
-                    
-                        <GoogleButton className="google-btn"><a className="google-nav nav-link" as="a" href={loginPath} /></GoogleButton>
+                    <a className="google-nav nav-link" as="a" href={loginPath}>
+                        <GoogleButton className="google-btn"/>
+                    </a>
                 </form>
                 </Col>
             </Row>
