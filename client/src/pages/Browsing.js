@@ -6,8 +6,8 @@ import { Input, FormBtn } from "../components/Form";
 // import { List } from "../components/List";
 import Shoe from "../components/Shoe";
 import CardColumns from "react-bootstrap/CardColumns";
-
-import Card from "react-bootstrap/Card";
+import "./Browsing.css";
+// import Card from "react-bootstrap/Card";
 import SelectGender from "../components/SelectGender";
 import SelectBrand from "../components/SelectBrand";
 
@@ -183,7 +183,7 @@ class Browsing extends Component {
                     <button onClick={this.sortPriceAsc}>Sort Price low to high</button>
                     <button onClick={this.sortPriceDesc}>Sort High to Low</button>
 
-                        <h1 style={{ margin: "left" }}>Search Results</h1>
+                        <h1 style={{ justifyContent: "center" }}>Search Results</h1>
                         {this.state.sneakers.length ? (
                             <CardColumns size="sm-4">
                                 {this.state.sneakers.map(sneaker => (

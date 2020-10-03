@@ -20,7 +20,6 @@ function Shoe({ shoe, brand, gender, year, image, colorway, price,  Button}) {
             </Card>
         </React.Fragment>
     )
-
 }
 
 export default Shoe;
