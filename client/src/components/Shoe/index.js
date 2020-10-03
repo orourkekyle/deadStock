@@ -22,7 +22,6 @@ function Shoe({ shoe, brand, gender, year, image, colorway, price,  Button}) {
         {/* </React.Fragment> */}
         </div>
     )
-
 }
 
 export default Shoe;

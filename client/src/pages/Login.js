@@ -4,9 +4,10 @@ import React, {Component} from "react";
 import "./Login.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { Input, FormBtn } from "../components/Form";
+
 import { Link } from "react-router-dom";
 import  BackgroundVideo from "../components/BackgroundVideo/index";
-import Navy from "../components/Nav/index";
+
 
 class Login extends Component {
     // function doGoogleAuth(){
@@ -19,6 +20,7 @@ class Login extends Component {
 
     render() {
     return (
+
         
         <Container fluid >
             <Navy />
@@ -29,22 +31,20 @@ class Login extends Component {
                     textAlign:"center",
                     paddingTop: "12%"
                 }}>DEADSTOCK</h1>
-                <form style={{ textAlign:"center"}}>
+                <form  >
+
                     <Input  
-                        style={{ textAlign:"left"}}
                         name="username"
                         placeholder="username"
                     />
                     <Input 
-                        style={{ textAlign:"left"}}
                         name="password"
                         placeholder="password"
                     />
-                    <FormBtn
-                        style={{ marginLeft: "auto" }}
-                    >
+                    <FormBtn>
                         login
                     </FormBtn>
+
                     <a className="nav-link" as='a' href="http://localhost:3001/oauth/google">
                         <button type="button" className="btn btn-gplus btn-danger">
                             <i className="fab fa-google-plus-g pr-1">Google</i>
@@ -54,12 +54,11 @@ class Login extends Component {
                         onClick={doGoogleAuth}
                     >
                         Google
+
                     </FormBtn> */}
-                    <FormBtn>
-                        <Link to={"/signup"}>
-                        signup
-                        </Link>
-                    </FormBtn>
+                    <a className="google-nav nav-link" as="a" href={loginPath}>
+                        <GoogleButton className="google-btn"/>
+                    </a>
                 </form>
                 </Col>
             </Row>

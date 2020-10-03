@@ -1,5 +1,7 @@
 body {
+
     background: url(../components/BackgroundVideo/backgroundVideo.mp4);
+
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -8,53 +10,46 @@ body {
 .container {
     text-align: center;
     padding-top: 21%;
+    align-content: center;
 }
+
 h1 {
     font-weight: bolder;
-    color: white;
+    text-align: center;
+    padding: 10px 10px;
 }
-.form-group {
-    color: white;
+
+div form button.btn.btn-dark{
+    width:  fit-content;
+    display: inherit;
+    position: relative;
+    margin: 5px;
 }
+
+/* div form a.google-nav.nav-link {
+    text-align: center;
+    margin: 5px;
+    display: inline;
+} */
+
+div div form div.google-btn{
+    display: inherit;
+    
+    margin: 5px;
+    /* margin-right: 25%; */
+}
+
 p {
-    color: white;
+    color: black;
 }
+
 a:link {
     color: black;
 }
-input[type=submit] {
-    color: rgb(155, 143, 143);
-}
-input[type=email], select {
-    padding: 0px;
-}
+
 input, select {
-    padding: 0px;
+    padding: 5px;
 }
-
-.centered {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#myVideo {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%
-}
-
-.content {
-    position: fixed;
-    bottom:0;
-    width: 100%;
-    padding:20px;
-}   
-
-
 
 video {
         object-fit: cover;
@@ -64,3 +59,4 @@ video {
         top: 0;
         left: 0;
       }
+

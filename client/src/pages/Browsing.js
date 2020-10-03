@@ -120,6 +120,7 @@ class Browsing extends Component {
             // nav bar to navigate to diff pages
             // jumbotron (or something similar) to hold search form
             // search form
+
             // place to hold results (i.e. a list or grid or both
 
 
@@ -184,6 +185,7 @@ class Browsing extends Component {
 
                         <Col sm='12' md='12' lg='12' >
                             <CardDeck >
+
                                 {this.state.sneakers.map(sneaker => (
                                     <Shoe
                                         key={sneaker.id}

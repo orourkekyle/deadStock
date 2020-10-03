@@ -1,40 +1,34 @@
 body {
-    background: url("../images/IMG_4107.JPG");
+
+    background-image: url(../images/IMG_4107.JPG);
+
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
 }
 
-.container {
+.shoe-container{
+    justify-content: center;
     text-align: center;
-    padding-top: 21%;
+    width: auto;
 }
+
 h1 {
     font-weight: bolder;
-    color: white;
+    outline-color: blanchedalmond;
+    outline-offset: initial;
+    color: black;
 }
+
 .form-group {
     color: white;
 }
+
 p {
-    color: white;
-}
-a:link {
     color: black;
 }
-input[type=submit] {
-    color: rgb(155, 143, 143);
-}
-input[type=email], select {
-    padding: 0px;
-}
-input, select {
-    padding: 0px;
-}
 
-.centered {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+a:link {
+    color: black;
+
 }
