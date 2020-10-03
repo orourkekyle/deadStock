@@ -6,7 +6,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Input, FormBtn } from "../components/Form";
 import { Link } from "react-router-dom";
 import  BackgroundVideo from "../components/BackgroundVideo/index";
-
+import Navy from "../components/Nav/index";
 
 class Login extends Component {
     // function doGoogleAuth(){
@@ -21,6 +21,7 @@ class Login extends Component {
     return (
         
         <Container fluid >
+            <Navy />
             <BackgroundVideo />
             <Row fluid >
                 <Col size="md-12" >

@@ -10,7 +10,7 @@ import Card from "react-bootstrap/Card";
 import SelectGender from "../components/SelectGender";
 import SelectBrand from "../components/SelectBrand";
 import "./Browsing.css";
-import { DescYearBtn, AscPriceBtn, DescPriceBtn, AscYearBtn } from "../components/Buttons"
+
 
 class Browsing extends Component {
     // start state
@@ -170,12 +170,12 @@ class Browsing extends Component {
                 {/* keep button functions within page but move buttons to components so that we can style it */}
                 <Row>
                     <Col>
-                        <DescPriceBtn onClick={this.sortPriceDesc}> Sort Price from Low to High </DescPriceBtn>
-                        <DescYearBtn onClick={this.sortYearDesc}>Sort from Newest to Oldest</DescYearBtn>
+                        <FormBtn onClick={this.sortPriceDesc}> Sort Price from Low to High </FormBtn>
+                        <FormBtn onClick={this.sortYearDesc}>Sort from Newest to Oldest</FormBtn>
                     </Col>
                     <Col>
-                        <AscPriceBtn onClick={this.sortPriceAsc}> Sort Price from High to Low </AscPriceBtn>
-                        <AscYearBtn onClick={this.sortYearAsc}> Sort from Oldest to Newest </AscYearBtn>
+                        <FormBtn onClick={this.sortPriceAsc}> Sort Price from High to Low </FormBtn>
+                        <FormBtn onClick={this.sortYearAsc}> Sort from Oldest to Newest </FormBtn>
                     </Col>
                 </Row>
                 <h1 style={{marginTop: 5}}>Search Results</h1>
