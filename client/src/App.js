@@ -8,6 +8,8 @@ import Browsing from './pages/Browsing';
 import SignUp from "../src/pages/SignUp";
 // import passportSetup from "../../config/passport"
 import Navy from "./components/Nav";
+import { Button, Col, Row, Container } from 'reactstrap';
+
 
 function App() {
   return (
@@ -15,7 +17,7 @@ function App() {
       <div>
         <Navy />
         <Switch>
-          <Route exact path={"/"} component = { Login } />
+          <Route exact path={["/login", "/"]} component = { Login } />
           <Route exact path={"/signup"} component = { SignUp } />
           <Route exact path={"/profile"} component = { Profile } />
           <Route exact path={"/browsing"} component = { Browsing } />

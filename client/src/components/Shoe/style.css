@@ -1,0 +1,11 @@
+.border {
+    border-width: 5px;
+    border-style: groove;
+    border-color: green;
+
+}
+
+.card-text {
+    color: black;
+}
+

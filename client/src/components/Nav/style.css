@@ -1,4 +1,10 @@
 .Nav {
     z-index: -1;
-    position: relative;
+    position: fixed;
+    justify-content: space-evenly;
+}
+
+.NavItem{
+padding: 10px, 10px;
+justify-content: space-evenly;
 }

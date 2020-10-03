@@ -2,18 +2,10 @@ import axios from "axios";
 
 export default {
 
-    // local auth routes
-    createLocalUser: function(username, password) {
-        console.log("before axios.post on FE");
-        return axios.post("/local/createuser", { username, password });
-    },
-    getCurrentLocalUser: function() {
-        return axios.get("/local/getuser");
-    },
 
     // sneaker api get route
-    getSneakers: function(shoeName, brand, gender, releaseYear) {
-        return axios.get("/api/sneakers", { params: {shoeName, brand, gender, releaseYear}});
+    getSneakers: function(shoeName, brand, gender, releaseYear, colorway) {
+        return axios.get("/api/sneakers", { params: {shoeName, brand, gender, releaseYear, colorway}});
     },
 
     // wishlist routes
