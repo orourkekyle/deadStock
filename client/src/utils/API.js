@@ -7,21 +7,14 @@ export default {
         return axios.get("/oauth/google")
     },
 
-
-
     // sneaker api get route
     getSneakers: function(shoeName, brand, gender, releaseYear, colorway) {
         return axios.get("/api/sneakers", { params: {shoeName, brand, gender, releaseYear, colorway}});
-    
+    },
 
     // local auth routes
     getLocalAuth: function() {
         return axios.get("/local/createuser")
-    },
-
-    // sneaker api get route
-    getSneakers: function(shoeName, brand, gender, releaseYear) {
-        return axios.get("/api/sneakers", { params: {shoeName, brand, gender, releaseYear}});
     },
 
     // wishlist routes

@@ -1,0 +1,10 @@
+.form-group .btn{
+    /* justify-content: center; */
+    /* display: flex; */
+    /* padding-left: 100px; */
+}
+
+.btn{
+    margin-left: 10px;
+    margin-right: 10px;
+}

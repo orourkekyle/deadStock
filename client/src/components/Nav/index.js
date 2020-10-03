@@ -21,7 +21,6 @@ const Navy = (props) => {
     <div>
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">Navigation</NavbarBrand>
-
           <Nav className="mr-auto" navbar>
             <NavItem>
               <NavLink href="/login">Login</NavLink>
