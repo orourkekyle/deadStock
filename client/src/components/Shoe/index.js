@@ -6,17 +6,17 @@ import "../Shoe/style.css";
 
 function Shoe({ shoe, brand, gender, year, image, colorway, price,  Button}) {
     return (
-        <div>
+        <div className="text-center mx-auto" style={{paddingBottom: '10px', paddingLeft: '5px', paddingRight: '5px'}}>
         {/* <React.Fragment> */}
-            <Card>
-                <CardBody style={{height: '30rem', width: '14rem'}}>
-                    <CardTitle>{shoe}</CardTitle>
-                    <CardImg  top width="100%" src={image}  alt="shoe" />
-                    <CardText className="card-text" style={{textColor: 'black'}}>Brand: {brand}</CardText>    
-                    <CardText className="card-text">Gender: {gender} Year: {year}</CardText>
-                    <CardText className="card-text">Colorway: {colorway}</CardText>
-                    <CardText className="card-text">${price}</CardText>
-                    <Button style={{fixed: 'bottom'}} />
+            <Card className="mx-auto">
+                <CardBody  style={{borderColor: 'green', borderStyle: 'groove', borderWidth: '4px', paddingBlock: '20px', height: '32rem', width: '14rem'}}>
+                    <CardTitle style={{fontFamily: "Courier New", fontWeight: "light", fontStyle: 'oblique' }}>{shoe}</CardTitle>
+                    <CardImg src={image}  alt="shoe" />
+                    <CardText className="card-text" style={{fontFamily: "Helvetica"}}>Brand: {brand}</CardText>    
+                    <CardText className="card-text" style={{fontFamily: "Helvetica"}}>Gender: {gender} Year: {year}</CardText>
+                    <CardText className="card-text" style={{fontFamily: "Helvetica"}}>Colorway: {colorway}</CardText>
+                    <CardText className="card-text" style={{fontFamily: "Helvetica"}}>${price}</CardText>
+                    <Button/>
                 </CardBody>
             </Card>
         {/* </React.Fragment> */}

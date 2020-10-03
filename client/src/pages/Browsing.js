@@ -1,7 +1,7 @@
 // set up browsing (through external api's) components
 import React, { Component } from "react";
 import API from "../utils/API";
-import { FormGroup, Row, Col, Container } from "reactstrap";
+import { FormGroup, Row, Col, Container, Form } from "reactstrap";
 import { Input, FormBtn } from "../components/Form";
 import { List } from "../components/List";
 import Shoe from "../components/Shoe";
@@ -10,6 +10,7 @@ import Card from "react-bootstrap/Card";
 import SelectGender from "../components/SelectGender";
 import SelectBrand from "../components/SelectBrand";
 import "./Browsing.css";
+import { DescYearBtn, AscPriceBtn, DescPriceBtn, AscYearBtn } from "../components/Buttons"
 
 class Browsing extends Component {
     // start state
@@ -55,7 +56,7 @@ class Browsing extends Component {
         }
     }
 
-    sortYearDsc = () => {
+    sortYearDesc = () => {
         switch (this.state.order) {
             case 'asc':
                 this.setState({ sneakers: this.state.sneakers.sort((a, b) => b.year - a.year), order: 'desc' });
@@ -121,12 +122,12 @@ class Browsing extends Component {
             // search form
             // place to hold results (i.e. a list or grid or both
 
-            
-        <Container  className="main-container">
+
+            <Container className="main-container">
                 {/* <Nav /> */}
-              <Row>
-                    <Col sm='12' md='8' lg='6'>
-                        <FormGroup className="shoe-form">
+                <Row>
+                    <Col sm='12' md='6' lg='6' className="text-center mx-auto">
+                        <FormGroup className="text-center mx-auto">
 
                             <Input
                                 onChange={this.handleInputChange}
@@ -163,51 +164,55 @@ class Browsing extends Component {
                         </FormGroup>
                     </Col>
                 </Row>
-               
+
                 {/* create select menu to select sort types add button on click takes the selected sort type and then applies it */}
                 {/* need to create component for dropdown menu */}
                 {/* keep button functions within page but move buttons to components so that we can style it */}
-               
-                <button onClick={this.sortYearAsc}>Sort  Oldest to Newest</button>
-                <button onClick={this.sortYearDsc}>Sort Newest to Oldest</button>
-                <button onClick={this.sortPriceAsc}>Sort Price low to high</button>
-                <button onClick={this.sortPriceDesc}>Sort High to Low</button>
-
-                <h1>Search Results</h1>
                 <Row>
-                {this.state.sneakers.length ? (
-                   
-                        <Col sm='12' md='12' lg='12'>
-                        <CardDeck >
-                            {this.state.sneakers.map(sneaker => (
-                                <Shoe 
-                                    key={sneaker.id}
-                                    shoe={sneaker.shoe}
-                                    colorway={sneaker.colorway}
-                                    brand={sneaker.brand}
-                                    colorway={sneaker.colorway}
-                                    price={sneaker.retailPrice}
-                                    gender={sneaker.gender}
-                                    year={sneaker.year}
-                                    image={sneaker.media.thumbUrl}
-                                    Button={() => (
-                                        <button
-                                            onClick={() => this.handleSneakerSave(sneaker.id)}
-                                            id="save-btn" >Save</button>
-                                    )}
-                                />
-                            ))}
-                        </CardDeck>
-                        </Col>
-                
+                    <Col>
+                        <DescPriceBtn onClick={this.sortPriceDesc}> Sort Price from Low to High </DescPriceBtn>
+                        <DescYearBtn onClick={this.sortYearDesc}>Sort from Newest to Oldest</DescYearBtn>
+                    </Col>
+                    <Col>
+                        <AscPriceBtn onClick={this.sortPriceAsc}> Sort Price from High to Low </AscPriceBtn>
+                        <AscYearBtn onClick={this.sortYearAsc}> Sort from Oldest to Newest </AscYearBtn>
+                    </Col>
+                </Row>
+                <h1 style={{marginTop: 30}}>Search Results</h1>
+                <Row className=" ">
+                    {this.state.sneakers.length ? (
 
-                ) : (
-                        <h2 className="text-center">Search shoes for results</h2>
-                    )}
-                    </Row>
+                        <Col sm='12' md='12' lg='12' >
+                            <CardDeck >
+                                {this.state.sneakers.map(sneaker => (
+                                    <Shoe
+                                        key={sneaker.id}
+                                        shoe={sneaker.shoe}
+                                        colorway={sneaker.colorway}
+                                        brand={sneaker.brand}
+                                        colorway={sneaker.colorway}
+                                        price={sneaker.retailPrice}
+                                        gender={sneaker.gender}
+                                        year={sneaker.year}
+                                        image={sneaker.media.thumbUrl}
+                                        Button={() => (
+                                            <button
+                                                onClick={() => this.handleSneakerSave(sneaker.id)}
+                                                id="save-btn" >Save</button>
+                                        )}
+                                    />
+                                ))}
+                            </CardDeck>
+                        </Col>
+
+
+                    ) : (
+                            <h2 className="text-center">Search shoes for results</h2>
+                        )}
+                </Row>
             </Container>
         );
-        
+
     }
 }
 

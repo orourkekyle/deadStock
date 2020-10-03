@@ -4,7 +4,7 @@ import React from "react";
 export default function SelectGender(props) {
     return (
 
-        <select style={{marginTop: 5, marginBottom: 15}} name="gender" className="custom-select" aria-labelledby="dropdownMenuButton" {...props}>
+        <select style={{ fontFamily: "Courier New", fontWeight: "light", fontStyle: 'oblique', borderColor: 'green', borderStyle: 'groove', borderWidth: '3px', marginTop: 5, marginBottom: 15}} name="gender" className="custom-select" aria-labelledby="dropdownMenuButton" {...props}>
             <option defaultValue="">Search by Gender</option>
             <option value="women">Women</option>
             <option value="unisex">Unisex</option>
