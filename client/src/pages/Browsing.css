@@ -1,17 +1,40 @@
-.main-container {
-    align-content: center;
+/* body {
+    background: url("../components/pages/images/");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.container {
+    text-align: center;
+    padding-top: 21%;
+}
+h1 {
+    font-weight: bolder;
+    color: white;
+}
+.form-group {
+    color: white;
+}
+p {
+    color: white;
+}
+a:link {
+    color: black;
+}
+input[type=submit] {
+    color: rgb(155, 143, 143);
+}
+input[type=email], select {
+    padding: 0px;
+}
+input, select {
+    padding: 0px;
+}
+
+.centered {
+    height: 100vh;
+    display: flex;
     justify-content: center;
     align-items: center;
-    
-}
-
-.shoe-form {
-    justify-content: center;
-    align-content: center;
-    width: auto
-}
-
-.shoe-display{
-    align-content: center;
-}
-
+} */

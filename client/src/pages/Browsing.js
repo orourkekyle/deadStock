@@ -9,7 +9,7 @@ import { CardDeck } from "reactstrap";
 import Card from "react-bootstrap/Card";
 import SelectGender from "../components/SelectGender";
 import SelectBrand from "../components/SelectBrand";
-
+import "./Browsing.css";
 import { DescYearBtn, AscPriceBtn, DescPriceBtn, AscYearBtn } from "../components/Buttons"
 
 class Browsing extends Component {
@@ -25,6 +25,7 @@ class Browsing extends Component {
         order: 'asc'
 
     };
+
 
 
     // you want order, variables, and attribute you want to sort by.
@@ -177,7 +178,7 @@ class Browsing extends Component {
                         <AscYearBtn onClick={this.sortYearAsc}> Sort from Oldest to Newest </AscYearBtn>
                     </Col>
                 </Row>
-                <h1 style={{marginTop: 30}}>Search Results</h1>
+                <h1 style={{marginTop: 5}}>Search Results</h1>
                 <Row className=" ">
                     {this.state.sneakers.length ? (
 
