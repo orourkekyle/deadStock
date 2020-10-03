@@ -1,5 +1,5 @@
-/* body {
-    background: url("../components/pages/images/");
+body {
+    /* background: url("../components/pages/images/"); */
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -37,4 +37,4 @@ input, select {
     display: flex;
     justify-content: center;
     align-items: center;
-} */
+}
