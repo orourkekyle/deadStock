@@ -15,7 +15,6 @@ function App() {
   return (
     <Router>
       <div>
-        <Navy />
         <Switch>
           <Route exact path={["/login", "/"]} component = { Login } />
           <Route exact path={"/signup"} component = { SignUp } />

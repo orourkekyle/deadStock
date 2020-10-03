@@ -43,8 +43,6 @@ p {
     color: black;
 }
 
-<<<<<<< HEAD
-=======
 a:link {
     color: black;
 }
@@ -53,7 +51,6 @@ input, select {
     padding: 5px;
 }
 
->>>>>>> f2e24c03c3906137cb03a2a2ef782c2eab6dbe23
 video {
         object-fit: cover;
         width: 100vw;
