@@ -1,28 +1,16 @@
 const router = require("express").Router();
 const passport = require("passport");
 
-// auth login
-// router.get("/", (req, res) => {
-//     res.redirect("login");
-// });
-
 console.log("HIT: oauth-routes");
-
-// router
-// .route("*")
-// .get((req, res) => {
-//     console.log("this is req.url: ", req.url);
-//     console.log("hitting any route we send");
-// })
 
 // auth logout
 router
 .route("/logout")
 .get((req, res) => {
     // let redirectPath = (process.env.NODE_ENV === "production") ? 
-    // handle with passport
+    let redirectPath = "http://localhost:3000"
     req.logout();
-    res.redirect("/");
+    res.redirect(redirectPath);
 });
 
 // auth with google

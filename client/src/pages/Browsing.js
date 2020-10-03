@@ -96,9 +96,9 @@ class Browsing extends Component {
     };
 
     //  register save functionality
-    handleSneakerSave = id => {
-        const sneaker = this.state.sneakers.find(sneaker => sneaker.id);
 
+    handleUserSave = id => {
+        const sneaker = this.state.sneakers.find(sneaker => sneaker.id === id);
         API.saveSneaker({
             sneakerId: sneaker.id,
             shoeName: sneaker.shoe,
@@ -108,9 +108,36 @@ class Browsing extends Component {
             retailPrice: sneaker.retailPrice,
             year: sneaker.year,
             image: sneaker.media.thumbUrl
-        }).then(() => this.getSneakers());
+        }).then(() => console.log("Saved Shoe to User!"));
+    };
 
-    }
+
+    handlePopularSave = id => {
+        const sneaker = this.state.sneakers.find(sneaker => sneaker.id === id);
+        API.saveToPopular({
+            sneakerId: sneaker.id,
+            shoeName: sneaker.shoe,
+            colorway: sneaker.colorway,
+            brand: sneaker.brand,
+            gender: sneaker.gender,
+            retailPrice: sneaker.retailPrice,
+            year: sneaker.year,
+            image: sneaker.media.thumbUrl
+        }).then(() => console.log("Saved Shoe to Popular!"));
+    };
+
+    handleIdSave = id => {
+        const sneaker = this.state.sneakers.find(sneaker => sneaker.id === id);
+        API.saveUserSave({
+            sneakerId: sneaker.id
+        }).then(() => console.log("Saved Id in Popular!"));
+    };
+
+    handleSaves = id => {
+        this.handleUserSave(id);
+        this.handlePopularSave(id);
+        this.handleIdSave(id);
+    };
 
     render() {
 
@@ -120,6 +147,7 @@ class Browsing extends Component {
             // nav bar to navigate to diff pages
             // jumbotron (or something similar) to hold search form
             // search form
+
             // place to hold results (i.e. a list or grid or both
 
 
@@ -184,6 +212,7 @@ class Browsing extends Component {
 
                         <Col sm='12' md='12' lg='12' >
                             <CardDeck >
+
                                 {this.state.sneakers.map(sneaker => (
                                     <Shoe
                                         key={sneaker.id}
@@ -197,7 +226,7 @@ class Browsing extends Component {
                                         image={sneaker.media.thumbUrl}
                                         Button={() => (
                                             <button
-                                                onClick={() => this.handleSneakerSave(sneaker.id)}
+                                                onClick={() => this.handleSaves(sneaker.id)}
                                                 id="save-btn" >Save</button>
                                         )}
                                     />

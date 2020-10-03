@@ -2,28 +2,7 @@ const axios = require('axios');
 const db = require('../models');
 
 module.exports = {
-    // createUrl: function(req, res) {
-    //     const {query: params } = req;
-    //     const randomResponseUrl = "https://api.thesneakerdatabase.com/v1/sneakers?limit=100";
-    //     const namedResponseUrl = `https://api.thesneakerdatabase.com/v1/sneakers?limit=100${params.shoeName}${params.brand}${params.gender}${params.releaseYear}`;
-
-    //     console.log("Hit the Get in the Route api/sneakers:", req.body, req.params);
-    //     console.log("the following are the params: ", params);
-
-    //     // Create if statement that switches URL based on if single param is blank. If blank ommit the param from search url.
-    //     // currently if any are blank will use no params at all.
-    //     if (params.shoeName  === "" || params.brand  === "" || params.gender  === "" || params.releaseYear === "") { 
-    //         let url = randomResponseUrl;
-
-    //         return url;
-    //     } else {
-    //         let url = namedResponseUrl;
-    //         return url;
-    //     }
-    // },
-
-
-    findAll: function (req, res) {
+    findAll: function(req, res) {
         const { query } = req;
         console.log('INCOMING REQ.QUERY ---> ', query)
 
@@ -33,7 +12,7 @@ module.exports = {
         const reqReleaseYear = query.releaseYear ? `&releaseYear=${query.releaseYear}` : ''
         const reqColorway = query.colorway ? `&colorway=${query.colorway}` : ''
 
-
+        const annoyingPlaceholderUrl = "https://stockx-assets.imgix.net/media/New-Product-Placeholder-Default.jpg?fit=fill&bg=FFFFFF&w=140&h=100&auto=format,compress&trim=color&q=90&dpr=2&updated_at=0";
 
         const completeUrl = `https://api.thesneakerdatabase.com/v1/sneakers?limit=100${reqShoeName}${reqBrand}${reqGender}${reqReleaseYear}${reqColorway}`;
 
@@ -44,7 +23,7 @@ module.exports = {
         axios.get(completeUrl)
 
         .then(results => {
-            console.log("The results console log", results.data.results)
+            // console.log("The results console log", results.data.results)
         
          return   results.data.results.filter(
                 result => 
@@ -62,9 +41,9 @@ module.exports = {
 
 
             })
-            .then((result) => {
-                console.log("these are the results we want:", result);
-                res.json(result)
+        .then((result) => {
+                // console.log("these are the results we want:", result);
+                return res.json(result);
             })
 
             .catch (err => console.log(err))

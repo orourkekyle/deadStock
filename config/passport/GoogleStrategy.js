@@ -14,9 +14,11 @@ passport.deserializeUser((id, done) => {
     });
 });
 
+let redirectPath = "http://localhost:3001/oauth/google/redirect";
+
 passport.use(new GoogleStrategy({
     // options for the google strat
-    callbackURL: "/auth/google/redirect",
+    callbackURL: redirectPath,
     clientID: keys.google.clientID,
     clientSecret: keys.google.clientSecret
 }, (accessToken, refreshToken, profile, done) => {
