@@ -12,12 +12,7 @@ const googleUserSchema = new Schema({
     googleId: {
         type: String
     },
-    wishlist: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "Wishlist"
-        }
-    ]
+    wishlist: []
 });
 
 const GoogleUser = mongoose.model("googleuser", googleUserSchema);

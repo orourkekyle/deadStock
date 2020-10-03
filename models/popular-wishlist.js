@@ -34,7 +34,8 @@ const wishlistSchema = new Schema({
         type: String,
         required: true,
         unique: true
-    }
+    },
+    googleIds: []
 });
 
 const Wishlist = mongoose.model("Wishlist", wishlistSchema);

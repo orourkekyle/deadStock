@@ -1,10 +1,6 @@
 import axios from "axios";
 
 export default {
-    // oauth route
-    getGoogleAuth: function() {
-        return axios.get("/oauth/google");
-    },
 
     // local auth routes
     createLocalUser: function(username, password) {
@@ -26,6 +22,12 @@ export default {
     },
     saveSneaker: function(sneakerData) {
         return axios.post("/api/wishlist", sneakerData);
+    },
+    saveToPopular: function(sneakerData) {
+        return axios.post("/api/wishlist/createpopular", sneakerData)
+    },
+    saveUserSave: function(userData) {
+        return axios.post("/api/wishlist/updatepopular", userData)
     },
     deleteSneaker: function(id) {
         return axios.delete("/api/wishlist/" + id);

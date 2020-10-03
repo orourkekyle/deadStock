@@ -6,7 +6,17 @@ console.log("HIT: wishlist-routes");
 router
 .route("/")
 .get(wishlistController.find)
-.post(wishlistController.create)
+.post(wishlistController.createInUser)
+// .post(wishlistController.createInPopular)
+// .post(wishlistController.updateIdsInPopular)
+
+router
+.route("/createpopular")
+.post(wishlistController.createInPopular)
+
+router
+.route("/updatepopular")
+.post(wishlistController.updateIdsInPopular)
 
 router
 .route("/:id")

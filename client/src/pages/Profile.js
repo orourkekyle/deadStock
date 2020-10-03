@@ -23,15 +23,16 @@ class Profile extends Component{
     loadUserWishlist = () => {
         API.getWishlist()
             .then(res => {
-                console.log("res.data - inside loadUserWishlist: ", res.data);
-                console.log("map data sneakerPrice arr - inside loadUserWishlist: ", res.data.map(sneakers => sneakers.retailPrice));
-                 let priceArr = res.data.sneakers.map(sneakers => sneakers.retailPrice);
+                console.log("res.data[0].wishlist[0] - inside loadUserWishlist: ", res.data[0].wishlist[0]);
+                console.log("res.data[0].username - inside loadUserWishlist: ", res.data[0].username);
+                console.log("map data sneakerPrice arr - inside loadUserWishlist: ", res.data[0].wishlist.map(wishlistObj => wishlistObj.retailPrice));
+                let priceArr = res.data[0].wishlist.map(wishlistObj => wishlistObj.retailPrice);
                 return this.setState({
-                    wishlist: res.data.sneakers,
+                    wishlist: res.data[0].wishlist,
+                    currentUser: res.data[0].username,
                     totalprice: priceArr
                 });
             })
-            .then(() => console.log("state of total price after setState: ", this.state.totalprice))
             .catch(() =>
                 this.setState({
                     wishlist: [],
@@ -60,7 +61,7 @@ class Profile extends Component{
                 {this.state.totalprice.length ? (
                     <div>
                         <h5>Total Wishlist Amount:</h5>
-                        <p>{this.state.totalprice.reduce((result, number) => result+number)}</p>
+                        <p style={{color: 'green'}}>${this.state.totalprice.reduce((result, number) => result+number)}</p>
                     </div>
                 ) : (
                     <div></div>
@@ -80,7 +81,7 @@ class Profile extends Component{
                                     image={sneakers.image}
                                     Button={() => (
                                         <button
-                                            onClick={() => this.removeSneaker(sneakers._id)}
+                                            onClick={() => this.removeSneaker(sneakers.sneakerId)}
                                             id="delete-sneaker">Remove From Wishlist</button>
                                     )}
                                 />

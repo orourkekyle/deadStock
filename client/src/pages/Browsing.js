@@ -54,9 +54,8 @@ class Browsing extends Component {
     };
 
     //  register save functionality
-    handleSneakerSave = id => {
+    handleUserSave = id => {
         const sneaker = this.state.sneakers.find(sneaker => sneaker.id === id);
-
         API.saveSneaker({
             sneakerId: sneaker.id,
             shoeName: sneaker.shoe,
@@ -66,9 +65,35 @@ class Browsing extends Component {
             retailPrice: sneaker.retailPrice,
             year: sneaker.year,
             image: sneaker.media.thumbUrl
-        }).then(() => console.log("Saved Shoe to Wishlist!"));
+        }).then(() => console.log("Saved Shoe to User!"));
+    };
 
-    }
+    handlePopularSave = id => {
+        const sneaker = this.state.sneakers.find(sneaker => sneaker.id === id);
+        API.saveToPopular({
+            sneakerId: sneaker.id,
+            shoeName: sneaker.shoe,
+            colorway: sneaker.colorway,
+            brand: sneaker.brand,
+            gender: sneaker.gender,
+            retailPrice: sneaker.retailPrice,
+            year: sneaker.year,
+            image: sneaker.media.thumbUrl
+        }).then(() => console.log("Saved Shoe to Popular!"));
+    };
+
+    handleIdSave = id => {
+        const sneaker = this.state.sneakers.find(sneaker => sneaker.id === id);
+        API.saveUserSave({
+            sneakerId: sneaker.id
+        }).then(() => console.log("Saved Id in Popular!"));
+    };
+
+    handleSaves = id => {
+        this.handleUserSave(id);
+        this.handlePopularSave(id);
+        this.handleIdSave(id);
+    };
 
     render() {
         return (
@@ -138,7 +163,7 @@ class Browsing extends Component {
                                         image={sneaker.media.thumbUrl}
                                         Button={() => (
                                             <button
-                                                onClick={() => this.handleSneakerSave(sneaker.id)}
+                                                onClick={() => this.handleSaves(sneaker.id)}
                                                 id="save-btn" >Save</button>
                                         )}
                                     />

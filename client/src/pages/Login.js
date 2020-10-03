@@ -1,9 +1,9 @@
 // put together our login components (similar to signup)
 import React, { Component } from "react";
-// import API from "../utils/API";
 import "./Login.css";
 import { Container, Row, Col } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
+
 
 class Login extends Component {
 
@@ -30,14 +30,19 @@ class Login extends Component {
                                 placeholder="password"
                             />
                             <FormBtn
+                                className="btn btn-success"
                                 style={{ marginLeft: "auto" }}
                             >
-                                Login
+                            <strong>Login</strong>
                             </FormBtn>
                             <a className="nav-link" as='a' href={this.loginPath}>
-                                <button type="button" className="btn btn-gplus btn-danger">
-                                    <i className="fab fa-google-plus-g pr-1">Google</i>
-                                </button>
+                                <FormBtn type="button" className="btn btn-danger" >
+                                    {/* <img src={googlePlusimg} alt="google" style={{height: "54px", width: "88px", borderRadius: "6px"}} /> */}
+                                    <strong>Google+</strong>
+                                    {/* <span>
+                                        <img src={googleimg} alt="shoe" style={{ width: "30px", float: "right", display: "block", margin: "1px"}} />
+                                    </span> */}
+                                </FormBtn>
                             </a>
                         </form>
                     </Col>
