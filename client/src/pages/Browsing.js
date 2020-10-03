@@ -1,15 +1,16 @@
 // set up browsing (through external api's) components
 import React, { Component } from "react";
 import API from "../utils/API";
-import { Col, Row, Container } from "../components/Grid";
+import { FormGroup, Row, Col, Container, Form } from "reactstrap";
 import { Input, FormBtn } from "../components/Form";
-// import { List } from "../components/List";
+import { List } from "../components/List";
 import Shoe from "../components/Shoe";
-import CardColumns from "react-bootstrap/CardColumns";
-import "./Browsing.css";
-// import Card from "react-bootstrap/Card";
+import { CardDeck } from "reactstrap";
+import Card from "react-bootstrap/Card";
 import SelectGender from "../components/SelectGender";
 import SelectBrand from "../components/SelectBrand";
+import "./Browsing.css";
+
 
 class Browsing extends Component {
     // start state
@@ -29,8 +30,9 @@ class Browsing extends Component {
 
     // you want order, variables, and attribute you want to sort by.
     // function on button click to sort. Will have to change so that it takes this.state (i think?) and sort based of selected value of menu
-   
-    
+
+
+
     sortPriceDesc = () => {
         switch (this.state.order) {
             case 'asc':
@@ -44,7 +46,7 @@ class Browsing extends Component {
             case 'desc':
                 this.setState({ sneakers: this.state.sneakers.sort((a, b) => b.retailPrice - a.retailPrice), order: 'asc' });
                 break;
-        }  
+        }
     }
 
     sortYearAsc = () => {
@@ -54,15 +56,12 @@ class Browsing extends Component {
         }
     }
 
-    sortYearDsc = () => {
+    sortYearDesc = () => {
         switch (this.state.order) {
             case 'asc':
-                this.setState({ sneakers: this.state.sneakers.sort((a, b) => b.year -a.year), order: 'desc'});
+                this.setState({ sneakers: this.state.sneakers.sort((a, b) => b.year - a.year), order: 'desc' });
         }
     }
-
-    
-
 
 
     // register what gets put into input fields
@@ -98,7 +97,7 @@ class Browsing extends Component {
 
     //  register save functionality
     handleSneakerSave = id => {
-        const sneaker = this.state.sneakers.find(sneaker => sneaker.id === id);
+        const sneaker = this.state.sneakers.find(sneaker => sneaker.id);
 
         API.saveSneaker({
             sneakerId: sneaker.id,
@@ -109,7 +108,7 @@ class Browsing extends Component {
             retailPrice: sneaker.retailPrice,
             year: sneaker.year,
             image: sneaker.media.thumbUrl
-        }).then(() => console.log("Saved Shoe to Wishlist!"));
+        }).then(() => this.getSneakers());
 
     }
 
@@ -121,77 +120,79 @@ class Browsing extends Component {
             // nav bar to navigate to diff pages
             // jumbotron (or something similar) to hold search form
             // search form
-            // place to hold results (i.e. a list or grid or both)
 
-            <div>
-
-
-                <Container>
-                    {/* <Nav /> */}
-                    <Row>
-                        <Col size="md-8">
-                            <form style={{ justifyContent: "center", textAlign: "center" }}>
-                                <Input
-                                    onChange={this.handleInputChange}
-                                    name="shoeName"
-                                    placeholder="Shoe name"
-                                />
-
-                                <SelectBrand
-                                    onChange={this.handleInputChange}
-                                    name="brand"
-                                />
-
-                                <SelectGender
-                                    onChange={this.handleInputChange}
-                                    name="gender"
-
-                                />
-
-                                <Input
-                                    onChange={this.handleInputChange}
-                                    name="releaseYear"
-                                    placeholder="Release Year"
-                                />
-                                <Input
-                                    onChange={this.handleInputChange}
-                                    name="colorway"
-                                    placeholder="colorway"
-                                />
-                                <div style={{}}>
-                                    <FormBtn
-                                        onClick={this.handleSearch}
-                                    >
-                                        Search
-
-                                </FormBtn>
-                                </div>
-                            </form>
-                        </Col>
-                    </Row>
-
-                </Container>
+            // place to hold results (i.e. a list or grid or both
 
 
+            <Container className="main-container">
+                {/* <Nav /> */}
+                <Row>
+                    <Col sm='12' md='6' lg='6' className="text-center mx-auto">
+                        <FormGroup className="text-center mx-auto">
 
-                <div className="shoe-container">
-                    {/* <Row> */}
+                            <Input
+                                onChange={this.handleInputChange}
+                                name="shoeName"
+                                placeholder="Shoe name"
+                            />
+                            <Input
+                                onChange={this.handleInputChange}
+                                name="colorway"
+                                placeholder="colorway"
+                            />
+                            <Input
+                                onChange={this.handleInputChange}
+                                name="releaseYear"
+                                placeholder="Release Year"
+                            />
 
-                
-                    <button onClick={this.sortYearAsc}>Sort  Oldest to Newest</button>
-                    <button onClick={this.sortYearDsc}>Sort Newest to Oldest</button>
-                    <button onClick={this.sortPriceAsc}>Sort Price low to high</button>
-                    <button onClick={this.sortPriceDesc}>Sort High to Low</button>
+                            <SelectBrand
+                                placeholder="brand"
+                                onChange={this.handleInputChange}
+                                name="brand"
+                            />
 
-                        <h1 style={{ justifyContent: "center" }}>Search Results</h1>
-                        {this.state.sneakers.length ? (
-                            <CardColumns size="sm-4">
+                            <SelectGender
+                                placeholder="gender"
+                                onChange={this.handleInputChange}
+                                name="gender"
+                            />
+
+                            <div>
+                                <FormBtn onClick={this.handleSearch}> Search </FormBtn>
+                            </div>
+
+                        </FormGroup>
+                    </Col>
+                </Row>
+
+                {/* create select menu to select sort types add button on click takes the selected sort type and then applies it */}
+                {/* need to create component for dropdown menu */}
+                {/* keep button functions within page but move buttons to components so that we can style it */}
+                <Row>
+                    <Col>
+                        <FormBtn onClick={this.sortPriceDesc}> Sort Price from Low to High </FormBtn>
+                        <FormBtn onClick={this.sortYearDesc}>Sort from Newest to Oldest</FormBtn>
+                    </Col>
+                    <Col>
+                        <FormBtn onClick={this.sortPriceAsc}> Sort Price from High to Low </FormBtn>
+                        <FormBtn onClick={this.sortYearAsc}> Sort from Oldest to Newest </FormBtn>
+                    </Col>
+                </Row>
+                <h1 style={{marginTop: 5}}>Search Results</h1>
+                <Row className=" ">
+                    {this.state.sneakers.length ? (
+
+                        <Col sm='12' md='12' lg='12' >
+                            <CardDeck >
+
                                 {this.state.sneakers.map(sneaker => (
                                     <Shoe
                                         key={sneaker.id}
                                         shoe={sneaker.shoe}
                                         colorway={sneaker.colorway}
                                         brand={sneaker.brand}
+                                        colorway={sneaker.colorway}
                                         price={sneaker.retailPrice}
                                         gender={sneaker.gender}
                                         year={sneaker.year}
@@ -203,15 +204,17 @@ class Browsing extends Component {
                                         )}
                                     />
                                 ))}
-                            </CardColumns>
-                        ) : (
-                                <h2 className="text-center">Search shoes for results</h2>
-                            )}
+                            </CardDeck>
+                        </Col>
 
-                    {/* </Row> */}
-                </div>
-            </div>
+
+                    ) : (
+                            <h2 className="text-center">Search shoes for results</h2>
+                        )}
+                </Row>
+            </Container>
         );
+
     }
 }
 

@@ -1,0 +1,17 @@
+.Container {
+    position: relative;
+    min-height: 300px;
+    max-height: 800px;
+    overflow: hidden;
+    margin-bottom: 500px;
+
+}
+
+video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
